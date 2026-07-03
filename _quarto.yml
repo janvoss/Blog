@@ -5,11 +5,15 @@ website:
   title: "Essays"
   navbar:
     right:
-      - about.qmd
+    #  - about.qmd
+      - text: hfwu
+        href: https://www.hfwu.de/jan-vosswinkel/
       - icon: github
-        href: https://github.com/
-      - icon: twitter
-        href: https://twitter.com
+        href: https://github.com/janvoss
+      - icon: linkedin
+        href: www.linkedin.com/in/jan-s-voßwinkel-a6
+      - icon: twitter-x
+        href: https://x.com/JanSVosswinkel
 format:
   html:
     theme:

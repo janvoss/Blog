@@ -1,0 +1,15 @@
+\babel@toc {ngerman}{}\relax 
+\contentsline {subsection}{\numberline {0.1}Einleitung: Das E-Bike-Paradoxon der kognitiven Arbeit}{1}{subsection.0.1}%
+\contentsline {subsection}{\numberline {0.2}Das Modell: Zeitbudget, Produktion und Kapitalakkumulation}{2}{subsection.0.2}%
+\contentsline {subsubsection}{\numberline {0.2.1}Zeitbudget und Freizeit}{2}{subsubsection.0.2.1}%
+\contentsline {subsubsection}{\numberline {0.2.2}Die akademische Produktionsfunktion}{3}{subsubsection.0.2.2}%
+\contentsline {subsubsection}{\numberline {0.2.3}Akkumulation des kognitiven Kapitals (Die „Muskel-Gleichung``)}{3}{subsubsection.0.2.3}%
+\contentsline {subsection}{\numberline {0.3}Intertemporale Optimierung: Der Euler-Kalkül}{4}{subsection.0.3}%
+\contentsline {subsubsection}{\numberline {0.3.1}Die Cobb-Douglas-Nutzenfunktion}{4}{subsubsection.0.3.1}%
+\contentsline {subsubsection}{\numberline {0.3.2}Die intertemporale Euler-Gleichung}{4}{subsubsection.0.3.2}%
+\contentsline {subsection}{\numberline {0.4}Zwei Pfade der KI-Nutzung: Simulation und Dynamik}{5}{subsection.0.4}%
+\contentsline {subsubsection}{\numberline {0.4.1}Der Synergie-Pfad (Das E-Bike im Sport-Modus)}{5}{subsubsection.0.4.1}%
+\contentsline {subsubsection}{\numberline {0.4.2}Der Substitutions-Pfad (Die Kompensations-Spirale)}{5}{subsubsection.0.4.2}%
+\contentsline {subsection}{\numberline {0.5}Grafische Simulation in R}{6}{subsection.0.5}%
+\contentsline {section}{\numberline {1}Fazit und hochschuldidaktische Implikationen}{9}{section.1}%
+\providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 
