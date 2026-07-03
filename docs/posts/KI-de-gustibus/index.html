@@ -274,10 +274,8 @@ window.Quarto = {
 <blockquote class="blockquote">
 <p><strong>Methodischer Hinweis zum Multi-Perioden-Fall:</strong> Wenn ein Zeitpfad über <span class="math inline">\(T\)</span> Perioden optimal ist, muss er auch zwischen jeweils zwei direkt aufeinanderfolgenden Perioden <span class="math inline">\(t\)</span> und <span class="math inline">\(t+1\)</span> optimal sein. Wir betrachten eine marginale Erhöhung der KI-Dosis in Periode <span class="math inline">\(t\)</span>, die wir durch eine Gegenanpassung in Periode <span class="math inline">\(t+1\)</span> so kompensieren, dass der Kapitalstock in Periode <span class="math inline">\(t+2\)</span> völlig unverändert bleibt. Die Optimierungsbedingung zwischen <span class="math inline">\(t\)</span> und <span class="math inline">\(t+1\)</span> gilt somit fundamental für jede Periode im gesamten Studienverlauf.</p>
 </blockquote>
-<p>Das intertemporale Gleichgewicht verlangt, dass der marginale Nutzenzugewinn einer Ausdehnung von <span class="math inline">\(A_t\)</span> heute exakt dem diskontierten Nutzenverlust durch den veränderten Kapitalstock morgen entspricht (<span class="math inline">\(\rho \in (0,1)\)</span> bezeichnet den Diskontierungsfaktor):</p>
-<p><span class="math display">\[\underbrace{\frac{\partial U(Y_t)}{\partial Y_t} \cdot \frac{\partial Y_t}{\partial A_t}}_{\substack{\text{Kurzfristiger Grenzgewinn heute} \\ \text{(Sofortige Entlastung / Output-Plus)}}} = \underbrace{\rho \cdot \left( \frac{\partial U(Y_{t+1})}{\partial Y_{t+1}} \cdot \frac{\partial Y_{t+1}}{\partial K_{t+1}} \right)}_{\substack{\text{Diskontierter Grenz-Wert} \\ \text{des Wissens morgen}}} \cdot \underbrace{(\gamma - \beta E_t)}_{\substack{\text{Netto-Atrophie} \\ \text{(Marginaler Wissensverlust)}}}\]</span></p>
-<p>Mit den Ableitungen unseres Modells (<span class="math inline">\(\frac{\partial Y_t}{\partial A_t} = 1\)</span>, <span class="math inline">\(\frac{\partial Y_{t+1}}{\partial K_{t+1}} = E_{t+1}\)</span> und der Cobb-Douglas-Elastizität) vereinfacht sich die <strong>Euler-Gleichung für den optimalen KI-Konsum</strong> zu:</p>
-<p><span class="math display">\[\underbrace{\mu \frac{U_t}{Y_t}}_{\text{Grenznutzen heute}} = \underbrace{\rho \cdot \mu \frac{U_{t+1}}{Y_{t+1}} \cdot E_{t+1}}_{\text{Schattenpreis des Wissens}} \cdot \underbrace{(\gamma - \beta E_t)}_{\text{Netto-Atrophie}}\]</span></p>
+<p>Das intertemporale Gleichgewicht verlangt, dass der marginale Nutzenzugewinn einer Ausdehnung von <span class="math inline">\(A_t\)</span> heute exakt dem diskontierten Nutzenverlust durch den veränderten Kapitalstock morgen entspricht (<span class="math inline">\(\rho \in (0,1)\)</span> bezeichnet den Diskontierungsfaktor). Setzt man die partiellen Ableitungen unseres Modells ein und substituiert den Schattenpreis des Kapitals vollständig aus (siehe Anhang), ergibt sich die <strong>exakte intertemporale Euler-Gleichung für den KI-Konsum</strong>:</p>
+<p><span class="math display">\[\underbrace{\mu \frac{U_t}{Y_t}}_{\text{Grenznutzen heute}} = \rho \cdot \underbrace{\mu \frac{U_{t+1}}{Y_{t+1}}}_{\substack{\text{Grenznutzen} \\ \text{morgen}}} \cdot \underbrace{\left[ E_{t+1} + \frac{1 - \delta}{\gamma - \beta E_{t+1}} \right]}_{\substack{\text{Totaler Grenzwert des Wissens} \\ \text{(Produktivität + Erhaltung)}}} \cdot \underbrace{(\gamma - \beta E_t)}_{\text{Netto-Atrophie}}\]</span></p>
 <hr>
 </section>
 </section>
@@ -415,8 +413,50 @@ Abbildung&nbsp;1: Intertemporale Dynamik der KI-Nutzung: Synergie-Pfad vs.&nbsp;
 <p>Das hier präsentierte Modell entzaubert zwei gängige Mythen: KI macht Studierende weder automatisch produktiver, noch verleitet sie zwangsläufig zur kognitiven Atrophie. Wie bei einem E-Bike entscheidet die Intensität der eigenen Anstrengung (<span class="math inline">\(E_t\)</span>) im Verhältnis zur technologischen Schwelle (<span class="math inline">\(E^* = \frac{\gamma}{\beta}\)</span>), in welche Richtung das System kippt.Die hochschuldidaktische Brisanz dieses Resultats offenbart sich beim Blick auf Panel 3 (Output) und Panel 4 (Nutzen) der Simulation:In einer rein ergebnisorientierten Prüfungslandschaft fallen beide Studierendentypen kaum auseinander. Student B erbringt durch die kompensatorische KI-Nutzung optisch denselben akademischen Output wie zu Studienbeginn.Sein wahrer Wohlfahrtsverlust zeigt sich jedoch im verborgenen Verfall seines kognitiven Kapitals (Panel 1) und seinem stagnierenden Nutzen (Panel 4), während Student A durch den Synergieeffekt eine massive Wohlfahrtssteigerung und ein robustes Wissensplateau (<span class="math inline">\(K_{\max}\)</span>) erreicht.</p>
 <p>Für die Gestaltung moderner Universitäten folgt daraus: Verbote von KI-Systemen sind methodisch ebenso verfehlt wie das Verbot von E-Bikes im Straßenverkehr. Stattdessen müssen Anreizstrukturen und Prüfungsformate so neugestaltet werden, dass sie hohe eigene kognitive Anstrengungen belohnen und erzwingen (<span class="math inline">\(E_t &gt; E^*\)</span>).</p>
 <p>Wird der Eigenaufwand – etwa durch mündliche Diskursprüfungen, prozessbegleitendes Hinterfragen oder komplexe Problemlösungssettings – zum unbedingten Komplement der KI-Nutzung gemacht, wirkt die Technologie als intellektueller Hebel. Am Ende bewahrheitet sich auch im digitalen Zeitalter eine alte Erkenntnis: De ingenio non est disputandum – der menschliche Verstand lässt sich nicht wegreformieren; er muss trainiert werden.</p>
+</section>
+<section id="anhang-intertemporale-optimierung-mittels-bellman-gleichung" class="level1 unnumbered">
+<h1 class="unnumbered">Anhang: Intertemporale Optimierung mittels Bellman-Gleichung</h1>
+<p>Während der Haupttext das Optimierungsproblem aus didaktischen Gründen über den Euler-Kalkül der lokalen Variation herleitet, lässt sich das Modell formal als Problem der dynamischen Programmierung formulieren.</p>
+<p>Wir definieren die Wertfunktion <span class="math inline">\(V(K_t)\)</span>, die den maximalen diskontierten Gegenwartswert des Nutzens über einen unendlichen (oder hinreichend langen) Zeithorizont in Abhängigkeit des kognitiven Kapitalstocks <span class="math inline">\(K_t\)</span> (der Zustandsvariablen) beschreibt.</p>
+<section id="die-bellman-gleichung" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="die-bellman-gleichung">Die Bellman-Gleichung</h2>
+<p>Die rekursive Bellman-Gleichung für unseren Studierenden lautet:</p>
+<p><span class="math display">\[V(K_t) = \max_{A_t, E_t} \left\{ U(Y_t, F_t) + \rho V(K_{t+1}) \right\}\]</span></p>
+<p>Unter Einsetzen der Produktionsfunktion <span class="math inline">\(Y_t = K_t E_t + A_t\)</span>, der Freizeitrestriktion <span class="math inline">\(F_t = \bar{T} - E_t\)</span> und der Akkumulationsgleichung (Bewegungsgleichung) für das Wissen erhalten wir das explizite Optimierungsproblem für die KI-Nutzung <span class="math inline">\(A_t\)</span> als Kontrollvariable:</p>
+<p><span class="math display">\[V(K_t) = \max_{A_t} \left\{ (K_t E_t + A_t)^\mu (\bar{T} - E_t)^{1-\mu} + \rho V\left( (1 - \delta) K_t + \alpha E_t - (\gamma - \beta E_t)A_t \right) \right\}\]</span></p>
+</section>
+<section id="die-bedingung-erster-ordnung-first-order-condition" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="die-bedingung-erster-ordnung-first-order-condition">Die Bedingung erster Ordnung (First-Order Condition)</h2>
+<p>Um das intertemporale Optimum zu finden, leiten wir die rechte Seite der Bellman-Gleichung nach der Kontrollvariablen <span class="math inline">\(A_t\)</span> ab und setzen sie null:</p>
+<p><span class="math display">\[\frac{\partial U_t}{\partial Y_t} \cdot \frac{\partial Y_t}{\partial A_t} + \rho V'(K_{t+1}) \cdot \frac{\partial K_{t+1}}{\partial A_t} = 0\]</span></p>
+<p>Da <span class="math inline">\(\frac{\partial Y_t}{\partial A_t} = 1\)</span> und die Netto-Atrophie <span class="math inline">\(\frac{\partial K_{t+1}}{\partial A_t} = -(\gamma - \beta E_t)\)</span> beträgt, ergibt sich:</p>
+<p><span class="math display">\[\frac{\partial U_t}{\partial Y_t} = \rho V'(K_{t+1}) \cdot (\gamma - \beta E_t)\]</span></p>
+<p>Unter Verwendung der Cobb-Douglas-Eigenschaft (<span class="math inline">\(\frac{\partial U_t}{\partial Y_t} = \mu \frac{U_t}{Y_t}\)</span>) erhalten wir die Grenzkosten-Grenznutzen-Bedingung der KI-Nutzung:</p>
+<p><span class="math display">\[\mu \frac{U_t}{Y_t} = \rho V'(K_{t+1}) \cdot (\gamma - \beta E_t)\]</span></p>
+<p><em>Interpretation:</em> Der kurzfristige Grenznutzen einer zusätzlichen Einheit KI (linke Seite) muss im Optimum exakt den diskontierten marginalen Kosten des Wissensverfalls (rechte Seite) entsprechen. <span class="math inline">\(V'(K_{t+1})\)</span> repräsentiert dabei den Schattenpreis des kognitiven Kapitals in der Folgeperiode.</p>
+</section>
+<section id="der-umhüllendensatz-envelope-theorem" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="der-umhüllendensatz-envelope-theorem">Der Umhüllendensatz (Envelope-Theorem)</h2>
+<p>Um den Schattenpreis <span class="math inline">\(V'(K_{t+1})\)</span> analytisch fassen zu können, differenzieren wir die Wertfunktion <span class="math inline">\(V(K_t)\)</span> nach der Zustandsvariablen <span class="math inline">\(K_t\)</span>:</p>
+<p><span class="math display">\[V'(K_t) = \frac{\partial U_t}{\partial Y_t} \cdot \frac{\partial Y_t}{\partial K_t} + \rho V'(K_{t+1}) \cdot \frac{\partial K_{t+1}}{\partial K_t}\]</span></p>
+<p>Mit <span class="math inline">\(\frac{\partial Y_t}{\partial K_t} = E_t\)</span> und <span class="math inline">\(\frac{\partial K_{t+1}}{\partial K_t} = (1 - \delta)\)</span> folgt:</p>
+<p><span class="math display">\[V'(K_t) = \left( \mu \frac{U_t}{Y_t} \cdot E_t \right) + \rho V'(K_{t+1}) (1 - \delta)\]</span></p>
+<p><em>Interpretation:</em> Der Grenzwert zusätzlichen Wissens heute (<span class="math inline">\(V'(K_t)\)</span>) setzt sich zusammen aus der unmittelbaren Steigerung des heutigen Nutzens durch höhere Produktivität (<span class="math inline">\(\mu \frac{U_t}{Y_t} E_t\)</span>) plus dem diskontierten Wert des ungeschmälerten Wissensrestbestandes von morgen (<span class="math inline">\(\rho V'(K_{t+1}) (1 - \delta)\)</span>).</p>
+</section>
+<section id="herleitung-der-euler-gleichung" class="level2 unnumbered">
+<h2 class="unnumbered anchored" data-anchor-id="herleitung-der-euler-gleichung">Herleitung der Euler-Gleichung</h2>
+<p>Um die formale Euler-Gleichung aus dem Haupttext exakt zu rekonstruieren, schieben wir das Resultat des Envelope-Theorems um eine Periode in die Zukunft (von <span class="math inline">\(t\)</span> nach <span class="math inline">\(t+1\)</span>):</p>
+<p><span class="math display">\[V'(K_{t+1}) = \left( \mu \frac{U_{t+1}}{Y_{t+1}} \cdot E_{t+1} \right) + \rho V'(K_{t+2}) (1 - \delta)\]</span></p>
+<p>Da die Bedingung erster Ordnung (Abschnitt 2) in jeder Periode gelten muss, können wir sie für Periode <span class="math inline">\(t+1\)</span> nach dem diskontierten Schattenpreis <span class="math inline">\(\rho V'(K_{t+2})\)</span> auflösen:</p>
+<p><span class="math display">\[\rho V'(K_{t+2}) = \frac{\mu \frac{U_{t+1}}{Y_{t+1}}}{\gamma - \beta E_{t+1}}\]</span></p>
+<p>Substituieren wir dies in die Envelope-Bedingung, erhalten wir den vollständigen Schattenpreis für Periode <span class="math inline">\(t+1\)</span>:</p>
+<p><span class="math display">\[V'(K_{t+1}) = \mu \frac{U_{t+1}}{Y_{t+1}} \cdot E_{t+1} + \frac{\mu \frac{U_{t+1}}{Y_{t+1}}}{\gamma - \beta E_{t+1}} (1 - \delta)\]</span></p>
+<p>Klammert man den zukünftigen Grenznutzen <span class="math inline">\(\mu \frac{U_{t+1}}{Y_{t+1}}\)</span> aus und setzt den Schattenpreis zurück in die anfängliche Bedingung erster Ordnung (<span class="math inline">\(\mu \frac{U_t}{Y_t} = \rho V'(K_{t+1}) \cdot (\gamma - \beta E_t)\)</span>), offenbart sich die analytisch exakte Euler-Gleichung der KI-Nutzung, ganz ohne Näherungsannahmen:</p>
+<p><span class="math display">\[\mu \frac{U_t}{Y_t} = \rho \cdot \mu \frac{U_{t+1}}{Y_{t+1}} \left[ E_{t+1} + \frac{1 - \delta}{\gamma - \beta E_{t+1}} \right] \cdot (\gamma - \beta E_t)\]</span></p>
+<p>Der Term in den eckigen Klammern illustriert präzise den doppelten Wert kognitiven Kapitals: Es steigert nicht nur die direkte Produktivität (<span class="math inline">\(E_{t+1}\)</span>), sondern der ungeschmälerte Restbestand (<span class="math inline">\(1-\delta\)</span>) fungiert als Puffer gegen den zukünftigen marginalen Atrophie-Druck der Technologie.</p>
 
 
+</section>
 </section>
 
 </main> <!-- /main -->
