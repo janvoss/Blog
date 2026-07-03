@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Essays, Bemerkungen, Notizen",
     "section": "",
-    "text": "De ingenio non est disputandum\n\n\n\n\n\n\n\n\n03.07.2026\n\n\nJan S. Voßwinkel\n\n\n\n\n\n\n\n\n\n\n\n\nMilch oder Zitrone? – Beides\n\n\n\n\n\n\n\n\n02.07.2026\n\n\nJan S. Voßwinkel\n\n\n\n\n\n\n\n\n\n\n\n\nPost With Code\n\n\n\nnews\n\ncode\n\nanalysis\n\n\n\n\n\n\n\n\n\n01.07.2026\n\n\nHarlow Malloc\n\n\n\n\n\n\n\n\n\n\n\n\nWelcome To My Blog\n\n\n\n\n\n\n\n\n01.07.2026\n\n\nA. U. Tor\n\n\n\n\n\nKeine Treffer"
+    "text": "De ingenio non est disputandum\n\n\n\n\n\n\n\n\n03.07.2026\n\n\nJan S. Voßwinkel\n\n\n\n\n\nKeine Treffer"
   },
   {
     "objectID": "posts/post-with-code/index.html",
@@ -163,6 +163,62 @@
   {
     "objectID": "posts/KI-de-gustibus/index.html#der-substitutions-pfad-die-kompensations-spirale",
     "href": "posts/KI-de-gustibus/index.html#der-substitutions-pfad-die-kompensations-spirale",
+    "title": "De ingenio non est disputandum",
+    "section": "4.2 Der Substitutions-Pfad (Die Kompensations-Spirale)",
+    "text": "4.2 Der Substitutions-Pfad (Die Kompensations-Spirale)\nWählt ein Studierender eine geringe Eigenanstrengung (\\(E &lt; E^*\\)), ist die Netto-Atrophie positiv. Das Wissen \\(K_t\\) erodiert. In der Folge droht der Output \\(Y_t\\) abzusacken, was den Grenznutzen \\(\\mu \\frac{U}{Y}\\) explodieren ließe (Notenabsturz). Um die Euler-Gleichung im Gleichgewicht zu halten und das Satisficing-Ziel zu sichern, muss der Studierende seinen KI-Konsum \\(A_t\\) kontinuierlich erhöhen. Er gerät in eine Abhängigkeitsspirale: Er nutzt mehr KI, nicht weil er produktiver wird, sondern um seinen endogenen Wissensverfall zu kompensieren."
+  },
+  {
+    "objectID": "docs/KI-de-gustibus/index.html",
+    "href": "docs/KI-de-gustibus/index.html",
+    "title": "De ingenio non est disputandum",
+    "section": "",
+    "text": "Die rasante Verbreitung generativer Künstlicher Intelligenz (KI) in der Hochschulbildung steht im Zentrum einer polarisierten Debatte. Während die eine Seite KI als unerschöpflichen Produktivitätsbooster feiert, der Lernende von kognitiver Routinearbeit befreit, warnt die andere Seite vor digitaler Demenz und intellektueller Atrophie.\nIn Anlehnung an den klassischen Aufsatz von Stigler und Becker (1977), „De gustibus non est disputandum“, argumentiert dieser Beitrag: De ingenio non est disputandum. Die Effekte der KI auf das kognitive Kapital der Studierenden sind keine Frage unveränderlicher, exogener Begabungen oder fatalistischer Technologiefolgen. Vielmehr sind sie das Resultat rationaler, intertemporaler Allokationsentscheidungen im Kontext spezifischer Anreizstrukturen.\nUm diese Dynamik greifbar zu machen, bietet sich die Analogie des E-Bikes an: Der Elektromotor (analog zur KI) ist konstruiert, um die eigene Tretleistung zu unterstützen, insbesondere am Berg.\n\nDer Synergie-Pfad (Komplementäre Nutzung): Ein Fahrer nutzt die motorische Unterstützung, um längere, anspruchsvollere Strecken zu bewältigen, die er zuvor gemieden hätte. Weil er die Pedale weiterhin intensiv bedient, baut er – trotz (oder gerade wegen) des Motors – mehr Kondition und Muskelmasse auf.\nDer Substitutions-Pfad (Das E-Bike als Moped): Ein anderer Fahrer nutzt die volle Motorleistung, um jegliche eigene Tretanstrengung zu vermeiden. Er erreicht sein Ziel zwar ebenso schnell und mühelos, verliert jedoch über die Zeit drastisch an muskulärer und kardiovaskulärer Fitness.\n\nDieses Paper formalisiert diese Intuition in einem mikroökonomischen Multi-Perioden-Modell. Durch den Verzicht auf die komplexe Bellman-Gleichung und den Einsatz des klassischen Euler-Kalküls der lokalen Variation zeigen wir: Ob KI als kognitiver Multiplikator oder als intellektuelle Atrophie-Falle wirkt, hängt exakt davon ab, ob die eigene Anstrengung eine kritische Schwelle überschreitet."
+  },
+  {
+    "objectID": "docs/KI-de-gustibus/index.html#zeitbudget-und-freizeit",
+    "href": "docs/KI-de-gustibus/index.html#zeitbudget-und-freizeit",
+    "title": "De ingenio non est disputandum",
+    "section": "2.1 Zeitbudget und Freizeit",
+    "text": "2.1 Zeitbudget und Freizeit\nIn jeder Periode \\(t\\) verfügt der Studierende über ein exogenes Zeitbudget \\(\\bar{T}\\), das er auf eigene kognitive Anstrengung \\(E_t\\) (z. B. tiefes Denken, Problemlösen, Prompt-Design) und Freizeit \\(F_t\\) aufteilt. Der Einfachheit halber nehmen wir an, dass die rein technische Nutzung der KI \\(A_t\\) kurzfristig als perfektes Substitut zur eigenen Leistung fungiert und keine nennenswerte eigene Zeit beansprucht. Die Freizeit ergibt sich somit als:\n\\[F_t = \\bar{T} - E_t\\]"
+  },
+  {
+    "objectID": "docs/KI-de-gustibus/index.html#die-akademische-produktionsfunktion",
+    "href": "docs/KI-de-gustibus/index.html#die-akademische-produktionsfunktion",
+    "title": "De ingenio non est disputandum",
+    "section": "2.2 Die akademische Produktionsfunktion",
+    "text": "2.2 Die akademische Produktionsfunktion\nDer sichtbare akademische Output \\(Y_t\\) (z. B. Noten, abgegebene Hausarbeiten, Präsentationen) in Periode \\(t\\) wird durch eine lineare Produktionsfunktion bestimmt. Diese kombiniert das bestehende kognitive Basiswissen \\(K_t\\), die eigene Anstrengung \\(E_t\\) und den Umfang der KI-Nutzung \\(A_t\\):\n\\[Y_t = (K_t \\cdot E_t) + A_t\\]"
+  },
+  {
+    "objectID": "docs/KI-de-gustibus/index.html#akkumulation-des-kognitiven-kapitals-die-muskel-gleichung",
+    "href": "docs/KI-de-gustibus/index.html#akkumulation-des-kognitiven-kapitals-die-muskel-gleichung",
+    "title": "De ingenio non est disputandum",
+    "section": "2.3 Akkumulation des kognitiven Kapitals (Die „Muskel-Gleichung“)",
+    "text": "2.3 Akkumulation des kognitiven Kapitals (Die „Muskel-Gleichung“)\nDas Bindeglied zwischen den Perioden ist die Veränderung des Wissensbestandes \\(K_t\\). Wissen entsteht durch eigene Anstrengung (\\(\\alpha\\)), verfällt mit der natürlichen Vergessensrate \\(\\delta \\in (0, 1)\\) und wird durch die KI entweder synergetisch verstärkt (\\(\\beta\\)) oder durch Substitution erodiert (\\(\\gamma\\)):\n\\[K_{t+1} = (1 - \\delta) K_t + \\alpha E_t + \\beta (E_t \\cdot A_t) - \\gamma A_t\\]\nDie partielle Ableitung der Akkumulationsgleichung nach dem KI-Konsum liefert die Netto-Atrophie des Systems:\n\\[\\frac{\\partial K_{t+1}}{\\partial A_t} = \\beta E_t - \\gamma = -(\\gamma - \\beta E_t)\\]\nAus diesem Term lässt sich eine kritische Anstrengungsschwelle \\(E^*\\) ableiten:\n\\[E^* = \\frac{\\gamma}{\\beta}\\]\n\nKomplementarität (\\(E_t &gt; E^*\\)): Investiert der Studierende hohe eigene Tretleistung, überwiegt der Synergie-Effekt (\\(\\beta E_t &gt; \\gamma\\)). Die KI wirkt wie der E-Bike-Motor im Sport-Modus: Sie ermöglicht ein tieferes Durchdringen des Stoffs; das kognitive Kapital wächst.\nSubstitution (\\(E_t &lt; E^*\\)): Bei geringer Eigenanstrengung überwiegt die Atrophie (\\(\\gamma &gt; \\beta E_t\\)). Die KI ersetzt das eigene Denken; der kognitive Kapitalstock verfällt."
+  },
+  {
+    "objectID": "docs/KI-de-gustibus/index.html#die-cobb-douglas-nutzenfunktion",
+    "href": "docs/KI-de-gustibus/index.html#die-cobb-douglas-nutzenfunktion",
+    "title": "De ingenio non est disputandum",
+    "section": "3.1 Die Cobb-Douglas-Nutzenfunktion",
+    "text": "3.1 Die Cobb-Douglas-Nutzenfunktion\nDer Nutzen in Periode \\(t\\) wird durch eine Cobb-Douglas-Funktion abgebildet, die den Erfolg im Studium (\\(Y_t\\)) und den Genuss von Freizeit (\\(F_t\\)) mit den Elastizitäten \\(\\mu \\in (0, 1)\\) und \\((1-\\mu)\\) gewichtet:\n\\[U(Y_t, F_t) = Y_t^\\mu \\cdot (\\bar{T} - E_t)^{1-\\mu}\\]\nDiese Spezifikation ist aus zwei Gründen zentral: 1. Abnehmender Grenznutzen im Output: Da \\(\\frac{\\partial U_t}{\\partial Y_t} = \\mu \\frac{U_t}{Y_t}\\) gilt, sinkt der marginale Nutzen zusätzlichen Outputs, je höher \\(Y_t\\) bereits ist. Ein Studierender hat kein Interesse an einer unendlichen Ausdehnung von \\(Y_t\\), da eine Zeugnisnote von „1,0“ nicht weiter verbessert werden kann. 2. Endogene Sättigung (\\(K_{\\max}\\) und \\(A_{\\max}\\)): Weil die eigene Anstrengung \\(E_t\\) durch das Zeitbudget \\(\\bar{T}\\) und das Bedürfnis nach Freizeit nach oben gedeckelt ist, können die Wissenszuwächse nicht unendlich steigen. Es existiert ein langfristiger Steady State (\\(K_{\\max}\\)), an dem die natürliche Vergessensrate \\(\\delta K_t\\) exakt der Neuinvestition entspricht."
+  },
+  {
+    "objectID": "docs/KI-de-gustibus/index.html#die-intertemporale-euler-gleichung",
+    "href": "docs/KI-de-gustibus/index.html#die-intertemporale-euler-gleichung",
+    "title": "De ingenio non est disputandum",
+    "section": "3.2 Die intertemporale Euler-Gleichung",
+    "text": "3.2 Die intertemporale Euler-Gleichung\nStatt das Problem über eine rekursive Bellman-Gleichung zu lösen, nutzen wir das methodisch elegante Prinzip der lokalen Variation (Euler-Kalkül).\n\nMethodischer Hinweis zum Multi-Perioden-Fall: Wenn ein Zeitpfad über \\(T\\) Perioden optimal ist, muss er auch zwischen jeweils zwei direkt aufeinanderfolgenden Perioden \\(t\\) und \\(t+1\\) optimal sein. Wir betrachten eine marginale Erhöhung der KI-Dosis in Periode \\(t\\), die wir durch eine Gegenanpassung in Periode \\(t+1\\) so kompensieren, dass der Kapitalstock in Periode \\(t+2\\) völlig unverändert bleibt. Die Optimierungsbedingung zwischen \\(t\\) und \\(t+1\\) gilt somit fundamental für jede Periode im gesamten Studienverlauf.\n\nDas intertemporale Gleichgewicht verlangt, dass der marginale Nutzenzugewinn einer Ausdehnung von \\(A_t\\) heute exakt dem diskontierten Nutzenverlust durch den veränderten Kapitalstock morgen entspricht (\\(\\rho \\in (0,1)\\) bezeichnet den Diskontierungsfaktor):\n\\[\\underbrace{\\frac{\\partial U(Y_t)}{\\partial Y_t} \\cdot \\frac{\\partial Y_t}{\\partial A_t}}_{\\substack{\\text{Kurzfristiger Grenzgewinn heute} \\\\ \\text{(Sofortige Entlastung / Output-Plus)}}} = \\underbrace{\\rho \\cdot \\left( \\frac{\\partial U(Y_{t+1})}{\\partial Y_{t+1}} \\cdot \\frac{\\partial Y_{t+1}}{\\partial K_{t+1}} \\right)}_{\\substack{\\text{Diskontierter Grenz-Wert} \\\\ \\text{des Wissens morgen}}} \\cdot \\underbrace{(\\gamma - \\beta E_t)}_{\\substack{\\text{Netto-Atrophie} \\\\ \\text{(Marginaler Wissensverlust)}}}\\]\nMit den Ableitungen unseres Modells (\\(\\frac{\\partial Y_t}{\\partial A_t} = 1\\), \\(\\frac{\\partial Y_{t+1}}{\\partial K_{t+1}} = E_{t+1}\\) und der Cobb-Douglas-Elastizität) vereinfacht sich die Euler-Gleichung für den optimalen KI-Konsum zu:\n\\[\\underbrace{\\mu \\frac{U_t}{Y_t}}_{\\text{Grenznutzen heute}} = \\underbrace{\\rho \\cdot \\mu \\frac{U_{t+1}}{Y_{t+1}} \\cdot E_{t+1}}_{\\text{Schattenpreis des Wissens}} \\cdot \\underbrace{(\\gamma - \\beta E_t)}_{\\text{Netto-Atrophie}}\\]"
+  },
+  {
+    "objectID": "docs/KI-de-gustibus/index.html#der-synergie-pfad-das-e-bike-im-sport-modus",
+    "href": "docs/KI-de-gustibus/index.html#der-synergie-pfad-das-e-bike-im-sport-modus",
+    "title": "De ingenio non est disputandum",
+    "section": "4.1 Der Synergie-Pfad (Das E-Bike im Sport-Modus)",
+    "text": "4.1 Der Synergie-Pfad (Das E-Bike im Sport-Modus)\nWählt ein Studierender eine hohe Eigenanstrengung (\\(E &gt; E^*\\)), wird der Term \\((\\gamma - \\beta E)\\) negativ. Die intertemporalen Kosten der KI verwandeln sich in eine kognitive Rendite. Der Wissensbestand \\(K_t\\) steigt an. Weil sein Output \\(Y_t\\) durch das hohe Wissen wächst, greift der abnehmende Grenznutzen der Cobb-Douglas-Funktion: Der Studierende nutzt die KI hochprofessionell als Werkzeug, stabilisiert seinen Konsum jedoch auf einem gesunden Niveau (\\(A_{\\max}\\)), um seine Freizeit zu genießen."
+  },
+  {
+    "objectID": "docs/KI-de-gustibus/index.html#der-substitutions-pfad-die-kompensations-spirale",
+    "href": "docs/KI-de-gustibus/index.html#der-substitutions-pfad-die-kompensations-spirale",
     "title": "De ingenio non est disputandum",
     "section": "4.2 Der Substitutions-Pfad (Die Kompensations-Spirale)",
     "text": "4.2 Der Substitutions-Pfad (Die Kompensations-Spirale)\nWählt ein Studierender eine geringe Eigenanstrengung (\\(E &lt; E^*\\)), ist die Netto-Atrophie positiv. Das Wissen \\(K_t\\) erodiert. In der Folge droht der Output \\(Y_t\\) abzusacken, was den Grenznutzen \\(\\mu \\frac{U}{Y}\\) explodieren ließe (Notenabsturz). Um die Euler-Gleichung im Gleichgewicht zu halten und das Satisficing-Ziel zu sichern, muss der Studierende seinen KI-Konsum \\(A_t\\) kontinuierlich erhöhen. Er gerät in eine Abhängigkeitsspirale: Er nutzt mehr KI, nicht weil er produktiver wird, sondern um seinen endogenen Wissensverfall zu kompensieren."
