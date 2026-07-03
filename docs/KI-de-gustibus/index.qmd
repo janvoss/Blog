@@ -2,7 +2,7 @@
 title: "De ingenio non est disputandum"
 author: "Jan S. Voßwinkel"
 date: "2026-07-03"
-# categories: [news]
+# categories: [news] 
 lang: de
 format:
   html:
