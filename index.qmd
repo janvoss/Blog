@@ -1,7 +1,7 @@
 ---
 title: "Essays, Bemerkungen, Notizen"
 listing:
-  contents: docs
+  contents: posts
   sort: "date desc"
   type: default
   categories: false
