@@ -33,6 +33,8 @@ Durch die simultane Maximierung des Nutzens über die Bellman-Gleichung und die 
 # Grafische Veranschaulichung 
 
 Der folgende R-Code bildet die Divergenz zwischen dem Synergie-Pfad (hohes $E$) und dem Substitutions-Pfad (niedriges $E$) ab:  
+
+
 ```{r}
 #| label: sim-linear-model
 #| echo: true
@@ -86,6 +88,22 @@ for(t in 1:t_max) {
   K_Sub <- max(1.0, (1 - delta) * K_Sub + alpha * E_Subst - gamma * A_Sub)
 }
 
+
+
+# Visualisierung des Wissens-Divergenz-Pfades
+ggplot(sim_data, aes(x = Woche, y = K, color = Pfad)) +
+  geom_line(linewidth = 1.2) +
+  geom_point() +
+  labs(
+    title = "Dynamik des kognitiven Kapitals",
+    subtitle = "Vergleich: Synergie-Pfad vs. Substitutions-Pfad",
+    x = "Zeitraum (Wochen)",
+    y = "Wissensstock (K)",
+    color = "Strategie"
+  ) +
+  theme_minimal() +
+  scale_color_brewer(palette = "Set1") +
+  theme(legend.position = "bottom")
 ```
 
 
