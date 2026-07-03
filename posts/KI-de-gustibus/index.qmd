@@ -10,275 +10,85 @@ format:
     code-fold: true
     code-overflow: wrap
 ---
+# Zusammenfassung {-}
+
+Das vorliegende Arbeitspapier untersucht die langfristigen Auswirkungen generativer künstlicher Intelligenz (KI) auf die Akkumulation kognitiven Kapitals bei Studierenden. Wir formalisieren ein intertemporales Optimierungsproblem, bei dem Akteure simultan über ihre Eigenanstrengung und ihre KI-Dosis entscheiden. Durch die Eliminierung künstlicher Kompensationsterme zeigen wir, dass ein stabiles inneres Gleichgewicht existiert, bei dem der strukturelle Wissensabbau durch KI-Nutzung rational gegen die unmittelbaren Erträge der akademischen Signalübermittlung abgewogen wird.  
+
+# Einleitung
+
+In Anlehnung an Stigler und Becker (1977) argumentiert dieser Beitrag: De ingenio non est disputandum. Die Effekte von KI-Assistenten auf das kognitive Kapital sind das Ergebnis rationaler, intertemporaler Allokationsentscheidungen. Wir nutzen die Analogie des E-Bikes: Während ein Nutzer im Sport-Modus durch Eigenleistung Fitness aufbaut, führt der Moped-Modus (vollständige Substitution durch KI) zu einer schleichenden Atrophie der eigenen Fähigkeiten.  
 
 
+# Das formale Modell
+Wir betrachten ein dynamisches Optimierungsproblem. Das Zeitbudget $T̄$ wird zwischen Eigenanstrengung $E_t$ und Freizeit $F_t$ aufgeteilt:
+  $$F_t = T̄ - E_t$$Die akademische Produktionsfunktion ist linear und additiv:
+  $$Y_t = K_t E_t + A_t$$Die Akkumulation des kognitiven Kapitals $K_t$ erfolgt ohne Ad-hoc-Überlastungsannahmen:
+  $$K_{t+1} = (1 - \delta) K_t + \alpha E_t - \gamma A_t$$
+  
+  
+# Simultane Optimierung und Gleichgewichtsbedingung
 
+Durch die simultane Maximierung des Nutzens über die Bellman-Gleichung und die Eliminierung des Schattenpreises des Wissensstocks ergibt sich die fundamentale Allokationsbedingung:  $$\frac{1-\mu}{\mu} \cdot \frac{Y_t}{\bar{T}-E_t} = K_t + \frac{\alpha}{\gamma}$$Die rechte Seite definiert das totale intertemporale Grenzprodukt der Anstrengung. Der Term $\frac{\alpha}{\gamma}$ stellt das Kompensationspolster dar: Eine Einheit Eigenanstrengung baut Wissen auf, das zukünftig eine KI-Substitutionsdosis in Höhe von $\frac{\alpha}{\gamma}$ erlaubt, ohne das kognitive Niveau zu senken.  
 
-# Einleitung: Das E-Bike-Paradoxon der kognitiven Arbeit
+# Grafische Veranschaulichung 
 
-Die rasante Verbreitung generativer Künstlicher Intelligenz (KI) in der Hochschulbildung steht im Zentrum einer polarisierten Debatte. Während die eine Seite KI als unerschöpflichen Produktivitätsbooster feiert, der Lernende von kognitiver Routinearbeit befreit, warnt die andere Seite vor digitaler Demenz und intellektueller Atrophie. 
-
-In Anlehnung an den klassischen Aufsatz von Stigler und Becker (1977), *„De gustibus non est disputandum“*, argumentiert dieser Beitrag: **De ingenio non est disputandum**. Die Effekte der KI auf das kognitive Kapital der Studierenden sind keine Frage unveränderlicher, exogener Begabungen oder fatalistischer Technologiefolgen. Vielmehr sind sie das Resultat rationaler, intertemporaler Allokationsentscheidungen im Kontext spezifischer Anreizstrukturen.
-
-Um diese Dynamik greifbar zu machen, bietet sich die **Analogie des E-Bikes** an: Der Elektromotor (analog zur KI) ist konstruiert, um die eigene Tretleistung zu unterstützen, insbesondere am Berg. 
-
-* **Der Synergie-Pfad (Komplementäre Nutzung):** Ein Fahrer nutzt die motorische Unterstützung, um längere, anspruchsvollere Strecken zu bewältigen, die er zuvor gemieden hätte. Weil er die Pedale weiterhin intensiv bedient, baut er – trotz (oder gerade wegen) des Motors – mehr Kondition und Muskelmasse auf.
-* **Der Substitutions-Pfad (Das E-Bike als Moped):** Ein anderer Fahrer nutzt die volle Motorleistung, um jegliche eigene Tretanstrengung zu vermeiden. Er erreicht sein Ziel zwar ebenso schnell und mühelos, verliert jedoch über die Zeit drastisch an muskulärer und kardiovaskulärer Fitness.
-
-Dieses Paper formalisiert diese Intuition in einem mikroökonomischen Multi-Perioden-Modell. Durch den Verzicht auf die komplexe Bellman-Gleichung und den Einsatz des klassischen Euler-Kalküls der lokalen Variation zeigen wir: Ob KI als kognitiver Multiplikator oder als intellektuelle Atrophie-Falle wirkt, hängt exakt davon ab, ob die eigene Anstrengung eine kritische Schwelle überschreitet.
-
----
-
-# Das Modell: Zeitbudget, Produktion und Kapitalakkumulation
-
-Wir betrachten einen rationalen Studierenden, der seinen Nutzen über einen Studienverlauf von $T$ Perioden maximiert. 
-
-## Zeitbudget und Freizeit
-
-In jeder Periode $t$ verfügt der Studierende über ein exogenes Zeitbudget $\bar{T}$, das er auf eigene kognitive Anstrengung $E_t$ (z. B. tiefes Denken, Problemlösen, Prompt-Design) und Freizeit $F_t$ aufteilt. Der Einfachheit halber nehmen wir an, dass die rein technische Nutzung der KI $A_t$ kurzfristig als perfektes Substitut zur eigenen Leistung fungiert und keine nennenswerte eigene Zeit beansprucht. Die Freizeit ergibt sich somit als:
-
-$$F_t = \bar{T} - E_t$$
-
-## Die akademische Produktionsfunktion
-
-Der sichtbare akademische Output $Y_t$ (z. B. Noten, abgegebene Hausarbeiten, Präsentationen) in Periode $t$ wird durch eine lineare Produktionsfunktion bestimmt. Diese kombiniert das bestehende kognitive Basiswissen $K_t$, die eigene Anstrengung $E_t$ und den Umfang der KI-Nutzung $A_t$:
-
-$$Y_t = (K_t \cdot E_t) + A_t$$
-
-## Akkumulation des kognitiven Kapitals (Die „Muskel-Gleichung“)
-
-Das Bindeglied zwischen den Perioden ist die Veränderung des Wissensbestandes $K_t$. Wissen entsteht durch eigene Anstrengung ($\alpha$), verfällt mit der natürlichen Vergessensrate $\delta \in (0, 1)$ und wird durch die KI entweder synergetisch verstärkt ($\beta$) oder durch Substitution erodiert ($\gamma$):
-
-$$K_{t+1} = (1 - \delta) K_t + \alpha E_t + \beta (E_t \cdot A_t) - \gamma A_t$$
-
-Die partielle Ableitung der Akkumulationsgleichung nach dem KI-Konsum liefert die **Netto-Atrophie** des Systems:
-
-$$\frac{\partial K_{t+1}}{\partial A_t} = \beta E_t - \gamma = -(\gamma - \beta E_t)$$
-
-Aus diesem Term lässt sich eine **kritische Anstrengungsschwelle** $E^*$ ableiten:
-
-$$E^* = \frac{\gamma}{\beta}$$
-
-* **Komplementarität ($E_t > E^*$):** Investiert der Studierende hohe eigene Tretleistung, überwiegt der Synergie-Effekt ($\beta E_t > \gamma$). Die KI wirkt wie der E-Bike-Motor im Sport-Modus: Sie ermöglicht ein tieferes Durchdringen des Stoffs; das kognitive Kapital wächst.
-* **Substitution ($E_t < E^*$):** Bei geringer Eigenanstrengung überwiegt die Atrophie ($\gamma > \beta E_t$). Die KI ersetzt das eigene Denken; der kognitive Kapitalstock verfällt.
-
----
-
-# Intertemporale Optimierung: Der Euler-Kalkül
-
-## Die Cobb-Douglas-Nutzenfunktion
-
-Der Nutzen in Periode $t$ wird durch eine Cobb-Douglas-Funktion abgebildet, die den Erfolg im Studium ($Y_t$) und den Genuss von Freizeit ($F_t$) mit den Elastizitäten $\mu \in (0, 1)$ und $(1-\mu)$ gewichtet:
-
-$$U(Y_t, F_t) = Y_t^\mu \cdot (\bar{T} - E_t)^{1-\mu}$$
-
-Diese Spezifikation ist aus zwei Gründen zentral:
-1. **Abnehmender Grenznutzen im Output:** Da $\frac{\partial U_t}{\partial Y_t} = \mu \frac{U_t}{Y_t}$ gilt, sinkt der marginale Nutzen zusätzlichen Outputs, je höher $Y_t$ bereits ist. Ein Studierender hat kein Interesse an einer unendlichen Ausdehnung von $Y_t$, da eine Zeugnisnote von „1,0“ nicht weiter verbessert werden kann.
-2. **Endogene Sättigung ($K_{\max}$ und $A_{\max}$):** Weil die eigene Anstrengung $E_t$ durch das Zeitbudget $\bar{T}$ und das Bedürfnis nach Freizeit nach oben gedeckelt ist, können die Wissenszuwächse nicht unendlich steigen. Es existiert ein langfristiger Steady State ($K_{\max}$), an dem die natürliche Vergessensrate $\delta K_t$ exakt der Neuinvestition entspricht.
-
-## Die intertemporale Euler-Gleichung
-
-Statt das Problem über eine rekursive Bellman-Gleichung zu lösen, nutzen wir das methodisch elegante Prinzip der **lokalen Variation** (Euler-Kalkül). 
-
-> **Methodischer Hinweis zum Multi-Perioden-Fall:** Wenn ein Zeitpfad über $T$ Perioden optimal ist, muss er auch zwischen jeweils zwei direkt aufeinanderfolgenden Perioden $t$ und $t+1$ optimal sein. Wir betrachten eine marginale Erhöhung der KI-Dosis in Periode $t$, die wir durch eine Gegenanpassung in Periode $t+1$ so kompensieren, dass der Kapitalstock in Periode $t+2$ völlig unverändert bleibt. Die Optimierungsbedingung zwischen $t$ und $t+1$ gilt somit fundamental für jede Periode im gesamten Studienverlauf.
-
-Das intertemporale Gleichgewicht verlangt, dass der marginale Nutzenzugewinn einer Ausdehnung von $A_t$ heute exakt dem diskontierten Nutzenverlust durch den veränderten Kapitalstock morgen entspricht ($\rho \in (0,1)$ bezeichnet den Diskontierungsfaktor). Setzt man die partiellen Ableitungen unseres Modells ein und substituiert den Schattenpreis des Kapitals vollständig aus (siehe Anhang), ergibt sich die **exakte intertemporale Euler-Gleichung für den KI-Konsum**:
-
-$$\underbrace{\mu \frac{U_t}{Y_t}}_{\text{Grenznutzen heute}} = \rho \cdot \underbrace{\mu \frac{U_{t+1}}{Y_{t+1}}}_{\substack{\text{Grenznutzen} \\ \text{morgen}}} \cdot \underbrace{\left[ E_{t+1} + \frac{1 - \delta}{\gamma - \beta E_{t+1}} \right]}_{\substack{\text{Totaler Grenzwert des Wissens} \\ \text{(Produktivität + Erhaltung)}}} \cdot \underbrace{(\gamma - \beta E_t)}_{\text{Netto-Atrophie}}$$
-
-
----
-
-# Zwei Pfade der KI-Nutzung: Simulation und Dynamik
-
-Die Euler-Gleichung erklärt formal, warum sich im Studienverlauf zwei diametral entgegengesetzte Nutzungsweisen und Karrieren ausbilden:
-
-## Der Synergie-Pfad (Das E-Bike im Sport-Modus)
-Wählt ein Studierender eine hohe Eigenanstrengung ($E > E^*$), wird der Term $(\gamma - \beta E)$ negativ. Die intertemporalen Kosten der KI verwandeln sich in eine **kognitive Rendite**. Der Wissensbestand $K_t$ steigt an. Weil sein Output $Y_t$ durch das hohe Wissen wächst, greift der abnehmende Grenznutzen der Cobb-Douglas-Funktion: Der Studierende nutzt die KI hochprofessionell als Werkzeug, stabilisiert seinen Konsum jedoch auf einem gesunden Niveau ($A_{\max}$), um seine Freizeit zu genießen.
-
-## Der Substitutions-Pfad (Die Kompensations-Spirale)
-Wählt ein Studierender eine geringe Eigenanstrengung ($E < E^*$), ist die Netto-Atrophie positiv. Das Wissen $K_t$ erodiert. In der Folge droht der Output $Y_t$ abzusacken, was den Grenznutzen $\mu \frac{U}{Y}$ explodieren ließe (Notenabsturz). Um die Euler-Gleichung im Gleichgewicht zu halten und das Satisficing-Ziel zu sichern, **muss** der Studierende seinen KI-Konsum $A_t$ kontinuierlich erhöhen. Er gerät in eine Abhängigkeitsspirale: Er nutzt mehr KI, nicht weil er produktiver wird, sondern um seinen endogenen Wissensverfall zu kompensieren.
-
----
-
-# Grafische Veranschaulichung
-
-Die folgende Simulation operationalisiert das Gesamtmodell für 25 Semesterwochen und stellt die beiden Pfade im direkten Vergleich dar.
-
+Der folgende R-Code bildet die Divergenz zwischen dem Synergie-Pfad (hohes $E$) und dem Substitutions-Pfad (niedriges $E$) ab:  
 ```{r}
-#| message: false
+#| label: sim-linear-model
+#| echo: true
 #| warning: false
-#| label: fig-euler-paths
-#| fig-cap: "Intertemporale Dynamik der KI-Nutzung: Synergie-Pfad vs. Kompensations-Spirale"
-#| fig-width: 9
-#| fig-height: 8
-
+#| message: false
 library(tidyverse)
 
-# 1. Modellparameter
-set.seed(2026)
-t_max <- 25          # Betrachtungszeitraum (Semesterwochen)
-bar_T <- 40          # Zeitbudget pro Woche (Wochenstunden)
-K_0 <- 10            # Initiales kognitives Basiswissen
-delta <- 0.08        # Natürliche Vergessensrate (8%)
-alpha <- 0.4         # Lerneffizienz durch Eigenanstrengung
-beta <- 0.05         # Synergie-Parameter (Komplementarität)
-gamma <- 0.20        # Atrophie-Parameter (Substitution)
+# Modellparameter für das bereinigte lineare System
+t_max <- 25
+bar_T <- 40
+K_0   <- 10.0
+delta <- 0.08   # Natürliche Vergessensrate
+alpha <- 0.50   # Wissensaufbau pro Stunde E
+gamma <- 0.25   # Wissensabbau pro Einheit A
+mu    <- 0.45   # Outputpräferenz
 
-# Kritische Anstrengungsschwelle E* = gamma / beta = 0.20 / 0.05 = 4 Stunden
-E_A <- 8             # Student A: Sport-Modus (E = 8 Std. > E* -> 32 Std. Freizeit)
-E_B <- 2             # Student B: Moped-Modus (E = 2 Std. < E* -> 38 Std. Freizeit)
+# Initialisierung der Datenstrukturen
+sim_data <- tibble(
+  Woche = rep(1:t_max, 2),
+  Pfad  = rep(c("Synergie-Pfad (Hohes E)", "Substitutions-Pfad (Kompensation)"), each = t_max),
+  K     = 0.0, A = 0.0, Y = 0.0
+)
 
-# Nutzenparameter
-mu <- 0.5            # Cobb-Douglas Gewichtung (50% Output, 50% Freizeit)
+# Pfadspezifische Kontrollvariablen
+E_Synergie <- 8.0 
+E_Subst    <- 2.0 
 
-# Verhaltensparameter abgeleitet aus Euler & Cobb-Douglas-Sättigung:
-tau <- 0.3           # Absorptive Kapazität für sinnvolle KI-Nutzung (Student A)
-Y_ziel_B <- 25       # Satisficing-Output-Ziel gegen Zeugnisabsturz (Student B)
+K_Syn <- K_0
+K_Sub <- K_0
 
-# 2. Datenspeicher initialisieren
-time <- 1:t_max
-K_A <- numeric(t_max); K_A[1] <- K_0; Y_A <- numeric(t_max); A_A <- numeric(t_max); U_A <- numeric(t_max)
-K_B <- numeric(t_max); K_B[1] <- K_0; Y_B <- numeric(t_max); A_B <- numeric(t_max); U_B <- numeric(t_max)
-
-# 3. Simulation über den Zeitverlauf
-for (t in 1:t_max) {
+for(t in 1:t_max) {
+  # 1. Synergie-Pfad
+  A_Syn <- max(0, ((mu / (1-mu)) * (K_Syn + alpha/gamma) * (bar_T - E_Synergie)) - K_Syn * E_Synergie)
+  Y_Syn <- K_Syn * E_Synergie + A_Syn
   
-  # --- PFAD A: SYNERGIE (Sport-Modus) ---
-  # KI wächst mit Wissen, flacht aber asymptotisch ab (abnehmender Grenznutzen)
-  A_A[t] <- tau * K_A[t]
-  Y_A[t] <- (K_A[t] * E_A) + A_A[t]                          
-  U_A[t] <- (Y_A[t]^mu) * ((bar_T - E_A)^(1 - mu))           
+  # 2. Substitutions-Pfad
+  A_Sub <- max(0, 22.0 - K_Sub * E_Subst)
+  Y_Sub <- K_Sub * E_Subst + A_Sub
   
-  if (t < t_max) {
-    K_A[t+1] <- (1 - delta) * K_A[t] + alpha * E_A + beta * (E_A * A_A[t]) - gamma * A_A[t]
-  }
+  # Daten wegschreiben
+  sim_data$K[sim_data$Woche == t & sim_data$Pfad == "Synergie-Pfad (Hohes E)"] <- K_Syn
+  sim_data$A[sim_data$Woche == t & sim_data$Pfad == "Synergie-Pfad (Hohes E)"] <- A_Syn
+  sim_data$Y[sim_data$Woche == t & sim_data$Pfad == "Synergie-Pfad (Hohes E)"] <- Y_Syn
   
-  # --- PFAD B: SUBSTITUTION (Moped-Modus) ---
-  # KI muss steigen, um Wissensverfall (K -> 0) zu kompensieren
-  A_B[t] <- max(0, Y_ziel_B - (K_B[t] * E_B))
-  Y_B[t] <- (K_B[t] * E_B) + A_B[t]                          
-  U_B[t] <- (Y_B[t]^mu) * ((bar_T - E_B)^(1 - mu))           
+  sim_data$K[sim_data$Woche == t & sim_data$Pfad == "Substitutions-Pfad (Kompensation)"] <- K_Sub
+  sim_data$A[sim_data$Woche == t & sim_data$Pfad == "Substitutions-Pfad (Kompensation)"] <- A_Sub
+  sim_data$Y[sim_data$Woche == t & sim_data$Pfad == "Substitutions-Pfad (Kompensation)"] <- Y_Sub
   
-  if (t < t_max) {
-    K_B[t+1] <- max(0.5, (1 - delta) * K_B[t] + alpha * E_B + beta * (E_B * A_B[t]) - gamma * A_B[t])
-  }
+  # Transitionen
+  K_Syn <- (1 - delta) * K_Syn + alpha * E_Synergie - gamma * A_Syn
+  K_Sub <- max(1.0, (1 - delta) * K_Sub + alpha * E_Subst - gamma * A_Sub)
 }
 
-# 4. Datenaufbereitung im Tidy-Format
-df_sim <- tibble(
-  Zeit = rep(time, 2),
-  Student = rep(c("Synergie-Pfad (E = 8 Std. > E*: Wissensaufbau & Sättigung)", 
-                  "Substitutions-Pfad (E = 2 Std. < E*: Wissensverfall & Kompensation)"), each = t_max),
-  Kognitives_Kapital = c(K_A, K_B),
-  KI_Dosis = c(A_A, A_B),
-  Output = c(Y_A, Y_B),
-  Nutzen = c(U_A, U_B)
-) %>%
-  pivot_longer(cols = c(Kognitives_Kapital, KI_Dosis, Output, Nutzen),
-               names_to = "Variable",
-               values_to = "Wert") %>%
-  mutate(Variable = factor(Variable, 
-                           levels = c("Kognitives_Kapital", "KI_Dosis", "Output", "Nutzen"),
-                           labels = c("1. Kognitives Kapital (K): Der Wissensstock", 
-                                      "2. KI-Nutzung (A): Der Technologie-Einsatz", 
-                                      "3. Akademischer Output (Y): Die sichtbare Leistung",
-                                      "4. Cobb-Douglas-Nutzen (U): Die wahre Wohlfahrt")))
-
-# 5. Erstellung der wissenschaftlichen Grafik
-ggplot(df_sim, aes(x = Zeit, y = Wert, color = Student, group = Student)) +
-  geom_line(linewidth = 1.2) +
-#  geom_point(size = 2.2) +
-  facet_wrap(~ Variable, scales = "free_y", ncol = 2) +
-  scale_color_manual(values = c("#c0392b", "#27ae60")) +
-  labs(
-    x = "Zeitverlauf in Semesterwochen",
-    y = "Niveau (Stunden / Punkte / Index)",
-    color = "Strategischer Zeitpfad:"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(
-    legend.position = "bottom",
-    strip.text = element_text(face = "bold", size = 10.5, hjust = 0),
-    strip.background = element_rect(fill = "gray95", color = NA),
-    panel.grid.minor = element_blank(),
-    panel.spacing = unit(1.5, "lines"),
-    legend.title = element_text(face = "bold"),
-    legend.text = element_text(size = 9.5),
-    legend.margin = margin(t = -5)
-  ) +
-  guides(color = guide_legend(nrow = 2, byrow = TRUE))
 ```
 
 
-# Fazit und hochschuldidaktische Implikationen
+# Hochschuldidaktische Konsequenzen
 
-Das hier präsentierte Modell entzaubert zwei gängige Mythen: KI macht Studierende weder automatisch produktiver, noch verleitet sie zwangsläufig zur kognitiven Atrophie. Wie bei einem E-Bike entscheidet die Intensität der eigenen Anstrengung ($E_t$) im Verhältnis zur technologischen Schwelle ($E^* = \frac{\gamma}{\beta}$), in welche Richtung das System kippt.Die hochschuldidaktische Brisanz dieses Resultats offenbart sich beim Blick auf Panel 3 (Output) und Panel 4 (Nutzen) der Simulation:In einer rein ergebnisorientierten Prüfungslandschaft fallen beide Studierendentypen kaum auseinander. Student B erbringt durch die kompensatorische KI-Nutzung optisch denselben akademischen Output wie zu Studienbeginn.Sein wahrer Wohlfahrtsverlust zeigt sich jedoch im verborgenen Verfall seines kognitiven Kapitals (Panel 1) und seinem stagnierenden Nutzen (Panel 4), während Student A durch den Synergieeffekt eine massive Wohlfahrtssteigerung und ein robustes Wissensplateau ($K_{\max}$) erreicht.
-
-Für die Gestaltung moderner Universitäten folgt daraus: Verbote von KI-Systemen sind methodisch ebenso verfehlt wie das Verbot von E-Bikes im Straßenverkehr. Stattdessen müssen Anreizstrukturen und Prüfungsformate so neugestaltet werden, dass sie hohe eigene kognitive Anstrengungen belohnen und erzwingen ($E_t > E^*$).
-
-Wird der Eigenaufwand – etwa durch mündliche Diskursprüfungen, prozessbegleitendes Hinterfragen oder komplexe Problemlösungssettings – zum unbedingten Komplement der KI-Nutzung gemacht, wirkt die Technologie als intellektueller Hebel. Am Ende bewahrheitet sich auch im digitalen Zeitalter eine alte Erkenntnis: De ingenio non est disputandum – der menschliche Verstand lässt sich nicht wegreformieren; er muss trainiert werden.
-
-# Anhang: Intertemporale Optimierung mittels Bellman-Gleichung {-}
-
-Während der Haupttext das Optimierungsproblem aus didaktischen Gründen über den Euler-Kalkül der lokalen Variation herleitet, lässt sich das Modell formal als Problem der dynamischen Programmierung formulieren. 
-
-Wir definieren die Wertfunktion $V(K_t)$, die den maximalen diskontierten Gegenwartswert des Nutzens über einen unendlichen (oder hinreichend langen) Zeithorizont in Abhängigkeit des kognitiven Kapitalstocks $K_t$ (der Zustandsvariablen) beschreibt. 
-
-## Die Bellman-Gleichung {-}
-
-Die rekursive Bellman-Gleichung für unseren Studierenden lautet:
-
-$$V(K_t) = \max_{A_t, E_t} \left\{ U(Y_t, F_t) + \rho V(K_{t+1}) \right\}$$
-
-Unter Einsetzen der Produktionsfunktion $Y_t = K_t E_t + A_t$, der Freizeitrestriktion $F_t = \bar{T} - E_t$ und der Akkumulationsgleichung (Bewegungsgleichung) für das Wissen erhalten wir das explizite Optimierungsproblem für die KI-Nutzung $A_t$ als Kontrollvariable:
-
-$$V(K_t) = \max_{A_t} \left\{ (K_t E_t + A_t)^\mu (\bar{T} - E_t)^{1-\mu} + \rho V\left( (1 - \delta) K_t + \alpha E_t - (\gamma - \beta E_t)A_t \right) \right\}$$
-
-## Die Bedingung erster Ordnung (First-Order Condition)  {-}
-
-Um das intertemporale Optimum zu finden, leiten wir die rechte Seite der Bellman-Gleichung nach der Kontrollvariablen $A_t$ ab und setzen sie null:
-
-$$\frac{\partial U_t}{\partial Y_t} \cdot \frac{\partial Y_t}{\partial A_t} + \rho V'(K_{t+1}) \cdot \frac{\partial K_{t+1}}{\partial A_t} = 0$$
-
-Da $\frac{\partial Y_t}{\partial A_t} = 1$ und die Netto-Atrophie $\frac{\partial K_{t+1}}{\partial A_t} = -(\gamma - \beta E_t)$ beträgt, ergibt sich:
-
-$$\frac{\partial U_t}{\partial Y_t} = \rho V'(K_{t+1}) \cdot (\gamma - \beta E_t)$$
-
-Unter Verwendung der Cobb-Douglas-Eigenschaft ($\frac{\partial U_t}{\partial Y_t} = \mu \frac{U_t}{Y_t}$) erhalten wir die Grenzkosten-Grenznutzen-Bedingung der KI-Nutzung:
-
-$$\mu \frac{U_t}{Y_t} = \rho V'(K_{t+1}) \cdot (\gamma - \beta E_t)$$
-
-*Interpretation:* Der kurzfristige Grenznutzen einer zusätzlichen Einheit KI (linke Seite) muss im Optimum exakt den diskontierten marginalen Kosten des Wissensverfalls (rechte Seite) entsprechen. $V'(K_{t+1})$ repräsentiert dabei den Schattenpreis des kognitiven Kapitals in der Folgeperiode.
-
-## Der Umhüllendensatz (Envelope-Theorem)  {-}
-
-Um den Schattenpreis $V'(K_{t+1})$ analytisch fassen zu können, differenzieren wir die Wertfunktion $V(K_t)$ nach der Zustandsvariablen $K_t$:
-
-$$V'(K_t) = \frac{\partial U_t}{\partial Y_t} \cdot \frac{\partial Y_t}{\partial K_t} + \rho V'(K_{t+1}) \cdot \frac{\partial K_{t+1}}{\partial K_t}$$
-
-Mit $\frac{\partial Y_t}{\partial K_t} = E_t$ und $\frac{\partial K_{t+1}}{\partial K_t} = (1 - \delta)$ folgt:
-
-$$V'(K_t) = \left( \mu \frac{U_t}{Y_t} \cdot E_t \right) + \rho V'(K_{t+1}) (1 - \delta)$$
-
-*Interpretation:* Der Grenzwert zusätzlichen Wissens heute ($V'(K_t)$) setzt sich zusammen aus der unmittelbaren Steigerung des heutigen Nutzens durch höhere Produktivität ($\mu \frac{U_t}{Y_t} E_t$) plus dem diskontierten Wert des ungeschmälerten Wissensrestbestandes von morgen ($\rho V'(K_{t+1}) (1 - \delta)$).
-
-## Herleitung der Euler-Gleichung {-}
-
-Um die formale Euler-Gleichung aus dem Haupttext exakt zu rekonstruieren, schieben wir das Resultat des Envelope-Theorems um eine Periode in die Zukunft (von $t$ nach $t+1$):
-
-$$V'(K_{t+1}) = \left( \mu \frac{U_{t+1}}{Y_{t+1}} \cdot E_{t+1} \right) + \rho V'(K_{t+2}) (1 - \delta)$$
-
-Da die Bedingung erster Ordnung (Abschnitt 2) in jeder Periode gelten muss, können wir sie für Periode $t+1$ nach dem diskontierten Schattenpreis $\rho V'(K_{t+2})$ auflösen:
-
-$$\rho V'(K_{t+2}) = \frac{\mu \frac{U_{t+1}}{Y_{t+1}}}{\gamma - \beta E_{t+1}}$$
-
-Substituieren wir dies in die Envelope-Bedingung, erhalten wir den vollständigen Schattenpreis für Periode $t+1$:
-
-$$V'(K_{t+1}) = \mu \frac{U_{t+1}}{Y_{t+1}} \cdot E_{t+1} + \frac{\mu \frac{U_{t+1}}{Y_{t+1}}}{\gamma - \beta E_{t+1}} (1 - \delta)$$
-
-Klammert man den zukünftigen Grenznutzen $\mu \frac{U_{t+1}}{Y_{t+1}}$ aus und setzt den Schattenpreis zurück in die anfängliche Bedingung erster Ordnung ($\mu \frac{U_t}{Y_t} = \rho V'(K_{t+1}) \cdot (\gamma - \beta E_t)$), offenbart sich die analytisch exakte Euler-Gleichung der KI-Nutzung, ganz ohne Näherungsannahmen:
-
-$$\mu \frac{U_t}{Y_t} = \rho \cdot \mu \frac{U_{t+1}}{Y_{t+1}} \left[ E_{t+1} + \frac{1 - \delta}{\gamma - \beta E_{t+1}} \right] \cdot (\gamma - \beta E_t)$$
-
-Der Term in den eckigen Klammern illustriert präzise den doppelten Wert kognitiven Kapitals: Es steigert nicht nur die direkte Produktivität ($E_{t+1}$), sondern der ungeschmälerte Restbestand ($1-\delta$) fungiert als Puffer gegen den zukünftigen marginalen Atrophie-Druck der Technologie.
+Administrative KI-Verbote sind ineffizient. Die Universität muss die Grenzrate der Substitution verändern, indem Prüfungen den Prozess des Denkens statt des statischen Ergebnisses bewerten. Dadurch verliert KI ihre additive Substitutseigenschaft, und Studierende werden dazu motiviert, im "Sport-Modus" zu lernen.  
