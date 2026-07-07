@@ -21,41 +21,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -222,108 +187,59 @@ window.Quarto = {
 
 <section id="zusammenfassung" class="level1 unnumbered">
 <h1 class="unnumbered">Zusammenfassung</h1>
-<p>Das vorliegende Arbeitspapier untersucht die langfristigen Auswirkungen generativer künstlicher Intelligenz (KI) auf die Akkumulation kognitiven Kapitals bei Studierenden. Wir formalisieren ein intertemporales Optimierungsproblem, bei dem Akteure simultan über ihre Eigenanstrengung und ihre KI-Dosis entscheiden. Durch die Eliminierung künstlicher Kompensationsterme zeigen wir, dass ein stabiles inneres Gleichgewicht existiert, bei dem der strukturelle Wissensabbau durch KI-Nutzung rational gegen die unmittelbaren Erträge der akademischen Signalübermittlung abgewogen wird.</p>
+<p>Text</p>
 </section>
 <section id="einleitung" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Einleitung</h1>
-<p>In Anlehnung an Stigler und Becker (1977) argumentiert dieser Beitrag: De ingenio non est disputandum. Die Effekte von KI-Assistenten auf das kognitive Kapital sind das Ergebnis rationaler, intertemporaler Allokationsentscheidungen. Wir nutzen die Analogie des E-Bikes: Während ein Nutzer im Sport-Modus durch Eigenleistung Fitness aufbaut, führt der Moped-Modus (vollständige Substitution durch KI) zu einer schleichenden Atrophie der eigenen Fähigkeiten.</p>
+<p>Text</p>
 </section>
-<section id="das-formale-modell" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Das formale Modell</h1>
-<p>Wir betrachten ein dynamisches Optimierungsproblem. Das Zeitbudget <span class="math inline">\(T̄\)</span> wird zwischen Eigenanstrengung <span class="math inline">\(E_t\)</span> und Freizeit <span class="math inline">\(F_t\)</span> aufgeteilt: <span class="math display">\[F_t = T̄ - E_t\]</span>Die akademische Produktionsfunktion ist linear und additiv: <span class="math display">\[Y_t = K_t E_t + A_t\]</span>Die Akkumulation des kognitiven Kapitals <span class="math inline">\(K_t\)</span> erfolgt ohne Ad-hoc-Überlastungsannahmen: <span class="math display">\[K_{t+1} = (1 - \delta) K_t + \alpha E_t - \gamma A_t\]</span></p>
+<section id="das-modell" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Das Modell</h1>
+<section id="basismodell-intertemporale-optimierung-ohne-künstliche-intelligenz" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="basismodell-intertemporale-optimierung-ohne-künstliche-intelligenz"><span class="header-section-number">2.1</span> Basismodell: Intertemporale Optimierung ohne Künstliche Intelligenz</h2>
+<p>Um die Effekte generativer KI auf den Humankapitalaufbau zu isolieren, definieren wir zunächst ein Basismodell ohne externe technologische Hilfsmittel (<span class="math inline">\(A_t = 0\)</span>).</p>
+<p>Ein vorausschauender Agent produziert in jeder Periode <span class="math inline">\(t\)</span> einen kognitiven Output <span class="math inline">\(Y_t\)</span>. Dieser Output ist eine Funktion seines akkumulierten Humankapitals <span class="math inline">\(K_t\)</span> und seiner eigenen kognitiven Anstrengung <span class="math inline">\(E_t\)</span>:</p>
+<p><span class="math display">\[Y_t = K_t E_t\]</span></p>
+<p>Der Agent zieht Nutzen aus dem generierten Output (beispielsweise in Form von Noten, Publikationen oder Einkommen).</p>
+<p>Gleichzeitig verursacht die kognitive Anstrengung (effort) <span class="math inline">\(E_t\)</span> ein konvexes Arbeitsleid (Disutility), gewichtet mit dem Parameter <span class="math inline">\(\theta_E &gt; 0\)</span>. Die periodische Nutzenfunktion lautet somit:</p>
+<p><span class="math display">\[U(Y_t, E_t) = \ln(Y_t) - \frac{\theta_E}{2} E_t^2 = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2\]</span></p>
+<p>Das Humankapital des Agenten unterliegt einer stetigen, exogenen Abschreibungsrate <span class="math inline">\(\delta\)</span>, die das Vergessen oder Veralten von Wissen abbildet. Nur durch eigene Anstrengung <span class="math inline">\(E_t\)</span> kann neues Humankapital aufgebaut werden.</p>
+<p>Die Bewegungsgleichung des Zustandsvariablen <span class="math inline">\(K_t\)</span> lautet:</p>
+<p><span class="math display">\[\dot{K}_t = E_t - \delta K_t\]</span></p>
+<p>Der Agent wählt den Zeitpfad seiner Anstrengung <span class="math inline">\(E_t\)</span>, um seinen über einen unendlichen Zeithorizont diskontierten Gesamtnutzen zu maximieren. Die exogene Zeitpräferenzrate (Diskontrate) des Agenten ist <span class="math inline">\(i &gt; 0\)</span>. Das intertemporale Optimierungsproblem lautet:</p>
+<p><span class="math display">\[\max_{E_t} \int_{0}^{\infty} e^{-it} \left( \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 \right) dt\]</span></p>
+<p>unter der Nebenbedingung <span class="math inline">\(\dot{K}_t = E_t - \delta K_t\)</span> sowie gegebenem Anfangskapital <span class="math inline">\(K_0 &gt; 0\)</span>.</p>
+<p>Zur Lösung dieses Problems formulieren wir die zugehörige <strong>Hamilton-Funktion</strong>. Sei <span class="math inline">\(\mu_t\)</span> der dynamische Schattenpreis des Humankapitals (die zeitwertige Costate-Variable):</p>
+<p><span class="math display">\[\mathcal{H} = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \mu_t (E_t - \delta K_t)\]</span></p>
+<p>Die Optimalitätsbedingungen (Bedingungen erster Ordnung) für einen inneren Lösungs-Pfad ergeben sich aus der Ableitung nach der Kontrollvariablen <span class="math inline">\(E_t\)</span> sowie der Bewegungsgleichung für den Schattenpreis <span class="math inline">\(\mu_t\)</span>:</p>
+<p><strong>1. Bedingung für die Kontrollvariable (Anstrengung):</strong></p>
+<p><span class="math display">\[\frac{\partial \mathcal{H}}{\partial E_t} = 0 \quad \Rightarrow \quad \frac{1}{E_t} - \theta_E E_t + \mu_t = 0\]</span></p>
+<p>Umgestellt nach dem Schattenpreis ergibt sich:</p>
+<p><span class="math display">\[\mu_t = \theta_E E_t - \frac{1}{E_t}\]</span></p>
+<p>Diese Gleichung zeigt den zentralen Trade-off: Der Schattenpreis <span class="math inline">\(\mu_t\)</span> entspricht dem Grenzarbeitsleid der Anstrengung (<span class="math inline">\(\theta_E E_t\)</span>) abzüglich des direkten Grenznutzens aus dem aktuellen Output (<span class="math inline">\(1/E_t\)</span>).</p>
+<p><strong>2. Euler-Gleichung (Bewegung des Schattenpreises):</strong></p>
+<p><span class="math display">\[\dot{\mu}_t = i \mu_t - \frac{\partial \mathcal{H}}{\partial K_t} \quad \Rightarrow \quad \dot{\mu}_t = i \mu_t - \left( \frac{1}{K_t} - \mu_t \delta \right)\]</span></p>
+<p>Zusammengefasst beschreibt diese Differentialgleichung die Dynamik des Schattenpreises über die Zeit:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="math display">\[\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}\]</span></p>
+<p>Dieses 2D-Differentialgleichungssystem in <span class="math inline">\(K_t\)</span> und <span class="math inline">\(\mu_t\)</span> definiert einen eindeutigen Sattelpfad. Ein rationaler, vorausschauender Agent mit einer niedrigen Diskontrate <span class="math inline">\(i\)</span> internalisiert über den Schattenpreis <span class="math inline">\(\mu_t\)</span> den zukünftigen Wert seines Humankapitals und wird ein Anstrengungsniveau <span class="math inline">\(E_t\)</span> wählen, das den Kapitalstock langfristig sichert.</p>
 </section>
-<section id="simultane-optimierung-und-gleichgewichtsbedingung" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Simultane Optimierung und Gleichgewichtsbedingung</h1>
-<p>Durch die simultane Maximierung des Nutzens über die Bellman-Gleichung und die Eliminierung des Schattenpreises des Wissensstocks ergibt sich die fundamentale Allokationsbedingung: <span class="math display">\[\frac{1-\mu}{\mu} \cdot \frac{Y_t}{\bar{T}-E_t} = K_t + \frac{\alpha}{\gamma}\]</span>Die rechte Seite definiert das totale intertemporale Grenzprodukt der Anstrengung. Der Term <span class="math inline">\(\frac{\alpha}{\gamma}\)</span> stellt das Kompensationspolster dar: Eine Einheit Eigenanstrengung baut Wissen auf, das zukünftig eine KI-Substitutionsdosis in Höhe von <span class="math inline">\(\frac{\alpha}{\gamma}\)</span> erlaubt, ohne das kognitive Niveau zu senken.</p>
 </section>
-<section id="grafische-veranschaulichung" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Grafische Veranschaulichung</h1>
-<p>Der folgende R-Code bildet die Divergenz zwischen dem Synergie-Pfad (hohes <span class="math inline">\(E\)</span>) und dem Substitutions-Pfad (niedriges <span class="math inline">\(E\)</span>) ab:</p>
-<div class="cell">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Modellparameter für das bereinigte lineare System</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>t_max <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>bar_T <span class="ot">&lt;-</span> <span class="dv">40</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>K_0   <span class="ot">&lt;-</span> <span class="fl">10.0</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>delta <span class="ot">&lt;-</span> <span class="fl">0.08</span>   <span class="co"># Natürliche Vergessensrate</span></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.50</span>   <span class="co"># Wissensaufbau pro Stunde E</span></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>gamma <span class="ot">&lt;-</span> <span class="fl">0.25</span>   <span class="co"># Wissensabbau pro Einheit A</span></span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>mu    <span class="ot">&lt;-</span> <span class="fl">0.45</span>   <span class="co"># Outputpräferenz</span></span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Initialisierung der Datenstrukturen</span></span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>sim_data <span class="ot">&lt;-</span> <span class="fu">tibble</span>(</span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">Woche =</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">:</span>t_max, <span class="dv">2</span>),</span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">Pfad  =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Synergie-Pfad (Hohes E)"</span>, <span class="st">"Substitutions-Pfad (Kompensation)"</span>), <span class="at">each =</span> t_max),</span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>  <span class="at">K     =</span> <span class="fl">0.0</span>, <span class="at">A =</span> <span class="fl">0.0</span>, <span class="at">Y =</span> <span class="fl">0.0</span></span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Pfadspezifische Kontrollvariablen</span></span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a>E_Synergie <span class="ot">&lt;-</span> <span class="fl">8.0</span> </span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>E_Subst    <span class="ot">&lt;-</span> <span class="fl">2.0</span> </span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>K_Syn <span class="ot">&lt;-</span> K_0</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>K_Sub <span class="ot">&lt;-</span> K_0</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span>(t <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>t_max) {</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 1. Synergie-Pfad</span></span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>  A_Syn <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="dv">0</span>, ((mu <span class="sc">/</span> (<span class="dv">1</span><span class="sc">-</span>mu)) <span class="sc">*</span> (K_Syn <span class="sc">+</span> alpha<span class="sc">/</span>gamma) <span class="sc">*</span> (bar_T <span class="sc">-</span> E_Synergie)) <span class="sc">-</span> K_Syn <span class="sc">*</span> E_Synergie)</span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>  Y_Syn <span class="ot">&lt;-</span> K_Syn <span class="sc">*</span> E_Synergie <span class="sc">+</span> A_Syn</span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-31"><a href="#cb1-31" aria-hidden="true" tabindex="-1"></a>  <span class="co"># 2. Substitutions-Pfad</span></span>
-<span id="cb1-32"><a href="#cb1-32" aria-hidden="true" tabindex="-1"></a>  A_Sub <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="dv">0</span>, <span class="fl">22.0</span> <span class="sc">-</span> K_Sub <span class="sc">*</span> E_Subst)</span>
-<span id="cb1-33"><a href="#cb1-33" aria-hidden="true" tabindex="-1"></a>  Y_Sub <span class="ot">&lt;-</span> K_Sub <span class="sc">*</span> E_Subst <span class="sc">+</span> A_Sub</span>
-<span id="cb1-34"><a href="#cb1-34" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-35"><a href="#cb1-35" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Daten wegschreiben</span></span>
-<span id="cb1-36"><a href="#cb1-36" aria-hidden="true" tabindex="-1"></a>  sim_data<span class="sc">$</span>K[sim_data<span class="sc">$</span>Woche <span class="sc">==</span> t <span class="sc">&amp;</span> sim_data<span class="sc">$</span>Pfad <span class="sc">==</span> <span class="st">"Synergie-Pfad (Hohes E)"</span>] <span class="ot">&lt;-</span> K_Syn</span>
-<span id="cb1-37"><a href="#cb1-37" aria-hidden="true" tabindex="-1"></a>  sim_data<span class="sc">$</span>A[sim_data<span class="sc">$</span>Woche <span class="sc">==</span> t <span class="sc">&amp;</span> sim_data<span class="sc">$</span>Pfad <span class="sc">==</span> <span class="st">"Synergie-Pfad (Hohes E)"</span>] <span class="ot">&lt;-</span> A_Syn</span>
-<span id="cb1-38"><a href="#cb1-38" aria-hidden="true" tabindex="-1"></a>  sim_data<span class="sc">$</span>Y[sim_data<span class="sc">$</span>Woche <span class="sc">==</span> t <span class="sc">&amp;</span> sim_data<span class="sc">$</span>Pfad <span class="sc">==</span> <span class="st">"Synergie-Pfad (Hohes E)"</span>] <span class="ot">&lt;-</span> Y_Syn</span>
-<span id="cb1-39"><a href="#cb1-39" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-40"><a href="#cb1-40" aria-hidden="true" tabindex="-1"></a>  sim_data<span class="sc">$</span>K[sim_data<span class="sc">$</span>Woche <span class="sc">==</span> t <span class="sc">&amp;</span> sim_data<span class="sc">$</span>Pfad <span class="sc">==</span> <span class="st">"Substitutions-Pfad (Kompensation)"</span>] <span class="ot">&lt;-</span> K_Sub</span>
-<span id="cb1-41"><a href="#cb1-41" aria-hidden="true" tabindex="-1"></a>  sim_data<span class="sc">$</span>A[sim_data<span class="sc">$</span>Woche <span class="sc">==</span> t <span class="sc">&amp;</span> sim_data<span class="sc">$</span>Pfad <span class="sc">==</span> <span class="st">"Substitutions-Pfad (Kompensation)"</span>] <span class="ot">&lt;-</span> A_Sub</span>
-<span id="cb1-42"><a href="#cb1-42" aria-hidden="true" tabindex="-1"></a>  sim_data<span class="sc">$</span>Y[sim_data<span class="sc">$</span>Woche <span class="sc">==</span> t <span class="sc">&amp;</span> sim_data<span class="sc">$</span>Pfad <span class="sc">==</span> <span class="st">"Substitutions-Pfad (Kompensation)"</span>] <span class="ot">&lt;-</span> Y_Sub</span>
-<span id="cb1-43"><a href="#cb1-43" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb1-44"><a href="#cb1-44" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Transitionen</span></span>
-<span id="cb1-45"><a href="#cb1-45" aria-hidden="true" tabindex="-1"></a>  K_Syn <span class="ot">&lt;-</span> (<span class="dv">1</span> <span class="sc">-</span> delta) <span class="sc">*</span> K_Syn <span class="sc">+</span> alpha <span class="sc">*</span> E_Synergie <span class="sc">-</span> gamma <span class="sc">*</span> A_Syn</span>
-<span id="cb1-46"><a href="#cb1-46" aria-hidden="true" tabindex="-1"></a>  K_Sub <span class="ot">&lt;-</span> <span class="fu">max</span>(<span class="fl">1.0</span>, (<span class="dv">1</span> <span class="sc">-</span> delta) <span class="sc">*</span> K_Sub <span class="sc">+</span> alpha <span class="sc">*</span> E_Subst <span class="sc">-</span> gamma <span class="sc">*</span> A_Sub)</span>
-<span id="cb1-47"><a href="#cb1-47" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb1-48"><a href="#cb1-48" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-49"><a href="#cb1-49" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-50"><a href="#cb1-50" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-51"><a href="#cb1-51" aria-hidden="true" tabindex="-1"></a><span class="co"># Visualisierung des Wissens-Divergenz-Pfades</span></span>
-<span id="cb1-52"><a href="#cb1-52" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(sim_data, <span class="fu">aes</span>(<span class="at">x =</span> Woche, <span class="at">y =</span> K, <span class="at">color =</span> Pfad)) <span class="sc">+</span></span>
-<span id="cb1-53"><a href="#cb1-53" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb1-54"><a href="#cb1-54" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>() <span class="sc">+</span></span>
-<span id="cb1-55"><a href="#cb1-55" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb1-56"><a href="#cb1-56" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Dynamik des kognitiven Kapitals"</span>,</span>
-<span id="cb1-57"><a href="#cb1-57" aria-hidden="true" tabindex="-1"></a>    <span class="at">subtitle =</span> <span class="st">"Vergleich: Synergie-Pfad vs. Substitutions-Pfad"</span>,</span>
-<span id="cb1-58"><a href="#cb1-58" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Zeitraum (Wochen)"</span>,</span>
-<span id="cb1-59"><a href="#cb1-59" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Wissensstock (K)"</span>,</span>
-<span id="cb1-60"><a href="#cb1-60" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Strategie"</span></span>
-<span id="cb1-61"><a href="#cb1-61" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb1-62"><a href="#cb1-62" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>() <span class="sc">+</span></span>
-<span id="cb1-63"><a href="#cb1-63" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_brewer</span>(<span class="at">palette =</span> <span class="st">"Set1"</span>) <span class="sc">+</span></span>
-<span id="cb1-64"><a href="#cb1-64" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"bottom"</span>)</span></code><button title="In die Zwischenablage kopieren" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="index_files/figure-html/sim-linear-model-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
+<section id="diskussion" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Diskussion</h1>
 </section>
-<section id="hochschuldidaktische-konsequenzen" class="level1" data-number="5">
-<h1 data-number="5"><span class="header-section-number">5</span> Hochschuldidaktische Konsequenzen</h1>
-<p>Administrative KI-Verbote sind ineffizient. Die Universität muss die Grenzrate der Substitution verändern, indem Prüfungen den Prozess des Denkens statt des statischen Ergebnisses bewerten. Dadurch verliert KI ihre additive Substitutseigenschaft, und Studierende werden dazu motiviert, im “Sport-Modus” zu lernen.</p>
+<section id="fazit" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Fazit</h1>
 
 
 </section>
 
-</main> <!-- /main -->
+
+<div id="quarto-appendix" class="default"><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Fußnoten</h2>
+
+<ol>
+<li id="fn1"><p>Ergänzt wird das System durch die Transversalitätsbedingung <span class="math inline">\(\lim_{t \to \infty} e^{-it} \mu_t K_t = 0\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";

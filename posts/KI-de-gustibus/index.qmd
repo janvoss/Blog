@@ -12,101 +12,77 @@ format:
 ---
 # Zusammenfassung {-}
 
-Das vorliegende Arbeitspapier untersucht die langfristigen Auswirkungen generativer künstlicher Intelligenz (KI) auf die Akkumulation kognitiven Kapitals bei Studierenden. Wir formalisieren ein intertemporales Optimierungsproblem, bei dem Akteure simultan über ihre Eigenanstrengung und ihre KI-Dosis entscheiden. Durch die Eliminierung künstlicher Kompensationsterme zeigen wir, dass ein stabiles inneres Gleichgewicht existiert, bei dem der strukturelle Wissensabbau durch KI-Nutzung rational gegen die unmittelbaren Erträge der akademischen Signalübermittlung abgewogen wird.  
+Text  
 
 # Einleitung
 
-In Anlehnung an Stigler und Becker (1977) argumentiert dieser Beitrag: De ingenio non est disputandum. Die Effekte von KI-Assistenten auf das kognitive Kapital sind das Ergebnis rationaler, intertemporaler Allokationsentscheidungen. Wir nutzen die Analogie des E-Bikes: Während ein Nutzer im Sport-Modus durch Eigenleistung Fitness aufbaut, führt der Moped-Modus (vollständige Substitution durch KI) zu einer schleichenden Atrophie der eigenen Fähigkeiten.  
+Text  
 
 
-# Das formale Modell
-Wir betrachten ein dynamisches Optimierungsproblem. Das Zeitbudget $T̄$ wird zwischen Eigenanstrengung $E_t$ und Freizeit $F_t$ aufgeteilt:
-  $$F_t = T̄ - E_t$$Die akademische Produktionsfunktion ist linear und additiv:
-  $$Y_t = K_t E_t + A_t$$Die Akkumulation des kognitiven Kapitals $K_t$ erfolgt ohne Ad-hoc-Überlastungsannahmen:
-  $$K_{t+1} = (1 - \delta) K_t + \alpha E_t - \gamma A_t$$
-  
-  
-# Simultane Optimierung und Gleichgewichtsbedingung
-
-Durch die simultane Maximierung des Nutzens über die Bellman-Gleichung und die Eliminierung des Schattenpreises des Wissensstocks ergibt sich die fundamentale Allokationsbedingung:  $$\frac{1-\mu}{\mu} \cdot \frac{Y_t}{\bar{T}-E_t} = K_t + \frac{\alpha}{\gamma}$$Die rechte Seite definiert das totale intertemporale Grenzprodukt der Anstrengung. Der Term $\frac{\alpha}{\gamma}$ stellt das Kompensationspolster dar: Eine Einheit Eigenanstrengung baut Wissen auf, das zukünftig eine KI-Substitutionsdosis in Höhe von $\frac{\alpha}{\gamma}$ erlaubt, ohne das kognitive Niveau zu senken.  
-
-# Grafische Veranschaulichung 
-
-Der folgende R-Code bildet die Divergenz zwischen dem Synergie-Pfad (hohes $E$) und dem Substitutions-Pfad (niedriges $E$) ab:  
+# Das Modell
 
 
-```{r}
-#| label: sim-linear-model
-#| echo: true
-#| warning: false
-#| message: false
-library(tidyverse)
+## Basismodell: Intertemporale Optimierung ohne Künstliche Intelligenz
 
-# Modellparameter für das bereinigte lineare System
-t_max <- 25
-bar_T <- 40
-K_0   <- 10.0
-delta <- 0.08   # Natürliche Vergessensrate
-alpha <- 0.50   # Wissensaufbau pro Stunde E
-gamma <- 0.25   # Wissensabbau pro Einheit A
-mu    <- 0.45   # Outputpräferenz
+Um die Effekte generativer KI auf den Humankapitalaufbau zu isolieren, definieren wir zunächst ein Basismodell ohne externe technologische Hilfsmittel ($A_t = 0$).
 
-# Initialisierung der Datenstrukturen
-sim_data <- tibble(
-  Woche = rep(1:t_max, 2),
-  Pfad  = rep(c("Synergie-Pfad (Hohes E)", "Substitutions-Pfad (Kompensation)"), each = t_max),
-  K     = 0.0, A = 0.0, Y = 0.0
-)
+Ein vorausschauender Agent produziert in jeder Periode $t$ einen kognitiven Output $Y_t$. Dieser Output ist eine Funktion seines akkumulierten Humankapitals $K_t$ und seiner eigenen kognitiven Anstrengung $E_t$:
 
-# Pfadspezifische Kontrollvariablen
-E_Synergie <- 8.0 
-E_Subst    <- 2.0 
+$$Y_t = K_t E_t$$
 
-K_Syn <- K_0
-K_Sub <- K_0
+Der Agent zieht Nutzen aus dem generierten Output (beispielsweise in Form von Noten, Publikationen oder Einkommen).
 
-for(t in 1:t_max) {
-  # 1. Synergie-Pfad
-  A_Syn <- max(0, ((mu / (1-mu)) * (K_Syn + alpha/gamma) * (bar_T - E_Synergie)) - K_Syn * E_Synergie)
-  Y_Syn <- K_Syn * E_Synergie + A_Syn
-  
-  # 2. Substitutions-Pfad
-  A_Sub <- max(0, 22.0 - K_Sub * E_Subst)
-  Y_Sub <- K_Sub * E_Subst + A_Sub
-  
-  # Daten wegschreiben
-  sim_data$K[sim_data$Woche == t & sim_data$Pfad == "Synergie-Pfad (Hohes E)"] <- K_Syn
-  sim_data$A[sim_data$Woche == t & sim_data$Pfad == "Synergie-Pfad (Hohes E)"] <- A_Syn
-  sim_data$Y[sim_data$Woche == t & sim_data$Pfad == "Synergie-Pfad (Hohes E)"] <- Y_Syn
-  
-  sim_data$K[sim_data$Woche == t & sim_data$Pfad == "Substitutions-Pfad (Kompensation)"] <- K_Sub
-  sim_data$A[sim_data$Woche == t & sim_data$Pfad == "Substitutions-Pfad (Kompensation)"] <- A_Sub
-  sim_data$Y[sim_data$Woche == t & sim_data$Pfad == "Substitutions-Pfad (Kompensation)"] <- Y_Sub
-  
-  # Transitionen
-  K_Syn <- (1 - delta) * K_Syn + alpha * E_Synergie - gamma * A_Syn
-  K_Sub <- max(1.0, (1 - delta) * K_Sub + alpha * E_Subst - gamma * A_Sub)
-}
+Gleichzeitig verursacht die kognitive Anstrengung (effort) $E_t$ ein konvexes Arbeitsleid (Disutility), gewichtet mit dem Parameter $\theta_E > 0$. Die periodische Nutzenfunktion lautet somit:
+
+$$U(Y_t, E_t) = \ln(Y_t) - \frac{\theta_E}{2} E_t^2 = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2$$
+
+Das Humankapital des Agenten unterliegt einer stetigen, exogenen Abschreibungsrate $\delta$, die das Vergessen oder Veralten von Wissen abbildet. Nur durch eigene Anstrengung $E_t$ kann neues Humankapital aufgebaut werden. 
+
+Die Bewegungsgleichung des Zustandsvariablen $K_t$ lautet:
+
+$$\dot{K}_t = E_t - \delta K_t$$
+
+Der Agent wählt den Zeitpfad seiner Anstrengung $E_t$, um seinen über einen unendlichen Zeithorizont diskontierten Gesamtnutzen zu maximieren. Die exogene Zeitpräferenzrate (Diskontrate) des Agenten ist $i > 0$. Das intertemporale Optimierungsproblem lautet:
+
+$$\max_{E_t} \int_{0}^{\infty} e^{-it} \left( \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 \right) dt$$
+
+unter der Nebenbedingung $\dot{K}_t = E_t - \delta K_t$ sowie gegebenem Anfangskapital $K_0 > 0$.
+
+Zur Lösung dieses Problems formulieren wir die zugehörige **Hamilton-Funktion**. Sei $\mu_t$ der dynamische Schattenpreis des Humankapitals (die zeitwertige Costate-Variable):
+
+$$\mathcal{H} = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \mu_t (E_t - \delta K_t)$$
+
+Die Optimalitätsbedingungen (Bedingungen erster Ordnung) für einen inneren Lösungs-Pfad ergeben sich aus der Ableitung nach der Kontrollvariablen $E_t$ sowie der Bewegungsgleichung für den Schattenpreis $\mu_t$:
+
+**1. Bedingung für die Kontrollvariable (Anstrengung):**
+
+
+$$\frac{\partial \mathcal{H}}{\partial E_t} = 0 \quad \Rightarrow \quad \frac{1}{E_t} - \theta_E E_t + \mu_t = 0$$
+
+Umgestellt nach dem Schattenpreis ergibt sich:
+
+
+$$\mu_t = \theta_E E_t - \frac{1}{E_t}$$
+
+
+Diese Gleichung zeigt den zentralen Trade-off: Der Schattenpreis $\mu_t$ entspricht dem Grenzarbeitsleid der Anstrengung ($\theta_E E_t$) abzüglich des direkten Grenznutzens aus dem aktuellen Output ($1/E_t$).
+
+**2. Euler-Gleichung (Bewegung des Schattenpreises):**
+
+
+$$\dot{\mu}_t = i \mu_t - \frac{\partial \mathcal{H}}{\partial K_t} \quad \Rightarrow \quad \dot{\mu}_t = i \mu_t - \left( \frac{1}{K_t} - \mu_t \delta \right)$$
+
+Zusammengefasst beschreibt diese Differentialgleichung die Dynamik des Schattenpreises über die Zeit:[^1]
+
+
+$$\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}$$
 
 
 
-# Visualisierung des Wissens-Divergenz-Pfades
-ggplot(sim_data, aes(x = Woche, y = K, color = Pfad)) +
-  geom_line(linewidth = 1.2) +
-  geom_point() +
-  labs(
-    title = "Dynamik des kognitiven Kapitals",
-    subtitle = "Vergleich: Synergie-Pfad vs. Substitutions-Pfad",
-    x = "Zeitraum (Wochen)",
-    y = "Wissensstock (K)",
-    color = "Strategie"
-  ) +
-  theme_minimal() +
-  scale_color_brewer(palette = "Set1") +
-  theme(legend.position = "bottom")
-```
+[^1]: Ergänzt wird das System durch die Transversalitätsbedingung $\lim_{t \to \infty} e^{-it} \mu_t K_t = 0$.
 
+Dieses 2D-Differentialgleichungssystem in $K_t$ und $\mu_t$ definiert einen eindeutigen Sattelpfad. Ein rationaler, vorausschauender Agent mit einer niedrigen Diskontrate $i$ internalisiert über den Schattenpreis $\mu_t$ den zukünftigen Wert seines Humankapitals und wird ein Anstrengungsniveau $E_t$ wählen, das den Kapitalstock langfristig sichert.
 
-# Hochschuldidaktische Konsequenzen
+# Diskussion
 
-Administrative KI-Verbote sind ineffizient. Die Universität muss die Grenzrate der Substitution verändern, indem Prüfungen den Prozess des Denkens statt des statischen Ergebnisses bewerten. Dadurch verliert KI ihre additive Substitutseigenschaft, und Studierende werden dazu motiviert, im "Sport-Modus" zu lernen.  
+# Fazit
