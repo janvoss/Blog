@@ -1,5 +1,6 @@
 ---
 title: "De ingenio non est disputandum"
+subtitle: "WIP. Nicht zitieren"
 author: "Jan S. Voßwinkel"
 date: "2026-07-03"
 # categories: [news] 
@@ -22,9 +23,9 @@ Text
 # Das Modell
 
 
-## Basismodell: Intertemporale Optimierung ohne Künstliche Intelligenz
+## Intertemporale Optimierung im Aufbau von Humankapital
 
-Um die Effekte generativer KI auf den Humankapitalaufbau zu isolieren, definieren wir zunächst ein Basismodell ohne externe technologische Hilfsmittel ($A_t = 0$).
+### Produktions- Nutzen- und Akkumulationsfunktion
 
 Ein vorausschauender Agent produziert in jeder Periode $t$ einen kognitiven Output $Y_t$. Dieser Output ist eine Funktion seines akkumulierten Humankapitals $K_t$ und seiner eigenen kognitiven Anstrengung $E_t$:
 
@@ -32,13 +33,13 @@ $$Y_t = K_t E_t$$
 
 Der Agent zieht Nutzen aus dem generierten Output (beispielsweise in Form von Noten, Publikationen oder Einkommen).
 
-Gleichzeitig verursacht die kognitive Anstrengung (effort) $E_t$ ein konvexes Arbeitsleid (Disutility), gewichtet mit dem Parameter $\theta_E > 0$. Die periodische Nutzenfunktion lautet somit:
+Gleichzeitig verursacht die kognitive Anstrengung (effort) $E_t$ ein konvexes Arbeitsleid, gewichtet mit dem Parameter $\theta_E > 0$. Die periodische Nutzenfunktion lautet somit:
 
 $$U(Y_t, E_t) = \ln(Y_t) - \frac{\theta_E}{2} E_t^2 = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2$$
 
 Das Humankapital des Agenten unterliegt einer stetigen, exogenen Abschreibungsrate $\delta$, die das Vergessen oder Veralten von Wissen abbildet. Nur durch eigene Anstrengung $E_t$ kann neues Humankapital aufgebaut werden. 
 
-Die Bewegungsgleichung des Zustandsvariablen $K_t$ lautet:
+Die Bewegungsgleichung der Zustandsvariablen $K_t$ lautet:
 
 $$\dot{K}_t = E_t - \delta K_t$$
 
@@ -48,13 +49,16 @@ $$\max_{E_t} \int_{0}^{\infty} e^{-it} \left( \ln(K_t E_t) - \frac{\theta_E}{2} 
 
 unter der Nebenbedingung $\dot{K}_t = E_t - \delta K_t$ sowie gegebenem Anfangskapital $K_0 > 0$.
 
+
+### Dynamische Optimierung
+
 Zur Lösung dieses Problems formulieren wir die zugehörige **Hamilton-Funktion**. Sei $\mu_t$ der dynamische Schattenpreis des Humankapitals (die zeitwertige Costate-Variable):
 
 $$\mathcal{H} = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \mu_t (E_t - \delta K_t)$$
 
-Die Optimalitätsbedingungen (Bedingungen erster Ordnung) für einen inneren Lösungs-Pfad ergeben sich aus der Ableitung nach der Kontrollvariablen $E_t$ sowie der Bewegungsgleichung für den Schattenpreis $\mu_t$:
+Die Bedingungen erster Ordnung für einen inneren Lösungs-Pfad ergeben sich aus der Ableitung nach der Kontrollvariablen $E_t$ sowie der Bewegungsgleichung für den Schattenpreis $\mu_t$:
 
-**1. Bedingung für die Kontrollvariable (Anstrengung):**
+#### Bedingung für die Kontrollvariable (Anstrengung)
 
 
 $$\frac{\partial \mathcal{H}}{\partial E_t} = 0 \quad \Rightarrow \quad \frac{1}{E_t} - \theta_E E_t + \mu_t = 0$$
@@ -67,7 +71,7 @@ $$\mu_t = \theta_E E_t - \frac{1}{E_t}$$
 
 Diese Gleichung zeigt den zentralen Trade-off: Der Schattenpreis $\mu_t$ entspricht dem Grenzarbeitsleid der Anstrengung ($\theta_E E_t$) abzüglich des direkten Grenznutzens aus dem aktuellen Output ($1/E_t$).
 
-**2. Euler-Gleichung (Bewegung des Schattenpreises):**
+#### Euler-Gleichung (Bewegung des Schattenpreises)
 
 
 $$\dot{\mu}_t = i \mu_t - \frac{\partial \mathcal{H}}{\partial K_t} \quad \Rightarrow \quad \dot{\mu}_t = i \mu_t - \left( \frac{1}{K_t} - \mu_t \delta \right)$$
@@ -81,38 +85,44 @@ $$\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}$$
 
 [^1]: Ergänzt wird das System durch die Transversalitätsbedingung $\lim_{t \to \infty} e^{-it} \mu_t K_t = 0$.
 
-Dieses 2D-Differentialgleichungssystem in $K_t$ und $\mu_t$ definiert einen eindeutigen Sattelpfad. Ein rationaler, vorausschauender Agent mit einer niedrigen Diskontrate $i$ internalisiert über den Schattenpreis $\mu_t$ den zukünftigen Wert seines Humankapitals und wird ein Anstrengungsniveau $E_t$ wählen, das den Kapitalstock langfristig sichert.
+#### Konvergenz von $E$ und $K$
+
+Um die Entwicklung der Anstrengung $E_t$ in Abhängigkeit vom Humankapitalstock $K_t$ darzustellen, eliminieren wir den Schattenpreis $\mu_t$. Dazu leiten wir die Optimalitätsbedingung $\mu_t = \theta_E E_t - \frac{1}{E_t}$ nach der Zeit $t$ ab:$$\dot{\mu}_t = \theta_E \dot{E}_t + \frac{1}{E_t^2} \dot{E}_t = \left( \theta_E + \frac{1}{E_t^2} \right) \dot{E}_t$$
+
+Setzen wir diesen Ausdruck sowie die Gleichung für $\mu_t$ in die Euler-Gleichung $\dot{\mu}_t$ ein, erhalten wir:$$\left( \theta_E + \frac{1}{E_t^2} \right) \dot{E}_t = (i + \delta) \left( \theta_E E_t - \frac{1}{E_t} \right) - \frac{1}{K_t}$$
+
+Aufgelöst nach $\dot{E}_t$ ergibt sich zusammen mit der Zustandsgleichung des Humankapitals ein autonomes, zweidimensionales Differentialgleichungssystem, das die zeitliche Entwicklung von Kapitalstock und Anstrengung vollständig beschreibt:$$\dot{K}_t = E_t - \delta K_t$$
+
+$$\dot{E}_t = \frac{(i + \delta) \left( \theta_E E_t - \frac{1}{E_t} \right) - \frac{1}{K_t}}{\theta_E + \frac{1}{E_t^2}}$$
+
+
+Das System konvergiert entlang eines eindeutigen Sattelpfades in ein langfristiges stationäres Gleichgewicht (Steady State), in dem sich weder der Kapitalstock noch die Anstrengung weiter verändern ($\dot{K}_t = 0$ und $\dot{E}_t = 0$).
+
+Aus der Stationaritätsbedingung des Kapitals ($\dot{K}_t = 0$) folgt unmittelbar, dass die Anstrengung im Gleichgewicht exakt den laufenden Abschreibungen entsprechen muss:$$E^* = \delta K^* \quad \Rightarrow \quad K^* = \frac{E^*}{\delta}$$
+
+In einem stationären Zustand der Anstrengung ($\dot{E}_t = 0$) muss der Zähler der Differentialgleichung für $\dot{E}_t$ null werden:$$(i + \delta) \left( \theta_E E^* - \frac{1}{E^*} \right) - \frac{1}{K^*} = 0$$
+
+Setzen wir die Gleichgewichtsbedingung $K^* = E^* / \delta$ ein und multiplizieren die Gleichung mit $E^*$, ergibt sich:$$(i + \delta) \left( \theta_E (E^*)^2 - 1 \right) - \delta = 0$$
+
+$$(i + \delta) \theta_E (E^*)^2 = i + 2\delta$$Daraus resultieren die expliziten, konvergierenden Gleichgewichtswerte für die optimale Anstrengung $E^*$ und das langfristige Humankapital $K^*$:$$E^* = \sqrt{\frac{i + 2\delta}{\theta_E (i + \delta)}}$$
+
+$$K^* = \frac{E^*}{\delta} = \sqrt{\frac{i + 2\delta}{\theta_E \delta^2 (i + \delta)}}$$
+
+#### Ökonomische Bedeutung der Konvergenz
+
+Die Herleitung zeigt, dass ein rationaler, vorausschauender Agent nicht in ein extremales Entweder-Oder-Verhalten verfällt. Ausgehend von jedem beliebigen Startkapital $K_0 > 0$ wählt er eine initiale Anstrengung $E_0$ exakt auf der stabilen Mannigfaltigkeit (dem Sattelpfad).
+
+Die Werte konvergieren harmonisch gegen die Konstanten $(K^*, E^*)$. Insbesondere zeigt sich: Je geduldiger der Agent ist (je kleiner die Diskontrate $i$), desto höher liegt das Anstrengungsniveau $E^*$, gegen das das System konvergiert, und desto massiver ist der langfristig gesicherte Humankapitalstock $K^*$.
 
 ## Die Problematik einer hohen Diskontrate (Myopie)
 
-Um zu verstehen, warum bestimmte Agenten in kognitive Fallen tappen, betrachten wir das langfristige Gleichgewicht (Steady State) des Systems. Ein stationäres Gleichgewicht ist dadurch gekennzeichnet, dass sich weder der Kapitalstock noch der Schattenpreis im Zeitablauf ändern: $\dot{K}_t = 0$ und $\dot{\mu}_t = 0$.
+Um zu verstehen, warum bestimmte Agenten in kognitive Fallen tappen, betrachten wir das langfristige Gleichgewicht (Steady State) des Systems. Es gilt:
 
-Aus der Bewegungsgleichung des Kapitals folgt unmittelbar, dass im Steady State die eigene Anstrengung exakt den Abschreibungen entsprechen muss, um das Humankapital konstant zu halten:
+Aus der Euler-Gleichung $\dot{\mu}_t = 0$ ergibt sich der stationäre Schattenpreis des Humankapitals:$$\mu^* = \frac{1}{K^*(i + \delta)}$$
 
-
-$$E^* = \delta K^*$$
-
-Aus der Euler-Gleichung $\dot{\mu}_t = 0$ ergibt sich der stationäre Schattenpreis des Humankapitals:
-
-
-$$\mu^* = \frac{1}{K^*(i + \delta)}$$
-
-Setzt man diese beiden Steady-State-Bedingungen in die Optimalitätsbedingung für die Anstrengung ($\frac{1}{E^*} - \theta_E E^* + \mu^* = 0$) ein, erhält man:
-
-
-$$\frac{1}{\delta K^*} - \theta_E (\delta K^*) + \frac{1}{K^*(i + \delta)} = 0$$
-
-Multiplikation der Gleichung mit $K^*$ liefert den Ausdruck für das langfristig optimale Humankapitalniveau:
-
-
-$$\frac{1}{\delta} - \theta_E \delta (K^*)^2 + \frac{1}{i + \delta} = 0$$
-
-Aufgelöst nach $K^*$ ergibt sich:
-
+Mit
 
 $$K^* = \sqrt{\frac{i + 2\delta}{\theta_E \delta^2 (i + \delta)}}$$
-
-**Komparative Statik und ökonomische Intuition:**
 
 Diese Gleichung offenbart den zentralen Mechanismus der Zeitpräferenz. Betrachten wir den Effekt einer Erhöhung der Diskontrate $i$ auf das stationäre Humankapital $K^*$. Der Term $\frac{i + 2\delta}{i + \delta}$ lässt sich umschreiben als $1 + \frac{\delta}{i + \delta}$. Es wird offensichtlich, dass dieser Term (und damit der gesamte Ausdruck unter der Wurzel) streng monoton in $i$ fällt:
 
