@@ -223,6 +223,90 @@ window.Quarto = {
 <p><span class="math display">\[\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}\]</span></p>
 <p>Dieses 2D-Differentialgleichungssystem in <span class="math inline">\(K_t\)</span> und <span class="math inline">\(\mu_t\)</span> definiert einen eindeutigen Sattelpfad. Ein rationaler, vorausschauender Agent mit einer niedrigen Diskontrate <span class="math inline">\(i\)</span> internalisiert über den Schattenpreis <span class="math inline">\(\mu_t\)</span> den zukünftigen Wert seines Humankapitals und wird ein Anstrengungsniveau <span class="math inline">\(E_t\)</span> wählen, das den Kapitalstock langfristig sichert.</p>
 </section>
+<section id="die-problematik-einer-hohen-diskontrate-myopie" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="die-problematik-einer-hohen-diskontrate-myopie"><span class="header-section-number">2.2</span> Die Problematik einer hohen Diskontrate (Myopie)</h2>
+<p>Um zu verstehen, warum bestimmte Agenten in kognitive Fallen tappen, betrachten wir das langfristige Gleichgewicht (Steady State) des Systems. Ein stationäres Gleichgewicht ist dadurch gekennzeichnet, dass sich weder der Kapitalstock noch der Schattenpreis im Zeitablauf ändern: <span class="math inline">\(\dot{K}_t = 0\)</span> und <span class="math inline">\(\dot{\mu}_t = 0\)</span>.</p>
+<p>Aus der Bewegungsgleichung des Kapitals folgt unmittelbar, dass im Steady State die eigene Anstrengung exakt den Abschreibungen entsprechen muss, um das Humankapital konstant zu halten:</p>
+<p><span class="math display">\[E^* = \delta K^*\]</span></p>
+<p>Aus der Euler-Gleichung <span class="math inline">\(\dot{\mu}_t = 0\)</span> ergibt sich der stationäre Schattenpreis des Humankapitals:</p>
+<p><span class="math display">\[\mu^* = \frac{1}{K^*(i + \delta)}\]</span></p>
+<p>Setzt man diese beiden Steady-State-Bedingungen in die Optimalitätsbedingung für die Anstrengung (<span class="math inline">\(\frac{1}{E^*} - \theta_E E^* + \mu^* = 0\)</span>) ein, erhält man:</p>
+<p><span class="math display">\[\frac{1}{\delta K^*} - \theta_E (\delta K^*) + \frac{1}{K^*(i + \delta)} = 0\]</span></p>
+<p>Multiplikation der Gleichung mit <span class="math inline">\(K^*\)</span> liefert den Ausdruck für das langfristig optimale Humankapitalniveau:</p>
+<p><span class="math display">\[\frac{1}{\delta} - \theta_E \delta (K^*)^2 + \frac{1}{i + \delta} = 0\]</span></p>
+<p>Aufgelöst nach <span class="math inline">\(K^*\)</span> ergibt sich:</p>
+<p><span class="math display">\[K^* = \sqrt{\frac{i + 2\delta}{\theta_E \delta^2 (i + \delta)}}\]</span></p>
+<p><strong>Komparative Statik und ökonomische Intuition:</strong></p>
+<p>Diese Gleichung offenbart den zentralen Mechanismus der Zeitpräferenz. Betrachten wir den Effekt einer Erhöhung der Diskontrate <span class="math inline">\(i\)</span> auf das stationäre Humankapital <span class="math inline">\(K^*\)</span>. Der Term <span class="math inline">\(\frac{i + 2\delta}{i + \delta}\)</span> lässt sich umschreiben als <span class="math inline">\(1 + \frac{\delta}{i + \delta}\)</span>. Es wird offensichtlich, dass dieser Term (und damit der gesamte Ausdruck unter der Wurzel) streng monoton in <span class="math inline">\(i\)</span> fällt:</p>
+<p><span class="math display">\[\frac{\partial K^*}{\partial i} &lt; 0\]</span></p>
+<p>Ein myopischer Agent (mit hohem <span class="math inline">\(i\)</span>) gewichtet die unmittelbaren Kosten der Anstrengung (das gegenwärtige Arbeitsleid <span class="math inline">\(\theta_E\)</span>) wesentlich stärker als die zukünftigen Erträge aus einem höheren Humankapitalstock. Der stationäre Schattenpreis <span class="math inline">\(\mu^*\)</span> konvergiert für sehr ungeduldige Agenten (<span class="math inline">\(i \to \infty\)</span>) gegen null.</p>
+<p>Verliert das Humankapital aus Sicht des Agenten seinen intertemporalen Wert, reduziert er seine Anstrengung <span class="math inline">\(E^*\)</span>. Zwar zwingt ihn das Fehlen von Substituten auch bei starker Ungeduld dazu, ein Minimum an Eigenleistung zu erbringen, um den kognitiven Output nicht vollständig kollabieren zu lassen; das resultierende Gleichgewichtsniveau des Humankapitals <span class="math inline">\(K^*\)</span> und damit der dauerhafte Output <span class="math inline">\(Y^*\)</span> bleiben jedoch strukturell auf einem sehr niedrigen Niveau.</p>
+<p>Der ungeduldige Agent im Basismodell ist somit “rational faul”: Er akzeptiert einen geringen Output, weil ihm der kognitive Schmerz des Lernens in der Gegenwart zu hoch erscheint, um für zukünftige (diskontierte) Erträge zu investieren.</p>
+</section>
+<section id="das-mindestoutput-niveau-als-paternalistische-maßnahme-gegen-myopie" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="das-mindestoutput-niveau-als-paternalistische-maßnahme-gegen-myopie"><span class="header-section-number">2.3</span> Das Mindestoutput-Niveau als paternalistische Maßnahme gegen Myopie</h2>
+<p>Um dem Problem einer zu hohen Diskontrate und der damit einhergehenden Unterinvestition in das eigene Wissen entgegenzuwirken, greifen Bildungsinstitutionen häufig zu paternalistischen Maßnahmen. Die klassische Form dieser Intervention besteht in der Setzung einer exogenen Output-Untergrenze (z. B. das Bestehen von Pflichtprüfungen, Mindest-Credits oder Leistungskontrollen):</p>
+<p><span class="math display">\[Y_t \ge \bar{Y}\]</span></p>
+<p>Wir untersuchen diese Maßnahme zunächst in der klassischen Welt ohne Künstliche Intelligenz (<span class="math inline">\(A_t = 0\)</span>), in der gilt: <span class="math inline">\(Y_t = K_t E_t\)</span>. Die Restriktion lautet somit:</p>
+<p><span class="math display">\[K_t E_t \ge \bar{Y} \quad \Rightarrow \quad E_t \ge \frac{\bar{Y}}{K_t}\]</span></p>
+<p>Wir nehmen an, dass diese Hürde für den ungeduldigen Agenten <strong>bindend</strong> ist – das heißt, der von der Institution geforderte Mindestoutput <span class="math inline">\(\bar{Y}\)</span> liegt über dem niedrigen Output-Niveau, das der ungeduldige Agent im freien Steady State von sich aus wählen würde.</p>
+<p>Da der ungeduldige Agent die Zukunft stark diskontiert, verschiebt sich seine Verhaltensweise unter einer bindenden Restriktion vollständig: Anstatt intertemporal zu optimieren, schrumpft sein Handlungsspielraum auf die reine Erfüllung der Zwangsbedingung in jeder einzelnen Periode (statische Kosten- bzw. Leidminimierung). Er wählt in jeder Periode exakt die minimale Anstrengung, die notwendig ist, um die Hürde zu nehmen:</p>
+<p><span class="math display">\[E_t = \frac{\bar{Y}}{K_t}\]</span></p>
+<p>Setzt man diese strikte Verhaltensregel in die Bewegungsgleichung des Humankapitals ein, erhält man die neue, restringierte Systemdynamik:</p>
+<p><span class="math display">\[\dot{K}_t = \frac{\bar{Y}}{K_t} - \delta K_t\]</span></p>
+<p>Ein stationärer Zustand (<span class="math inline">\(\dot{K}_t = 0\)</span>) wird erreicht, wenn die induzierte Anstrengung exakt die Abschreibungen deckt (<span class="math inline">\(\frac{\bar{Y}}{K^*} = \delta K^*\)</span>). Aufgelöst nach dem langfristigen Humankapital ergibt sich:</p>
+<p><span class="math display">\[K^*_{\text{restringiert}} = \sqrt{\frac{\bar{Y}}{\delta}}\]</span></p>
+<p><strong>Die wohlfahrtssteigernde Wirkung des Paternalismus in der klassischen Welt:</strong></p>
+<p>Dieses Ergebnis verdeutlicht den Erfolg traditioneller Bildungssteuerung vor der Erfindung von KI-Substituten:</p>
+<ol type="1">
+<li><strong>Erzwungene Nachhaltigkeit:</strong> Weil der Output <span class="math inline">\(Y\)</span> <em>ausschließlich</em> durch eigene kognitive Anstrengung erzeugt werden kann (<span class="math inline">\(Y = K \cdot E\)</span>), zwingt ein hohes Output-Ziel <span class="math inline">\(\bar{Y}\)</span> den Agenten im Zeitablauf zu einem entsprechend höheren Arbeitseinsatz <span class="math inline">\(E\)</span>.</li>
+<li><strong>Kompensation der Myopie:</strong> Wenn das Mindestniveau hinreichend hoch angesetzt wird (<span class="math inline">\(\bar{Y} &gt; \delta \cdot (K^*_{\text{frei}})^2\)</span>), führt die Restriktion dazu, dass das langfristige Humankapital <span class="math inline">\(K^*_{\text{restringiert}}\)</span> über das Niveau der freien Optimierung des ungeduldigen Typen steigt.</li>
+<li><strong>Dynamische Stabilisierung:</strong> Sinkt der Humankapitalstock <span class="math inline">\(K_t\)</span> (z. B. durch Vergessen), wird der Student mathematisch gezwungen, seine Anstrengung <span class="math inline">\(E_t = \bar{Y}/K_t\)</span> anzuheben, um die Prüfung noch zu bestehen. Dies stabilisiert das System und verhindert den Absturz des Wissensbestands.</li>
+</ol>
+<p>In der klassischen Welt ohne KI funktioniert der Output-Paternalismus perfekt: Er nutzt die Kurzsichtigkeit des Agenten aus, indem er ihm ein unumgängliches kurzfristiges Hindernis (<span class="math inline">\(\bar{Y}\)</span>) in den Weg stellt, dessen Überwindung ihn <em>automatisch</em> dazu zwingt, langfristiges Humankapital aufzubauen.</p>
+<section id="die-einführung-der-künstlichen-intelligenz-substitution-und-kognitive-erosion" class="level3" data-number="2.3.1">
+<h3 data-number="2.3.1" class="anchored" data-anchor-id="die-einführung-der-künstlichen-intelligenz-substitution-und-kognitive-erosion"><span class="header-section-number">2.3.1</span> Die Einführung der Künstlichen Intelligenz: Substitution und kognitive Erosion</h3>
+<p>Mit der breiten Verfügbarkeit generativer KI-Modelle ändert sich die Produktionsfunktion des kognitiven Outputs fundamental. KI ermöglicht es dem Agenten, kognitive Aufgaben zu delegieren. Wir modellieren die KI-Nutzung <span class="math inline">\(A_t\)</span> als perfekten Substituten zur eigenen Anstrengung <span class="math inline">\(E_t\)</span> bei der unmittelbaren Output-Generierung. Der entscheidende Hebel bleibt jedoch das bereits vorhandene Humankapital <span class="math inline">\(K_t\)</span>, das als Absorptionskapazität oder “Prompteffizienz” fungiert: Ein Agent mit hohem Fachwissen kann die Maschine produktiver einsetzen als ein Novize. Die modifizierte Produktionsfunktion lautet:</p>
+<p><span class="math display">\[Y_t = K_t (E_t + A_t)\]</span></p>
+<p>Die Integration der KI erweitert den Handlungsraum des Agenten, verändert aber auch die Struktur des Arbeitsleids. Wir nehmen an, dass die Nutzung der KI zwar eine gewisse kognitive Belastung (z. B. Formulierung von Prompts, Überprüfung auf Halluzinationen) mit sich bringt, diese jedoch strikt geringer ist als das tiefe, eigenständige Durchdringen der Materie: <span class="math inline">\(\theta_E &gt; \theta_A\)</span>. Die modifizierte Nutzenfunktion lautet:</p>
+<p><span class="math display">\[U(Y_t, E_t, A_t) = \ln(K_t (E_t + A_t)) - \frac{\theta_E}{2} E_t^2 - \frac{\theta_A}{2} A_t^2\]</span></p>
+<p>Die Restriktion der Wissensakkumulation bleibt unverändert: Die KI lernt nicht für den Agenten. Nur eigene Anstrengung baut Humankapital auf:</p>
+<p><span class="math display">\[\dot{K}_t = E_t - \delta K_t\]</span></p>
+<p>Das neue Optimierungsproblem des Agenten besteht nun in der simultanen Wahl der optimalen Pfade für <span class="math inline">\(E_t\)</span> und <span class="math inline">\(A_t\)</span>. Die Hamilton-Funktion erweitert sich zu:</p>
+<p><span class="math display">\[\mathcal{H} = \ln(K_t(E_t + A_t)) - \frac{\theta_E}{2} E_t^2 - \frac{\theta_A}{2} A_t^2 + \mu_t (E_t - \delta K_t)\]</span></p>
+</section>
+<section id="die-bedingungen-erster-ordnung-und-die-substitutionslogik" class="level3" data-number="2.3.2">
+<h3 data-number="2.3.2" class="anchored" data-anchor-id="die-bedingungen-erster-ordnung-und-die-substitutionslogik"><span class="header-section-number">2.3.2</span> Die Bedingungen erster Ordnung und die Substitutionslogik</h3>
+<p>Die simultane Optimierung über die beiden Kontrollvariablen liefert aufschlussreiche Bedingungen erster Ordnung für einen inneren Lösungs-Pfad:</p>
+<ol type="1">
+<li><strong>Nachfrage nach KI-Delegation (<span class="math inline">\(A_t\)</span>):</strong></li>
+</ol>
+<p><span class="math display">\[\frac{\partial \mathcal{H}}{\partial A_t} = 0 \quad \Rightarrow \quad \frac{1}{E_t + A_t} - \theta_A A_t = 0 \quad \Rightarrow \quad \theta_A A_t (E_t + A_t) = 1\]</span></p>
+<ol start="2" type="1">
+<li><strong>Nachfrage nach eigener Anstrengung (<span class="math inline">\(E_t\)</span>):</strong></li>
+</ol>
+<p><span class="math display">\[\frac{\partial \mathcal{H}}{\partial E_t} = 0 \quad \Rightarrow \quad \frac{1}{E_t + A_t} - \theta_E E_t + \mu_t = 0\]</span></p>
+<p>Setzt man die Bedingung für die KI-Nachfrage (<span class="math inline">\(\frac{1}{E_t+A_t} = \theta_A A_t\)</span>) in die Bedingung für die eigene Anstrengung ein, offenbart sich die zentrale ökonomische Substitutionslogik des Modells:</p>
+<p><span class="math display">\[\mu_t = \theta_E E_t - \theta_A A_t\]</span></p>
+<p>Der Schattenpreis des Wissens (<span class="math inline">\(\mu_t\)</span>) entspricht in jedem Zeitpunkt exakt der Differenz der marginalen Disutilitäten zwischen eigener kognitiver Arbeit und KI-Delegation. Diese Gleichung steuert die Aufteilung: Wenn der Agent sein Humankapital intertemporal hoch bewertet (hohes <span class="math inline">\(\mu_t\)</span>), nimmt er freiwillig ein höheres Grenzleid beim Lernen in Kauf und wählt <span class="math inline">\(E_t &gt; A_t\)</span>.</p>
+<p>Die Euler-Gleichung für die Bewegung des Schattenpreises bleibt strukturell identisch zum Basismodell, da der Grenznutzen des Kapitals (<span class="math inline">\(\frac{\partial \mathcal{H}}{\partial K_t} = \frac{1}{K_t}\)</span>) von der Aufteilung zwischen <span class="math inline">\(E_t\)</span> und <span class="math inline">\(A_t\)</span> unberührt bleibt:</p>
+<p><span class="math display">\[\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}\]</span></p>
+</section>
+<section id="die-sanfte-ki-falle-bei-myopischem-verhalten" class="level3" data-number="2.3.3">
+<h3 data-number="2.3.3" class="anchored" data-anchor-id="die-sanfte-ki-falle-bei-myopischem-verhalten"><span class="header-section-number">2.3.3</span> Die sanfte KI-Falle bei myopischem Verhalten</h3>
+<p>Das Vorhandensein der KI (<span class="math inline">\(A_t &gt; 0\)</span>) verändert die Konsequenzen einer hohen Diskontrate <span class="math inline">\(i\)</span> drastisch. Im klassischen Modell ohne KI war der ungeduldige Agent durch den vollständigen Output-Ausfall gezwungen, zumindest ein minimales Niveau an <span class="math inline">\(E_t\)</span> aufrechtzuerhalten.</p>
+<p>In der KI-Ökonomie hingegen bietet sich dem myopischen Agenten ein bequemer Ausweg. Da er die Zukunft stark diskontiert, sinkt der Schattenpreis <span class="math inline">\(\mu_t\)</span> auf ein sehr niedriges Niveau. Gemäß der Substitutionsbedingung (<span class="math inline">\(\theta_E E_t = \theta_A A_t + \mu_t\)</span>) verschiebt sich das Gleichgewicht massiv zugunsten der KI-Nutzung, da die eigene Anstrengung teurer ist (<span class="math inline">\(\theta_E &gt; \theta_A\)</span>).</p>
+<p>Für hinreichend hohe Diskontraten fällt die freiwillig gewählte Eigenleistung <span class="math inline">\(E_t\)</span> vom ersten Tag an unter die Abschreibungsgrenze:</p>
+<p><span class="math display">\[E_t &lt; \delta K_t\]</span></p>
+<p>Dies markiert den Eintritt in die <strong>sanfte KI-Falle</strong>:</p>
+<ol type="1">
+<li><strong>Schleichende kognitive Erosion:</strong> Das Humankapital erodiert glatt und kontinuierlich (<span class="math inline">\(\dot{K}_t &lt; 0\)</span>), anstatt abrupt abzustürzen.</li>
+<li><strong>Die Kompensationsspirale:</strong> Da das Wissen <span class="math inline">\(K_t\)</span> schrumpft, wird die Effizienz der KI-Nutzung geringer. Um den Nutzenabfall zu bremsen, muss der Agent proportional immer mehr Aufgaben an die KI delegieren (<span class="math inline">\(A_t\)</span> steigt relativ zu <span class="math inline">\(E_t\)</span>).</li>
+<li><strong>Stagnation im Dilettantismus:</strong> Das System konvergiert gegen einen Steady State mit minimalem Humankapital <span class="math inline">\(K^*\)</span>, in dem der Agent dauerhaft den Großteil seines kognitiven Budgets aufwenden muss, um die KI zu steuern und zu korrigieren, ohne selbst noch nennenswertes Wissen zu generieren.</li>
+</ol>
+<p>Die KI ermöglicht es dem ungeduldigen Agenten somit, den kognitiven Schmerz der Gegenwart zu Lasten einer strukturellen, irreversiblen Dequalifizierung in der Zukunft zu minimieren.</p>
+</section>
+</section>
 </section>
 <section id="diskussion" class="level1" data-number="3">
 <h1 data-number="3"><span class="header-section-number">3</span> Diskussion</h1>
