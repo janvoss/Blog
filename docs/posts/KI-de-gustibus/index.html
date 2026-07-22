@@ -229,12 +229,83 @@ window.Quarto = {
 <h1 data-number="1"><span class="header-section-number">1</span> Einleitung</h1>
 <p>Text</p>
 </section>
-<section id="das-modell" class="level1" data-number="2">
-<h1 data-number="2"><span class="header-section-number">2</span> Das Modell</h1>
-<section id="intertemporale-optimierung-im-aufbau-von-humankapital" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="intertemporale-optimierung-im-aufbau-von-humankapital"><span class="header-section-number">2.1</span> Intertemporale Optimierung im Aufbau von Humankapital</h2>
-<section id="produktions--nutzen--und-akkumulationsfunktion" class="level3" data-number="2.1.1">
-<h3 data-number="2.1.1" class="anchored" data-anchor-id="produktions--nutzen--und-akkumulationsfunktion"><span class="header-section-number">2.1.1</span> Produktions- Nutzen- und Akkumulationsfunktion</h3>
+<section id="bildung-ein-grundmodell" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Bildung – ein Grundmodell</h1>
+<p>Bildung bedeutet, dass wir etwas dazulerenen, dass wir etwas können, was wir vorher noch nicht konnten, dass wir mehr aus unseren Anstrengungen machen können.</p>
+<p>Im ökonomischen Kontext ist der Begriff Humankapital üblich geworden, um zu beschreiben, dass jemand produktiver werden/ dazulernen kann. Dieses Humankapital kann bewusst aufgebaut werden oder sich aber als Nebenprodukt anderer Entscheidungen ergeben.</p>
+<section id="lernen-als-tun." class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="lernen-als-tun."><span class="header-section-number">2.1</span> Lernen als Tun.</h2>
+<section id="die-entscheidung-über-anstrengung-in-jedem-zeitpunkt" class="level3" data-number="2.1.1">
+<h3 data-number="2.1.1" class="anchored" data-anchor-id="die-entscheidung-über-anstrengung-in-jedem-zeitpunkt"><span class="header-section-number">2.1.1</span> Die Entscheidung über Anstrengung in jedem Zeitpunkt</h3>
+<p>Wenn das Ergebnis einer Anstrengung <span class="math inline">\(Y\)</span> heißt, dann kann man formulieren: <span class="math display">\[Y_t=K_t \cdot E_t\]</span>, wobei <span class="math inline">\(K_t\)</span> die zu einem bestimmten Zeitpunkt <span class="math inline">\(t\)</span> vorhandenen Fähigkeiten und <span class="math inline">\(E_t\)</span> die jeweiligen Anstrengungen (effort) bezeichnen.</p>
+<p>Das Ergebnis der Anstrengung <span class="math inline">\(Y\)</span> hat nicht aus sich heraus einen Wert, sondern stiftet Nutzen in Form von Freude, Stolz über das Geleistete, Belohnungen usw. Nehmen wir an, dass wir eine Funktion mit positivem aber abnehmenden Grenznutzen haben <span class="math inline">\(u(Y_t)=ln(Y_t)\)</span>. Man freut sich also über zusätzliche Ergebnisse, aber die zustätzliche Freude wird immer geringer</p>
+<p>[hier ein plot]</p>
+<p>Nehmen wir ferner an, dass Anstrengungen tatsächlich anstrengend sind. Anstrengungen führen zu Erschöpfung, Langeweile, usw. Dieser Rückgang an Freude über das Ergebnis durch die Anstrengung habe die Form <span class="math inline">\(\frac{\theta_E}{2}E^2\)</span>. Je mehr das Individuum sich anstrengt, desto erschöpfter ist es und je mehr es sich bereits angestrengt hat, desto größer ist die zusätzliche Erschöpfung.</p>
+<p>Mein Nettonutzen ist also <span class="math display">\[U(K_t, E_t)=ln(K_t \cdot E_t)-\frac{\theta_E}{2}E^2\]</span>.</p>
+<p>Wenn man für ein gegebenes <span class="math inline">\(K_t\)</span> den Nutzen gegen die Anstrengung abträgt, erkennt man ein Maximum. Dieses gibt die Nutzenmaximale Menge von <span class="math inline">\(E_t\)</span> zu einem bestimmten Zeitpunkt.</p>
+<p>[hier ergänzen: ein ggplot]</p>
+</section>
+<section id="der-zufällige-auf--oder-abbau-von-humankapital" class="level3" data-number="2.1.2">
+<h3 data-number="2.1.2" class="anchored" data-anchor-id="der-zufällige-auf--oder-abbau-von-humankapital"><span class="header-section-number">2.1.2</span> Der zufällige Auf- oder Abbau von Humankapital</h3>
+<p>Bislang haben wir uns nur angeschaut, wie die nutzenmaximierende Menge zu einem bestimmten Zeitpunkt ermittelt wird, wenn ein bestimmtes Niveau von Humankapital gegeben ist und wenn man nur diesen Zeitpunkt betrachtet.</p>
+<p>Humankapital bildet sich bestimmt aus ganz vielen Einflüssen: Genetischer Zufall (Talent), Erziehung, zufällige Erlebnisse. Humankapital bildet sich aber zummindest bestimmt <em>auch</em> durch Anstrengung.</p>
+<p>Humankapital verfällt aber auch mit der Zeit. Man vergisst Erlerntes oder kommt aus der Übung. Oder das Wissen veraltet, weil es technischen und wissenschaftlchen Fortschritt gibt.</p>
+<p>Beide Aspekte lassen sich so abbilden. Die Veränderung des Humankapitals (<span class="math inline">\(\dot{K}_t\)</span>) ergibt sich aus dem Humankapitalaufbau durch Anstrengung (<span class="math inline">\(E_t\)</span>) und dem Abbau durch Abschreibung (Vergessen, Veralten) <span class="math inline">\(\delta K_t\)</span>:</p>
+<p><span class="math display">\[\frac{\mathrm{d}K_t}{\mathrm{d}t} \equiv \dot{K}_t = E_t - \delta K_t\]</span></p>
+<p>Solange die aktuelle Anstrengung ausreicht, um die Abschreibungen mindestens aufzuwiegen, bleibt das Humankapital erhalten oder wächst sogar. Wenn jedoch die Anstrengungen dazu nicht ausreichen, verfällt das Humankapital. Wenn sich die beiden Effekte auf das Humankapital genau aufheben, gibt es keine Veränderung mehr (steady state) <span class="math display">\[\dot{K}_t = 0 \iff E_t = \delta K_t\]</span>.</p>
+<p>Je nach anfänglichem <span class="math inline">\(K_0\)</span>, der Abschreibungsrate <span class="math inline">\(\delta\)</span> und den (emotionalen) Kosten der Anstrengung <span class="math inline">\(\theta_E\)</span> kann durch das beiläufige Lernen, das aus der Wahl einer Anstrengung im Zusammenhang mit einer statischen Nutzenmaximierung erfolgt, zu einem Anstieg oder zu einer Erosion des Humankapitals führen.</p>
+<p>[ggplot Beispiele]</p>
+</section>
+</section>
+<section id="lernen-als-zielgerichteter-prozess" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="lernen-als-zielgerichteter-prozess"><span class="header-section-number">2.2</span> Lernen als zielgerichteter Prozess</h2>
+<p>Die Akkumulation oder Erosion von Humankapital ist bislang rein zufällig erfolgt, sie ist das Nebenprodukt einer momentanen Nutzenmaximierung. Diese Zufälligkeit hat in der Lebenswirklichkeit bestimmt ihren Platz. Beispielsweise kann man wandern gehen, um die Landschaft und die Bewegung zu genießen und baut nebenher körperliche Fitness und geografische Orientierungsfähigkeit auf. Man kann ins Theater gehen, um sich für einen Abend unterhalten zu lassen und erlangt nebenher Wissen über Literaturgeschichte, Schauspieltechniken und das Modeempfinden der anderen Zuschauer. Man kann ein neues Rezept ausprobieren, weil man ein leckeres Essen zubereiten möchte und lernt nebenher neue Kochtechniken.</p>
+<p>Diese Zufälligkeit ist aber unbefriedigend für die Beschreibung eines zielgerichteten Bildungsprozesses. Wenn die heutige Anstrengung nicht nur zu höheren Output und höherem Arbeitsleid <em>heute</em> führt, sondern <em>auch</em> die Bedingungen beeinflusst, unter denen in der <em>Zukunft</em> Output erzeugt werden kann, dann sollte dies auch in dem Optimierungskalkül berücksichtigt werden.</p>
+<p>Es müsste also nicht mehr die Anstrengung zu einem <em>Zeitpunkt</em> optimiert werden, sondern ein ganzer <em>Zeitpfad</em> der Anstrengung, der jeweils den Nutzen in der Gegenwart sowie den möglichen Nutzen aus künftiger höherer Produktivität berücksichtigt.</p>
+<p>Hierbei soll berücksichtigt werden, dass künftige Ereignise mit einem geringeren Gewicht bewertet werden als heutige. Dies geschieht, indem (ausgehend von der Gegenwart <span class="math inline">\(t=0\)</span>) jedes Ereignis mit <span class="math inline">\(e^{-\rho t}\)</span> diskontiert wird. Für <span class="math inline">\(t=0\)</span> ist diess Gewicht gleich <span class="math inline">\(1\)</span>. Je weiter ein Ereignis in der Zukunft liegt, desto geringer wird es gewichtet. Hier wird von einem im Prinzip unendlich langen Planungshorizont ausgegangen. Allerdings haben Ereignisse in der fernen Zukunft nur einen sehr geringen Einfluss uud das heutige Nutzenniveau. Die Annahme ist also zunächst einmal nicht zu problematisch.</p>
+<p>Ein über den Zeitpfad optimierendes Individuum wählt den Zeitpfad seiner Anstrengung <span class="math inline">\(E_t\)</span>, um seinen über einen unendlichen Zeithorizont diskontierten Gesamtnutzen zu maximieren. Die exogene Zeitpräferenzrate (Diskontrate) des Agenten ist <span class="math inline">\(\rho &gt; 0\)</span>. Das intertemporale Optimierungsproblem lautet:</p>
+<p><span class="math display">\[\max_{E_t} \int_{0}^{\infty} e^{-\rho t} \left( \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 \right) dt\]</span></p>
+<p>unter der Nebenbedingung <span class="math inline">\(\dot{K}_t = E_t - \delta K_t\)</span> sowie gegebenem Anfangskapital <span class="math inline">\(K_0 &gt; 0\)</span>.</p>
+<p>Zur Lösung dieses Problems formulieren wir die zugehörige <strong>Hamilton-Funktion</strong>. Sei <span class="math inline">\(\mu_t\)</span> der dynamische Schattenpreis des Humankapitals:</p>
+<p><span class="math display">\[\mathcal{H} = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \mu_t (E_t - \delta K_t)\]</span></p>
+<p>Die Hamilton-Funktion besteht aus zwei Teilen. Der erste Teil enthält das bekannte statische Optimierungsproblem. Der zweite Teil beinhaltet die Berücksichtigung der Dynamik: Durch die Wahl von <span class="math inline">\(E_t\)</span> wird die Entwicklung von <span class="math inline">\(K_t\)</span> beeinflusst.</p>
+<section id="bedingung-für-die-kontrollvariable-anstrengung" class="level3" data-number="2.2.1">
+<h3 data-number="2.2.1" class="anchored" data-anchor-id="bedingung-für-die-kontrollvariable-anstrengung"><span class="header-section-number">2.2.1</span> Bedingung für die Kontrollvariable (Anstrengung)</h3>
+<p>Die Bedingungen erster Ordnung für einen inneren Lösungs-Pfad ergeben sich aus der Ableitung nach der Kontrollvariablen <span class="math inline">\(E_t\)</span> sowie der Bewegungsgleichung für den Schattenpreis <span class="math inline">\(\mu_t\)</span>:</p>
+<p><span class="math display">\[\frac{\partial \mathcal{H}}{\partial E_t} = 0 \quad \Rightarrow \quad \frac{1}{E_t} - \theta_E E_t + \mu_t = 0\]</span></p>
+<p>Umgestellt nach dem Schattenpreis ergibt sich:</p>
+<p><span class="math display">\[\mu_t = \theta_E E_t - \frac{1}{E_t}\]</span></p>
+<p>Diese Gleichung zeigt den zentralen Trade-off: Der Schattenpreis <span class="math inline">\(\mu_t\)</span> entspricht dem Grenzarbeitsleid der Anstrengung (<span class="math inline">\(\theta_E E_t\)</span>) abzüglich des direkten Grenznutzens aus dem aktuellen Output (<span class="math inline">\(1/E_t\)</span>).</p>
+</section>
+<section id="euler-gleichung-bewegung-des-schattenpreises" class="level3" data-number="2.2.2">
+<h3 data-number="2.2.2" class="anchored" data-anchor-id="euler-gleichung-bewegung-des-schattenpreises"><span class="header-section-number">2.2.2</span> Euler-Gleichung (Bewegung des Schattenpreises)</h3>
+<p><span class="math display">\[\dot{\mu}_t =  \rho \mu_t - \frac{\partial \mathcal{H}}{\partial K_t} \quad \Rightarrow \quad \dot{\mu}_t = \rho \mu_t - \left( \frac{1}{K_t} - \mu_t \delta \right)\]</span></p>
+<p>Zusammengefasst beschreibt diese Differentialgleichung die Dynamik des Schattenpreises über die Zeit:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p><span class="math display">\[\dot{\mu}_t = (\rho + \delta) \mu_t - \frac{1}{K_t}\]</span></p>
+</section>
+<section id="konvergenz-von-e-k-und-mu" class="level3" data-number="2.2.3">
+<h3 data-number="2.2.3" class="anchored" data-anchor-id="konvergenz-von-e-k-und-mu"><span class="header-section-number">2.2.3</span> Konvergenz von <span class="math inline">\(E\)</span>, <span class="math inline">\(K\)</span> und <span class="math inline">\(\mu\)</span></h3>
+<p>Um die Entwicklung der Anstrengung <span class="math inline">\(E_t\)</span> in Abhängigkeit vom Humankapitalstock <span class="math inline">\(K_t\)</span> darzustellen, eliminieren wir den Schattenpreis <span class="math inline">\(\mu_t\)</span>. Dazu leiten wir die Optimalitätsbedingung <span class="math inline">\(\mu_t = \theta_E E_t - \frac{1}{E_t}\)</span> nach der Zeit <span class="math inline">\(t\)</span> ab:<span class="math display">\[\dot{\mu}_t = \theta_E \dot{E}_t + \frac{1}{E_t^2} \dot{E}_t = \left( \theta_E + \frac{1}{E_t^2} \right) \dot{E}_t\]</span></p>
+<p>Setzen wir diesen Ausdruck sowie die Gleichung für <span class="math inline">\(\mu_t\)</span> in die Euler-Gleichung <span class="math inline">\(\dot{\mu}_t\)</span> ein, erhalten wir:<span class="math display">\[\left( \theta_E + \frac{1}{E_t^2} \right) \dot{E}_t = (\rho + \delta) \left( \theta_E E_t - \frac{1}{E_t} \right) - \frac{1}{K_t}\]</span></p>
+<p>Aufgelöst nach <span class="math inline">\(\dot{E}_t\)</span> ergibt sich zusammen mit der Zustandsgleichung des Humankapitals ein autonomes, zweidimensionales Differentialgleichungssystem, das die zeitliche Entwicklung von Kapitalstock und Anstrengung vollständig beschreibt:<span class="math display">\[\dot{K}_t = E_t - \delta K_t\]</span></p>
+<p><span class="math display">\[\dot{E}_t = \frac{(\rho + \delta) \left( \theta_E E_t - \frac{1}{E_t} \right) - \frac{1}{K_t}}{\theta_E + \frac{1}{E_t^2}}\]</span></p>
+<p>Das System konvergiert entlang eines Sattelpfades in ein langfristiges stationäres Gleichgewicht (Steady State), in dem sich weder der Kapitalstock noch die Anstrengung weiter verändern (<span class="math inline">\(\dot{K}_t = 0\)</span> und <span class="math inline">\(\dot{E}_t = 0\)</span>).</p>
+<p>Aus der Stationaritätsbedingung des Kapitals (<span class="math inline">\(\dot{K}_t = 0\)</span>) folgt unmittelbar <span class="math display">\[E^* = \delta K^* \quad \Rightarrow \quad K^* = \frac{E^*}{\delta}\]</span></p>
+<p>In einem stationären Zustand der Anstrengung (<span class="math inline">\(\dot{E}_t = 0\)</span>) muss der Zähler der Differentialgleichung für <span class="math inline">\(\dot{E}_t\)</span> null werden:<span class="math display">\[(\rho + \delta) \left( \theta_E E^* - \frac{1}{E^*} \right) - \frac{1}{K^*} = 0\]</span></p>
+<p>Setzen wir die Gleichgewichtsbedingung <span class="math inline">\(K^* = E^* / \delta\)</span> ein und multiplizieren die Gleichung mit <span class="math inline">\(E^*\)</span>, ergibt sich:<span class="math display">\[(\rho + \delta) \left( \theta_E (E^*)^2 - 1 \right) - \delta = 0\]</span></p>
+<p><span class="math display">\[(\rho + \delta) \theta_E (E^*)^2 = \rho + 2\delta\]</span>Daraus resultieren die expliziten, konvergierenden Gleichgewichtswerte für die optimale Anstrengung <span class="math inline">\(E^*\)</span> und das langfristige Humankapital <span class="math inline">\(K^*\)</span>:<span class="math display">\[E^* = \sqrt{\frac{\rho + 2\delta}{\theta_E (\rho + \delta)}}\]</span></p>
+<p><span class="math display">\[K^* = \frac{E^*}{\delta} = \sqrt{\frac{\rho + 2\delta}{\theta_E \delta^2 (\rho + \delta)}}\]</span></p>
+<p>Je geduldiger der Agent ist (je kleiner die Diskontrate <span class="math inline">\(\rho\)</span>), desto höher liegt das Anstrengungsniveau <span class="math inline">\(E^*\)</span>, gegen das das System konvergiert, und desto massiver ist der langfristig gesicherte Humankapitalstock <span class="math inline">\(K^*\)</span>.</p>
+<p>Wenn man davon ausgeht, dass die Parameter <span class="math inline">\(\theta_E\)</span>, <span class="math inline">\(\delta\)</span> und <span class="math inline">\(\rho\)</span> individuell unterschiedlich sein können, dann können diese Parameter Unterschiede im individuellen Lernerfolg, d.h. im Aufbau von Humankapital, erklären. Über die subjektiven Arbeitsbedingungen und die subjektive Mühe des Lernens (<span class="math inline">\(\theta_E\)</span>), die Vergesslichkeit oder Kurzlebigkeit des Gelernten (<span class="math inline">\(\delta\)</span>) oder die Geduld bzw. die langfristigkeit des Planungshorizontes (<span class="math inline">\(\rho\)</span>) zu sprechen ist vermutlich einfacher als über so komplizierte Ideen wie Talent, Begabung oder Intelligenz.</p>
+</section>
+</section>
+</section>
+<section id="das-modell" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Das Modell</h1>
+<section id="intertemporale-optimierung-im-aufbau-von-humankapital" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="intertemporale-optimierung-im-aufbau-von-humankapital"><span class="header-section-number">3.1</span> Intertemporale Optimierung im Aufbau von Humankapital</h2>
+<section id="produktions--nutzen--und-akkumulationsfunktion" class="level3" data-number="3.1.1">
+<h3 data-number="3.1.1" class="anchored" data-anchor-id="produktions--nutzen--und-akkumulationsfunktion"><span class="header-section-number">3.1.1</span> Produktions- Nutzen- und Akkumulationsfunktion</h3>
 <p>Ein vorausschauender Agent produziert in jeder Periode <span class="math inline">\(t\)</span> einen kognitiven Output <span class="math inline">\(Y_t\)</span>. Dieser Output ist eine Funktion seines akkumulierten Humankapitals <span class="math inline">\(K_t\)</span> und seiner eigenen aktuellen kognitiven Anstrengung (effort) <span class="math inline">\(E_t\)</span>:</p>
 <p><span class="math display">\[Y_t = K_t E_t\]</span></p>
 <p>Der Agent zieht Nutzen aus dem generierten Output (beispielsweise in Form von benoteten Prüfungsleistungen, Reputation oder Einkommen).</p>
@@ -247,26 +318,26 @@ window.Quarto = {
 <p><span class="math display">\[\max_{E_t} \int_{0}^{\infty} e^{-it} \left( \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 \right) dt\]</span></p>
 <p>unter der Nebenbedingung <span class="math inline">\(\dot{K}_t = E_t - \delta K_t\)</span> sowie gegebenem Anfangskapital <span class="math inline">\(K_0 &gt; 0\)</span>.</p>
 </section>
-<section id="dynamische-optimierung" class="level3" data-number="2.1.2">
-<h3 data-number="2.1.2" class="anchored" data-anchor-id="dynamische-optimierung"><span class="header-section-number">2.1.2</span> Dynamische Optimierung</h3>
+<section id="dynamische-optimierung" class="level3" data-number="3.1.2">
+<h3 data-number="3.1.2" class="anchored" data-anchor-id="dynamische-optimierung"><span class="header-section-number">3.1.2</span> Dynamische Optimierung</h3>
 <p>Zur Lösung dieses Problems formulieren wir die zugehörige <strong>Hamilton-Funktion</strong>. Sei <span class="math inline">\(\mu_t\)</span> der dynamische Schattenpreis des Humankapitals:</p>
 <p><span class="math display">\[\mathcal{H} = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \mu_t (E_t - \delta K_t)\]</span></p>
 <p>Die Bedingungen erster Ordnung für einen inneren Lösungs-Pfad ergeben sich aus der Ableitung nach der Kontrollvariablen <span class="math inline">\(E_t\)</span> sowie der Bewegungsgleichung für den Schattenpreis <span class="math inline">\(\mu_t\)</span>:</p>
-<section id="bedingung-für-die-kontrollvariable-anstrengung" class="level4" data-number="2.1.2.1">
-<h4 data-number="2.1.2.1" class="anchored" data-anchor-id="bedingung-für-die-kontrollvariable-anstrengung"><span class="header-section-number">2.1.2.1</span> Bedingung für die Kontrollvariable (Anstrengung)</h4>
+<section id="bedingung-für-die-kontrollvariable-anstrengung-1" class="level4" data-number="3.1.2.1">
+<h4 data-number="3.1.2.1" class="anchored" data-anchor-id="bedingung-für-die-kontrollvariable-anstrengung-1"><span class="header-section-number">3.1.2.1</span> Bedingung für die Kontrollvariable (Anstrengung)</h4>
 <p><span class="math display">\[\frac{\partial \mathcal{H}}{\partial E_t} = 0 \quad \Rightarrow \quad \frac{1}{E_t} - \theta_E E_t + \mu_t = 0\]</span></p>
 <p>Umgestellt nach dem Schattenpreis ergibt sich:</p>
 <p><span class="math display">\[\mu_t = \theta_E E_t - \frac{1}{E_t}\]</span></p>
 <p>Diese Gleichung zeigt den zentralen Trade-off: Der Schattenpreis <span class="math inline">\(\mu_t\)</span> entspricht dem Grenzarbeitsleid der Anstrengung (<span class="math inline">\(\theta_E E_t\)</span>) abzüglich des direkten Grenznutzens aus dem aktuellen Output (<span class="math inline">\(1/E_t\)</span>).</p>
 </section>
-<section id="euler-gleichung-bewegung-des-schattenpreises" class="level4" data-number="2.1.2.2">
-<h4 data-number="2.1.2.2" class="anchored" data-anchor-id="euler-gleichung-bewegung-des-schattenpreises"><span class="header-section-number">2.1.2.2</span> Euler-Gleichung (Bewegung des Schattenpreises)</h4>
+<section id="euler-gleichung-bewegung-des-schattenpreises-1" class="level4" data-number="3.1.2.2">
+<h4 data-number="3.1.2.2" class="anchored" data-anchor-id="euler-gleichung-bewegung-des-schattenpreises-1"><span class="header-section-number">3.1.2.2</span> Euler-Gleichung (Bewegung des Schattenpreises)</h4>
 <p><span class="math display">\[\dot{\mu}_t = i \mu_t - \frac{\partial \mathcal{H}}{\partial K_t} \quad \Rightarrow \quad \dot{\mu}_t = i \mu_t - \left( \frac{1}{K_t} - \mu_t \delta \right)\]</span></p>
-<p>Zusammengefasst beschreibt diese Differentialgleichung die Dynamik des Schattenpreises über die Zeit:<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a></p>
+<p>Zusammengefasst beschreibt diese Differentialgleichung die Dynamik des Schattenpreises über die Zeit:<a href="#fn2" class="footnote-ref" id="fnref2" role="doc-noteref"><sup>2</sup></a></p>
 <p><span class="math display">\[\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}\]</span></p>
 </section>
-<section id="konvergenz-von-e-k-und-mu" class="level4" data-number="2.1.2.3">
-<h4 data-number="2.1.2.3" class="anchored" data-anchor-id="konvergenz-von-e-k-und-mu"><span class="header-section-number">2.1.2.3</span> Konvergenz von <span class="math inline">\(E\)</span>, <span class="math inline">\(K\)</span> und <span class="math inline">\(\mu\)</span></h4>
+<section id="konvergenz-von-e-k-und-mu-1" class="level4" data-number="3.1.2.3">
+<h4 data-number="3.1.2.3" class="anchored" data-anchor-id="konvergenz-von-e-k-und-mu-1"><span class="header-section-number">3.1.2.3</span> Konvergenz von <span class="math inline">\(E\)</span>, <span class="math inline">\(K\)</span> und <span class="math inline">\(\mu\)</span></h4>
 <p>Um die Entwicklung der Anstrengung <span class="math inline">\(E_t\)</span> in Abhängigkeit vom Humankapitalstock <span class="math inline">\(K_t\)</span> darzustellen, eliminieren wir den Schattenpreis <span class="math inline">\(\mu_t\)</span>. Dazu leiten wir die Optimalitätsbedingung <span class="math inline">\(\mu_t = \theta_E E_t - \frac{1}{E_t}\)</span> nach der Zeit <span class="math inline">\(t\)</span> ab:<span class="math display">\[\dot{\mu}_t = \theta_E \dot{E}_t + \frac{1}{E_t^2} \dot{E}_t = \left( \theta_E + \frac{1}{E_t^2} \right) \dot{E}_t\]</span></p>
 <p>Setzen wir diesen Ausdruck sowie die Gleichung für <span class="math inline">\(\mu_t\)</span> in die Euler-Gleichung <span class="math inline">\(\dot{\mu}_t\)</span> ein, erhalten wir:<span class="math display">\[\left( \theta_E + \frac{1}{E_t^2} \right) \dot{E}_t = (i + \delta) \left( \theta_E E_t - \frac{1}{E_t} \right) - \frac{1}{K_t}\]</span></p>
 <p>Aufgelöst nach <span class="math inline">\(\dot{E}_t\)</span> ergibt sich zusammen mit der Zustandsgleichung des Humankapitals ein autonomes, zweidimensionales Differentialgleichungssystem, das die zeitliche Entwicklung von Kapitalstock und Anstrengung vollständig beschreibt:<span class="math display">\[\dot{K}_t = E_t - \delta K_t\]</span></p>
@@ -282,14 +353,14 @@ window.Quarto = {
 </section>
 </section>
 </section>
-<section id="das-mindestoutput-niveau-als-paternalistische-maßnahme-gegen-zu-geringe-leistung" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="das-mindestoutput-niveau-als-paternalistische-maßnahme-gegen-zu-geringe-leistung"><span class="header-section-number">2.2</span> Das Mindestoutput-Niveau als paternalistische Maßnahme gegen zu geringe Leistung</h2>
+<section id="das-mindestoutput-niveau-als-paternalistische-maßnahme-gegen-zu-geringe-leistung" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="das-mindestoutput-niveau-als-paternalistische-maßnahme-gegen-zu-geringe-leistung"><span class="header-section-number">3.2</span> Das Mindestoutput-Niveau als paternalistische Maßnahme gegen zu geringe Leistung</h2>
 <p>Wenn das Leistungsniveau unterhalb einer exogenen Erwartung bleibt (etwa den erwarteten Leistungen in einem Studiengang), kann ein Mindestoutputniveau <span class="math display">\[Y_t \ge \bar{Y}\]</span> vorgebeben werden. Diese Maßnahme zwingt ein Individuum dazu sich anzustrengen, durch die Wahl von <span class="math inline">\(E_t\)</span> bei gegebenem <span class="math inline">\(K_t\)</span> das Mindestniveau zu erreichen. Das Ergebnis ist nicht mehr nutzenmaximierend, sodass man begründen müsste, warum ein Individuum sich diesem Zwang unterwerfen möchte.</p>
 <p>Diese Restriktion kann auf zweierlei Weise wirken. Wenn ein Individuum seinen Steady State in <span class="math inline">\(E\)</span> und <span class="math inline">\(K\)</span> noch nicht erreicht hat, dann kann die Vorgabe eines Mindestoutputs <span class="math inline">\(\bar{Y}\)</span> den Weg zum Steady State beschleunigen. Wenn der Output im Steady State kleiner ist als der Mindestoutput, <span class="math inline">\(Y(K^*, E^*)&lt; \bar{Y}\)</span>, dann kann die Leistung im Steady State erhöht werden, zumindest, solange ein Individuum den Mindestoutput erreichen muss. Die Vorgabe eines Mindestoutputniveaus führt nicht nur zu kurzfristigen Anstrengungen, sondern tatsächlich auch zum Aufbau und Erhalt von Humankapital zumindest für den Zeitraum, für den die Restriktion bindet. Fällt diese Restriktion weg, konvergiert der Output wieder gegen <span class="math inline">\(Y(K^*, E^*)&lt; \bar{Y}\)</span>.</p>
 <p>Unter der externen Vorgabe muss gelten <span class="math inline">\(K\cdot E = \bar{Y}\)</span>. Im Steady State unter der externen Vorgabe gilt <span class="math inline">\(\dot{K}=0\)</span> also <span class="math inline">\(\bar{E}^*=\delta \bar{K}^*\)</span>. Daher gilt <span class="math display">\[\bar{K}^*=\sqrt{\frac{\bar{Y}}{\delta}}\]</span> und <span class="math display">\[E^* = \delta \cdot \sqrt{\frac{\bar{Y}}{\delta}} = \sqrt{\frac{\delta^2 \cdot \bar{Y}}{\delta}} = \sqrt{\delta \cdot \bar{Y}}\]</span></p>
 </section>
-<section id="der-effekt-von-ki-auf-eigene-anstrengung-und-den-aufbau-von-humankapital" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="der-effekt-von-ki-auf-eigene-anstrengung-und-den-aufbau-von-humankapital"><span class="header-section-number">2.3</span> Der Effekt von KI auf eigene Anstrengung und den Aufbau von Humankapital</h2>
+<section id="der-effekt-von-ki-auf-eigene-anstrengung-und-den-aufbau-von-humankapital" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="der-effekt-von-ki-auf-eigene-anstrengung-und-den-aufbau-von-humankapital"><span class="header-section-number">3.3</span> Der Effekt von KI auf eigene Anstrengung und den Aufbau von Humankapital</h2>
 <p>Mit der breiten Verfügbarkeit generativer KI-Modelle ändert sich die Produktionsfunktion des kognitiven Outputs fundamental. KI ermöglicht es einem Individuum, kognitive Aufgaben zu <em>delegieren</em>, also kognitiven Output zu erzeugen, der nicht einer eigenen kognitiven Anstrengung entstammt .</p>
 <p>Wir modellieren die KI-Nutzung <span class="math inline">\(A_t\)</span> als perfektes Substitut zur eigenen Anstrengung <span class="math inline">\(E_t\)</span> bei der unmittelbaren Output-Generierung. Hierbei wird unterstellt, dass das bereits vorhandene Humankapital <span class="math inline">\(K_t\)</span>, auch auf die Nutzung von KI-Diensten wirkt: Ein Individuum mit hohem Fachwissen kann die KI-Dienste produktiver einsetzen als ein Novize. Die modifizierte Produktionsfunktion lautet:</p>
 <p><span class="math display">\[Y_t = K_t (E_t + A_t)\]</span></p>
@@ -299,8 +370,8 @@ window.Quarto = {
 <p><span class="math display">\[\dot{K}_t = E_t - \delta K_t\]</span></p>
 <p>Das neue Optimierungsproblem des Agenten besteht nun in der simultanen Wahl der optimalen Pfade für <span class="math inline">\(E_t\)</span> und <span class="math inline">\(A_t\)</span>. Die Hamilton-Funktion erweitert sich zu:</p>
 <p><span class="math display">\[\mathcal{H} = \ln(K_t(E_t + A_t)) - \frac{\theta_E}{2} E_t^2 - \frac{\theta_A}{2} A_t^2 + \mu_t (E_t - \delta K_t)\]</span></p>
-<section id="die-bedingungen-erster-ordnung-und-die-substitutionslogik" class="level3" data-number="2.3.1">
-<h3 data-number="2.3.1" class="anchored" data-anchor-id="die-bedingungen-erster-ordnung-und-die-substitutionslogik"><span class="header-section-number">2.3.1</span> Die Bedingungen erster Ordnung und die Substitutionslogik</h3>
+<section id="die-bedingungen-erster-ordnung-und-die-substitutionslogik" class="level3" data-number="3.3.1">
+<h3 data-number="3.3.1" class="anchored" data-anchor-id="die-bedingungen-erster-ordnung-und-die-substitutionslogik"><span class="header-section-number">3.3.1</span> Die Bedingungen erster Ordnung und die Substitutionslogik</h3>
 <p>Die simultane Optimierung über die beiden Kontrollvariablen liefert Bedingungen erster Ordnung für einen inneren Lösungs-Pfad:</p>
 <ol type="1">
 <li><strong>Nachfrage nach KI-Delegation (<span class="math inline">\(A_t\)</span>):</strong></li>
@@ -316,8 +387,8 @@ window.Quarto = {
 <p>Die Euler-Gleichung für die Bewegung des Schattenpreises bleibt strukturell identisch zum Basismodell, da der Grenznutzen des Kapitals (<span class="math inline">\(\frac{\partial \mathcal{H}}{\partial K_t} = \frac{1}{K_t}\)</span>) von der Aufteilung zwischen <span class="math inline">\(E_t\)</span> und <span class="math inline">\(A_t\)</span> unberührt bleibt:</p>
 <p><span class="math display">\[\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}\]</span></p>
 </section>
-<section id="die-sanfte-ki-falle-bei-myopischem-verhalten" class="level3" data-number="2.3.2">
-<h3 data-number="2.3.2" class="anchored" data-anchor-id="die-sanfte-ki-falle-bei-myopischem-verhalten"><span class="header-section-number">2.3.2</span> Die sanfte KI-Falle bei myopischem Verhalten</h3>
+<section id="die-sanfte-ki-falle-bei-myopischem-verhalten" class="level3" data-number="3.3.2">
+<h3 data-number="3.3.2" class="anchored" data-anchor-id="die-sanfte-ki-falle-bei-myopischem-verhalten"><span class="header-section-number">3.3.2</span> Die sanfte KI-Falle bei myopischem Verhalten</h3>
 <p>Das Vorhandensein der KI (<span class="math inline">\(A_t &gt; 0\)</span>) verändert die Konsequenzen einer hohen Diskontrate <span class="math inline">\(i\)</span> drastisch. Im klassischen Modell ohne KI war der ungeduldige Agent durch den vollständigen Output-Ausfall gezwungen, zumindest ein minimales Niveau an <span class="math inline">\(E_t\)</span> aufrechtzuerhalten.</p>
 <p>In der KI-Ökonomie hingegen bietet sich dem myopischen Agenten ein bequemer Ausweg. Da er die Zukunft stark diskontiert, sinkt der Schattenpreis <span class="math inline">\(\mu_t\)</span> auf ein sehr niedriges Niveau. Gemäß der Substitutionsbedingung (<span class="math inline">\(\theta_E E_t = \theta_A A_t + \mu_t\)</span>) verschiebt sich das Gleichgewicht massiv zugunsten der KI-Nutzung, da die eigene Anstrengung teurer ist (<span class="math inline">\(\theta_E &gt; \theta_A\)</span>).</p>
 <p>Für hinreichend hohe Diskontraten fällt die freiwillig gewählte Eigenleistung <span class="math inline">\(E_t\)</span> vom ersten Tag an unter die Abschreibungsgrenze:</p>
@@ -860,11 +931,11 @@ window.Quarto = {
 </section>
 </section>
 </section>
-<section id="diskussion" class="level1" data-number="3">
-<h1 data-number="3"><span class="header-section-number">3</span> Diskussion</h1>
+<section id="diskussion" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Diskussion</h1>
 </section>
-<section id="fazit" class="level1" data-number="4">
-<h1 data-number="4"><span class="header-section-number">4</span> Fazit</h1>
+<section id="fazit" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Fazit</h1>
 
 
 </section>
@@ -874,6 +945,7 @@ window.Quarto = {
 
 <ol>
 <li id="fn1"><p>Ergänzt wird das System durch die Transversalitätsbedingung <span class="math inline">\(\lim_{t \to \infty} e^{-it} \mu_t K_t = 0\)</span>.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn2"><p>Ergänzt wird das System durch die Transversalitätsbedingung <span class="math inline">\(\lim_{t \to \infty} e^{-it} \mu_t K_t = 0\)</span>.<a href="#fnref2" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
