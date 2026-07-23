@@ -31,15 +31,23 @@ Im ökonomischen Kontext ist der Begriff Humankapital üblich geworden, um zu be
 
 Wenn das Ergebnis einer Anstrengung $Y$ heißt, dann kann man formulieren: $$Y_t=K_t \cdot E_t$$, wobei $K_t$ die zu einem bestimmten Zeitpunkt $t$ vorhandenen Fähigkeiten und $E_t$ die jeweiligen Anstrengungen (effort) bezeichnen. 
 
-Das Ergebnis der Anstrengung $Y$ hat nicht aus sich heraus einen Wert, sondern stiftet Nutzen in Form von Freude, Stolz über das Geleistete, Belohnungen usw. Nehmen wir an, dass wir eine Funktion mit positivem aber abnehmenden Grenznutzen haben $u(Y_t)=ln(Y_t)$. Man freut sich also über zusätzliche Ergebnisse, aber die zustätzliche Freude wird immer geringer
+Das Ergebnis der Anstrengung $Y$ hat nicht aus sich heraus einen Wert, sondern stiftet Nutzen in Form von Freude, Stolz über das Geleistete, Belohnungen usw. Nehmen wir an, dass wir eine Funktion mit positivem aber abnehmenden Grenznutzen haben $U(Y_t)=ln(Y_t)$. Man freut sich also über zusätzliche Ergebnisse, aber die zustätzliche Freude wird immer geringer
 
 [hier ein plot]
 
 Nehmen wir ferner an, dass Anstrengungen tatsächlich anstrengend sind. Anstrengungen führen zu Erschöpfung, Langeweile, usw. Dieser Rückgang an Freude über das Ergebnis durch die Anstrengung habe die Form $\frac{\theta_E}{2}E^2$. Je mehr das Individuum sich anstrengt, desto erschöpfter ist es und je mehr es sich bereits angestrengt hat, desto größer ist die zusätzliche Erschöpfung.
 
-Mein Nettonutzen ist also $$U(K_t, E_t)=ln(K_t \cdot E_t)-\frac{\theta_E}{2}E^2$$.
+Der Nettonutzen ist also $$U(K_t, E_t)=ln(K_t \cdot E_t)-\frac{\theta_E}{2}E^2$$.
 
-Wenn man für ein gegebenes $K_t$ den Nutzen gegen die Anstrengung abträgt, erkennt man ein Maximum. Dieses gibt die Nutzenmaximale Menge von $E_t$ zu einem bestimmten Zeitpunkt.
+
+Das (statische) Maximierungsproblem lautet $$\max_{E_t} \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2$$
+
+Die Bedingung erster Ordnung ergibt sich durch die partielle Ableitung nach $E_t$:$$\frac{\partial U}{\partial E_t} = \frac{1}{E_t} - \theta_E E_t = 0 \quad \Rightarrow \quad \theta_E E_t = \frac{1}{E_t}$$
+
+Löst man diese Bedingung nach $E_t$ auf, zeigt sich ein bemerkenswertes Ergebnis:$$E_t^2 = \frac{1}{\theta_E} \quad \Rightarrow \quad E^* = \frac{1}{\sqrt{\theta_E}}$$
+
+Da dieser Ausdruck unabhängig von $K_t$ und der Zeit $t$ ist, wählt das statisch optimierende Indiviuum in jeder Periode ein konstantes Anstrengungsniveau. 
+
 
 [hier ergänzen: ein ggplot]
 
@@ -58,8 +66,10 @@ $$\frac{\mathrm{d}K_t}{\mathrm{d}t} \equiv \dot{K}_t = E_t - \delta K_t$$
 
 Solange die aktuelle Anstrengung ausreicht, um die Abschreibungen mindestens aufzuwiegen, bleibt das Humankapital erhalten oder wächst sogar. Wenn jedoch die Anstrengungen dazu nicht ausreichen, verfällt das Humankapital. Wenn sich die beiden Effekte auf das Humankapital genau aufheben, gibt es keine Veränderung mehr (steady state) $$\dot{K}_t = 0 \iff E_t = \delta K_t$$.
 
+Setzt man hier den Steady State für die Anstrengung $E^*$ ein, ergibt sich ein Steady State für das Humankapital: $$K^* = \frac{E^*}{\delta} = \frac{1}{\delta \sqrt{\theta_E}}$$
 
 Je nach anfänglichem $K_0$, der Abschreibungsrate $\delta$ und den (emotionalen) Kosten der Anstrengung $\theta_E$ kann durch das beiläufige Lernen, das aus der Wahl einer Anstrengung im Zusammenhang mit einer statischen Nutzenmaximierung erfolgt, zu einem Anstieg oder zu einer Erosion des Humankapitals führen. 
+
 
 
 [ggplot Beispiele]
@@ -79,11 +89,17 @@ Ein über den Zeitpfad optimierendes Individuum wählt den Zeitpfad seiner Anstr
 
 $$\max_{E_t} \int_{0}^{\infty} e^{-\rho t} \left( \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 \right) dt$$
 
-unter der Nebenbedingung $\dot{K}_t = E_t - \delta K_t$ sowie gegebenem Anfangskapital $K_0 > 0$.
+unter der Nebenbedingung $$\dot{K}_t = E_t - \delta K_t$$ sowie gegebenem Anfangskapital $K_0 > 0$.
 
-Zur Lösung dieses Problems formulieren wir die zugehörige **Hamilton-Funktion**. Sei $\mu_t$ der dynamische Schattenpreis des Humankapitals:
+Zur Lösung dieses Problems formulieren wir die zugehörige **Hamilton-Funktion** [^1].
 
 $$\mathcal{H} = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \mu_t (E_t - \delta K_t)$$
+
+[^1]: Die Hamilton-Funktion ist eine Umformulierung der folgenden Funktion: $F= e^{-\rho t} \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \lambda_t (E_t - \delta K_t)$. Sei $\mu_t = \lambda \cdot e^{\rho t}$
+
+Dabei bezeichnet $\mu_t$ den dynamischen Schattenpreis des Humankapitals. Es ist der Grenznutzen des Humankapitals und zeigt den gegenwärtigen Gesamtwert, den eine zusätzliche Einheit Humankapital ($K_t$) für die gesamte verbleibende Zukunft des Individuums stiftet. Innerhalb der Hamilton-Funktion verknüpft er die beiden Summanden, von denen der erste Nutzen ausdrückt, die Klammer im zweiten jedoch nur die Entwicklung des Humankapitals. Durch $\mu_t$ wird der Wert es Humankapitals in &bdquo;Nutzeneinheiten&rdquo; umgerechnet und somit zum ersten Teil addierbar gemacht.
+
+
 
 Die Hamilton-Funktion besteht aus zwei Teilen. Der erste Teil enthält das bekannte statische Optimierungsproblem. Der zweite Teil beinhaltet die Berücksichtigung der Dynamik: Durch die Wahl von $E_t$ wird die Entwicklung von $K_t$ beeinflusst.
 
@@ -141,97 +157,7 @@ Je geduldiger der Agent ist (je kleiner die Diskontrate $\rho$), desto höher li
 
 Wenn man davon ausgeht, dass die Parameter $\theta_E$, $\delta$ und $\rho$ individuell unterschiedlich sein können, dann können diese Parameter Unterschiede im individuellen Lernerfolg, d.h. im Aufbau von Humankapital, erklären. Über die subjektiven Arbeitsbedingungen und die subjektive Mühe des Lernens ($\theta_E$), die Vergesslichkeit oder Kurzlebigkeit des Gelernten ($\delta$) oder die Geduld bzw. die langfristigkeit des Planungshorizontes ($\rho$) zu sprechen ist vermutlich einfacher als über so komplizierte Ideen wie Talent, Begabung oder Intelligenz.
 
-
-# Das Modell
-
-
-## Intertemporale Optimierung im Aufbau von Humankapital
-
-### Produktions- Nutzen- und Akkumulationsfunktion
-
-Ein vorausschauender Agent produziert in jeder Periode $t$ einen kognitiven Output $Y_t$. Dieser Output ist eine Funktion seines akkumulierten Humankapitals $K_t$ und seiner eigenen aktuellen kognitiven Anstrengung (effort) $E_t$:
-
-$$Y_t = K_t E_t$$
-
-Der Agent zieht Nutzen aus dem generierten Output (beispielsweise in Form von benoteten Prüfungsleistungen, Reputation oder Einkommen).
-
-Gleichzeitig verursacht die kognitive Anstrengung $E_t$ ein konvexes Arbeitsleid. Die Funktion des Nutzens in jeder Periode lautet:
-
-$$U(Y_t, E_t) = \ln(Y_t) - \frac{\theta_E}{2} E_t^2 = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2$$
-
-Das Humankapital unterliegt einer stetigen, exogenen Abschreibungsrate $\delta$, die das Vergessen oder Veralten von Wissen abbildet. Nur durch eigene Anstrengung $E_t$ kann neues Humankapital aufgebaut werden. 
-
-Die Entwicklung des Humankapitals über die Zeit lässt sich also schreiben:
-
-$$\dot{K}_t = E_t - \delta K_t$$
-
-Der Agent wählt den Zeitpfad seiner Anstrengung $E_t$, um seinen über einen unendlichen Zeithorizont diskontierten Gesamtnutzen zu maximieren. Die exogene Zeitpräferenzrate (Diskontrate) des Agenten ist $i > 0$. Das intertemporale Optimierungsproblem lautet:
-
-$$\max_{E_t} \int_{0}^{\infty} e^{-it} \left( \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 \right) dt$$
-
-unter der Nebenbedingung $\dot{K}_t = E_t - \delta K_t$ sowie gegebenem Anfangskapital $K_0 > 0$.
-
-
-### Dynamische Optimierung
-
-Zur Lösung dieses Problems formulieren wir die zugehörige **Hamilton-Funktion**. Sei $\mu_t$ der dynamische Schattenpreis des Humankapitals:
-
-$$\mathcal{H} = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \mu_t (E_t - \delta K_t)$$
-
-Die Bedingungen erster Ordnung für einen inneren Lösungs-Pfad ergeben sich aus der Ableitung nach der Kontrollvariablen $E_t$ sowie der Bewegungsgleichung für den Schattenpreis $\mu_t$:
-
-#### Bedingung für die Kontrollvariable (Anstrengung)
-
-
-$$\frac{\partial \mathcal{H}}{\partial E_t} = 0 \quad \Rightarrow \quad \frac{1}{E_t} - \theta_E E_t + \mu_t = 0$$
-
-Umgestellt nach dem Schattenpreis ergibt sich:
-
-
-$$\mu_t = \theta_E E_t - \frac{1}{E_t}$$
-
-Diese Gleichung zeigt den zentralen Trade-off: Der Schattenpreis $\mu_t$ entspricht dem Grenzarbeitsleid der Anstrengung ($\theta_E E_t$) abzüglich des direkten Grenznutzens aus dem aktuellen Output ($1/E_t$).
-
-#### Euler-Gleichung (Bewegung des Schattenpreises)
-
-
-$$\dot{\mu}_t = i \mu_t - \frac{\partial \mathcal{H}}{\partial K_t} \quad \Rightarrow \quad \dot{\mu}_t = i \mu_t - \left( \frac{1}{K_t} - \mu_t \delta \right)$$
-
-Zusammengefasst beschreibt diese Differentialgleichung die Dynamik des Schattenpreises über die Zeit:[^1]
-
-
-$$\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}$$
-
-
-
-[^1]: Ergänzt wird das System durch die Transversalitätsbedingung $\lim_{t \to \infty} e^{-it} \mu_t K_t = 0$.
-
-#### Konvergenz von $E$, $K$ und $\mu$
-
-Um die Entwicklung der Anstrengung $E_t$ in Abhängigkeit vom Humankapitalstock $K_t$ darzustellen, eliminieren wir den Schattenpreis $\mu_t$. Dazu leiten wir die Optimalitätsbedingung $\mu_t = \theta_E E_t - \frac{1}{E_t}$ nach der Zeit $t$ ab:$$\dot{\mu}_t = \theta_E \dot{E}_t + \frac{1}{E_t^2} \dot{E}_t = \left( \theta_E + \frac{1}{E_t^2} \right) \dot{E}_t$$
-
-Setzen wir diesen Ausdruck sowie die Gleichung für $\mu_t$ in die Euler-Gleichung $\dot{\mu}_t$ ein, erhalten wir:$$\left( \theta_E + \frac{1}{E_t^2} \right) \dot{E}_t = (i + \delta) \left( \theta_E E_t - \frac{1}{E_t} \right) - \frac{1}{K_t}$$
-
-Aufgelöst nach $\dot{E}_t$ ergibt sich zusammen mit der Zustandsgleichung des Humankapitals ein autonomes, zweidimensionales Differentialgleichungssystem, das die zeitliche Entwicklung von Kapitalstock und Anstrengung vollständig beschreibt:$$\dot{K}_t = E_t - \delta K_t$$
-
-$$\dot{E}_t = \frac{(i + \delta) \left( \theta_E E_t - \frac{1}{E_t} \right) - \frac{1}{K_t}}{\theta_E + \frac{1}{E_t^2}}$$
-
-
-Das System konvergiert entlang eines Sattelpfades in ein langfristiges stationäres Gleichgewicht (Steady State), in dem sich weder der Kapitalstock noch die Anstrengung weiter verändern ($\dot{K}_t = 0$ und $\dot{E}_t = 0$).
-
-Aus der Stationaritätsbedingung des Kapitals ($\dot{K}_t = 0$) folgt unmittelbar $$E^* = \delta K^* \quad \Rightarrow \quad K^* = \frac{E^*}{\delta}$$
-
-In einem stationären Zustand der Anstrengung ($\dot{E}_t = 0$) muss der Zähler der Differentialgleichung für $\dot{E}_t$ null werden:$$(i + \delta) \left( \theta_E E^* - \frac{1}{E^*} \right) - \frac{1}{K^*} = 0$$
-
-Setzen wir die Gleichgewichtsbedingung $K^* = E^* / \delta$ ein und multiplizieren die Gleichung mit $E^*$, ergibt sich:$$(i + \delta) \left( \theta_E (E^*)^2 - 1 \right) - \delta = 0$$
-
-$$(i + \delta) \theta_E (E^*)^2 = i + 2\delta$$Daraus resultieren die expliziten, konvergierenden Gleichgewichtswerte für die optimale Anstrengung $E^*$ und das langfristige Humankapital $K^*$:$$E^* = \sqrt{\frac{i + 2\delta}{\theta_E (i + \delta)}}$$
-
-$$K^* = \frac{E^*}{\delta} = \sqrt{\frac{i + 2\delta}{\theta_E \delta^2 (i + \delta)}}$$
-
-Je geduldiger der Agent ist (je kleiner die Diskontrate $i$), desto höher liegt das Anstrengungsniveau $E^*$, gegen das das System konvergiert, und desto massiver ist der langfristig gesicherte Humankapitalstock $K^*$.
-
-Wenn man davon ausgeht, dass die Parameter $\theta_E$, $\delta$ und $i$ individuell unterschiedlich sein können, dann können diese Parameter Unterschiede im individuellen Lernerfolg, d.h. im Aufbau von Humankapital, erklären. Über die subjektiven Arbeitsbedingungen und die subjektive Mühe des Lernens ($\theta_E$), die Vergesslichkeit oder Kurzlebigkeit des Gelernten ($\delta$) oder die Geduld bzw. die langfristigkeit des Planungshorizontes ($i$) zu sprechen ist vermutlich einfacher als über so komplizierte Ideen wie Talent, Begabung oder Intelligenz.
+[hier kritisches K...]
 
 ## Das Mindestoutput-Niveau als paternalistische Maßnahme gegen zu geringe Leistung
 
