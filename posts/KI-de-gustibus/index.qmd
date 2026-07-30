@@ -25,19 +25,74 @@ Bildung bedeutet, dass wir etwas dazulerenen, dass wir etwas können, was wir vo
 
 Im ökonomischen Kontext ist der Begriff Humankapital üblich geworden, um zu beschreiben, dass jemand produktiver werden/ dazulernen kann. Dieses Humankapital kann bewusst aufgebaut werden oder sich aber als Nebenprodukt anderer Entscheidungen ergeben. 
 
-## Lernen als Tun. 
+## Lernen als hedonistisches Tun. 
 
 ### Die Entscheidung über Anstrengung in jedem Zeitpunkt
 
-Wenn das Ergebnis einer Anstrengung $Y$ heißt, dann kann man formulieren: $$Y_t=K_t \cdot E_t$$, wobei $K_t$ die zu einem bestimmten Zeitpunkt $t$ vorhandenen Fähigkeiten und $E_t$ die jeweiligen Anstrengungen (effort) bezeichnen. 
+sei $$Y_t=K_t \cdot E_t$$, wobei $Y_t$ das Ergebnis einesr Anstrenung ist (eine glöste Aufgabe, eine geschriebene Hausarbeit, ...), $K_t$ die zu einem bestimmten Zeitpunkt $t$ vorhandenen Fähigkeiten (das Humankapital) und $E_t$ die jeweiligen Anstrengungen (effort) bezeichnen. 
 
-Das Ergebnis der Anstrengung $Y$ hat nicht aus sich heraus einen Wert, sondern stiftet Nutzen in Form von Freude, Stolz über das Geleistete, Belohnungen usw. Nehmen wir an, dass wir eine Funktion mit positivem aber abnehmenden Grenznutzen haben $U(Y_t)=ln(Y_t)$. Man freut sich also über zusätzliche Ergebnisse, aber die zustätzliche Freude wird immer geringer
+Das Ergebnis der Anstrengung $Y$ hat nicht aus sich heraus einen Wert, sondern stiftet Nutzen in Form von Freude, Stolz über das Geleistete, Belohnungen usw. Nehmen wir an, dass wir eine Funktion mit positivem aber abnehmenden Grenznutzen haben $U(Y_t)=ln(Y_t)$. Man freut sich also über zusätzliche Ergebnisse, aber die zustätzliche Freude wird immer geringer.
 
 [hier ein plot]
+```{r}
+#| message: false
+#| warning: false
+
+library(dplyr)
+library(ggplot2)
+
+df <- data.frame(Y=seq(.1,15, by=.1)) %>% 
+  mutate(U=log(Y))
+
+# head(df)
+
+df %>% ggplot(aes(Y, U))+
+    geom_line()+
+    theme_light()+
+    scale_x_continuous(breaks=NULL)+
+    scale_y_continuous(breaks=NULL)+
+    labs(title="Positiver aber abnehmender Grenznutzen",
+         x="Leistung Y",
+         y="Nutzen U aus Y")
+```
 
 Nehmen wir ferner an, dass Anstrengungen tatsächlich anstrengend sind. Anstrengungen führen zu Erschöpfung, Langeweile, usw. Dieser Rückgang an Freude über das Ergebnis durch die Anstrengung habe die Form $\frac{\theta_E}{2}E^2$. Je mehr das Individuum sich anstrengt, desto erschöpfter ist es und je mehr es sich bereits angestrengt hat, desto größer ist die zusätzliche Erschöpfung.
 
 Der Nettonutzen ist also $$U(K_t, E_t)=ln(K_t \cdot E_t)-\frac{\theta_E}{2}E^2$$.
+
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: "Die Nettonutzenfunktion (inkl. Kosten der Anstrengung)"
+
+library(dplyr)
+library(ggplot2)
+
+# Parameter definieren
+K <- 1
+theta_E <- 1
+
+E_opt <- 1/sqrt(theta_E)
+
+df <- data.frame(E = seq(0.1, 1.8, by = 0.05)) %>% 
+  mutate(U = log(K * E) - (theta_E / 2) * E^2)
+
+# head(df)
+
+df %>% ggplot(aes(E, U)) +
+    geom_line(color = "#2c3e50", linewidth = 1) +
+    geom_vline(xintercept= E_opt, linetype="dashed")+
+    theme_light() +
+  scale_x_continuous(
+  breaks = E_opt, 
+  labels = expression("optimale Anstrengung " ~ E^"*")
+) +
+    scale_y_continuous(breaks = NULL) +
+    labs(title = "Nutzenverlauf unter Berücksichtigung der Kosten der Anstrengung",
+         x = "Eigene Anstrengung E",
+         y = "Nutzen U(K, E)")
+```
 
 
 Das (statische) Maximierungsproblem lautet $$\max_{E_t} \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2$$
@@ -49,12 +104,10 @@ Löst man diese Bedingung nach $E_t$ auf, zeigt sich ein bemerkenswertes Ergebni
 Da dieser Ausdruck unabhängig von $K_t$ und der Zeit $t$ ist, wählt das statisch optimierende Indiviuum in jeder Periode ein konstantes Anstrengungsniveau. 
 
 
-[hier ergänzen: ein ggplot]
-
 
 ### Der zufällige Auf- oder Abbau von Humankapital
 
-Bislang haben wir uns nur angeschaut, wie die nutzenmaximierende Menge zu einem bestimmten Zeitpunkt ermittelt wird, wenn ein bestimmtes Niveau von Humankapital gegeben ist und wenn man nur diesen Zeitpunkt betrachtet. 
+Bislang haben wir uns nur angeschaut, wie die nutzenmaximierende Menge zu einem bestimmten Zeitpunkt ermittelt wird, wenn ein bestimmtes Niveau von Humankapital gegeben ist und wenn man nur diesen Zeitpunkt betrachtet. Es geht also nur ein momentbezogener hedonistisches Nutzen in die Überlegungen ein.
 
 Humankapital bildet sich bestimmt aus ganz vielen Einflüssen: Genetischer Zufall (Talent), Erziehung, zufällige Erlebnisse. Humankapital bildet sich aber zummindest bestimmt *auch* durch Anstrengung. 
 
@@ -72,15 +125,88 @@ Je nach anfänglichem $K_0$, der Abschreibungsrate $\delta$ und den (emotionalen
 
 
 
-[ggplot Beispiele]
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: "Caption"
+
+
+library(tidyverse)
+
+# ==============================================================================
+# 1. Modellparameter & Startwerte
+# ==============================================================================
+i_val   <- 0.05    # Diskontsatz für die Gegenwartswert-Integration
+theta_E <- 1.0     # Parameter des Arbeitsleids
+delta   <- 0.05    # Abschreibungsrate des Humankapitals
+K_0     <- 2.0     # Startkapital zum Zeitpunkt t = 0
+T_max   <- 60      # Simulationshorizont
+dt      <- 0.5     # Zeitraster für die Trapezintegration
+
+# ==============================================================================
+# 2. Lagrange-Optimierung & Kumuliertes Nutzenintegral W(t)
+# ==============================================================================
+E_L <- 1 / sqrt(theta_E)
+
+df_lagrange <- data.frame(time = seq(0, T_max, by = dt)) %>% 
+  mutate(
+    # Starre Anstrengung des myopischen Agenten
+    E = E_L,
+    
+    # Analytischer Pfad des Humankapitals
+    K = K_0 * exp(-delta * time) + (E_L / delta) * (1 - exp(-delta * time)),
+    
+    # Output
+    Y = K * E,
+    
+    # 1. Diskontierter Periodennutzen (Flussgröße)
+    U_flow = exp(-i_val * time) * (log(Y) - (theta_E / 2) * E^2),
+    
+    # 2. INTEGRAL / KUMULIERTE WOHLFAHRT W(t) via Trapezregel/cumsum (Bestandsgröße)
+    U = cumsum((U_flow + lag(U_flow, default = U_flow[1])) / 2 * dt)
+  )
+
+# ==============================================================================
+# 3. Datenaufbereitung & Visualisierung
+# ==============================================================================
+df_long <- df_lagrange %>% 
+  pivot_longer(cols = c(K, E, Y, U), names_to = "Variable", values_to = "Wert") %>% 
+  mutate(Variable = factor(Variable, levels = c("K", "E", "Y", "U")))
+
+facet_labels <- c(
+  K = "Humankapital (K)",
+  E = "Eigene Anstrengung (E)",
+  Y = "Output (Y)",
+  U = "Kumulierte Wohlfahrt W(t) [Integral]"
+)
+
+ggplot(df_long, aes(x = time, y = Wert)) +
+  geom_line(color = "#d95f02", linewidth = 1.2) +
+  facet_wrap(~ Variable, scales = "free_y", ncol = 2,
+             labeller = as_labeller(facet_labels)) +
+  labs(
+    title = "Dynamik des Lagrange-Agenten mit kumulierter Wohlfahrt",
+    subtitle = expression(paste("Das Nutzenintegral ", W(t) == int(exp(-i*s)*U(s)*ds, 0, t), " flacht asymptotisch gegen das Gesamtpotenzial ab")),
+    x = "Zeit (t)", 
+    y = "Niveau"
+  ) +
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.title = element_text(face = "bold", size = 15),
+    strip.text = element_text(face = "bold", size = 12),
+    panel.grid.minor = element_blank()
+  )
+
+```
+
 
 ## Lernen als zielgerichteter Prozess
 
-Die Akkumulation oder Erosion von Humankapital ist bislang rein zufällig erfolgt, sie ist das Nebenprodukt einer momentanen Nutzenmaximierung. Diese Zufälligkeit hat in der Lebenswirklichkeit bestimmt ihren Platz. Beispielsweise kann man wandern gehen, um die Landschaft und die Bewegung zu genießen und baut nebenher körperliche Fitness und geografische Orientierungsfähigkeit auf. Man kann ins Theater gehen, um sich für einen Abend unterhalten zu lassen und erlangt nebenher Wissen über Literaturgeschichte, Schauspieltechniken und das Modeempfinden der anderen Zuschauer. Man kann ein neues Rezept ausprobieren, weil man ein leckeres Essen zubereiten möchte und lernt nebenher neue Kochtechniken. 
+Die Akkumulation oder Erosion von Humankapital ist bislang rein zufällig erfolgt, sie ist das Nebenprodukt einer momentanen Nutzenmaximierung. Diese Zufälligkeit hat in der Lebenswirklichkeit bestimmt ihren Platz. Beispielsweise kann man wandern gehen, um die Landschaft und die Bewegung zu genießen und baut nebenher körperliche Fitness und geografische Orientierungsfähigkeit auf. Man kann ins Theater gehen, um sich für einen Abend unterhalten zu lassen und erlangt nebenher Wissen über Literaturgeschichte, Schauspieltechniken und das Modeempfinden der anderen Zuschauer. Man kann ein neues Rezept ausprobieren, weil man eine schmackhafte Mahlzeit zubereiten möchte und lernt nebenher neue Zutaen undKochtechniken kennen usw. 
 
 Diese Zufälligkeit ist aber unbefriedigend für die Beschreibung eines zielgerichteten Bildungsprozesses. Wenn die heutige Anstrengung nicht nur zu höheren Output und höherem Arbeitsleid *heute* führt, sondern *auch* die Bedingungen beeinflusst, unter denen in der *Zukunft* Output erzeugt werden kann, dann sollte dies auch in dem Optimierungskalkül berücksichtigt werden.
 
-Es müsste also nicht mehr die Anstrengung zu einem *Zeitpunkt* optimiert werden, sondern ein ganzer *Zeitpfad* der Anstrengung, der jeweils den Nutzen in der Gegenwart sowie den möglichen Nutzen aus künftiger höherer Produktivität berücksichtigt.
+Es müsste also nicht mehr die Anstrengung zu einem *Zeitpunkt* optimiert werden, sondern ein ganzer *Zeitpfad* der Anstrengung, in dessen Verlauf die Wirkung heutiger Handlungen auf den Nutzen heute  und die zukünftige Produktivität berücksichtigt wird. 
 
 Hierbei soll berücksichtigt werden, dass künftige Ereignise mit einem geringeren Gewicht bewertet werden als heutige. Dies geschieht, indem (ausgehend von der Gegenwart $t=0$) jedes Ereignis mit $e^{-\rho t}$ diskontiert wird. Für $t=0$ ist diess Gewicht gleich $1$. Je weiter ein Ereignis in der Zukunft liegt, desto geringer wird es gewichtet. Hier wird von einem im Prinzip unendlich langen Planungshorizont ausgegangen. Allerdings haben Ereignisse in der fernen Zukunft nur einen sehr geringen Einfluss uud das heutige Nutzenniveau. Die Annahme ist also zunächst einmal nicht zu problematisch. 
 
@@ -98,8 +224,6 @@ $$\mathcal{H} = \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \mu_t (E_t - \delta K_
 [^1]: Die Hamilton-Funktion ist eine Umformulierung der folgenden Funktion: $F= e^{-\rho t} \ln(K_t E_t) - \frac{\theta_E}{2} E_t^2 + \lambda_t (E_t - \delta K_t)$. Sei $\mu_t = \lambda \cdot e^{\rho t}$
 
 Dabei bezeichnet $\mu_t$ den dynamischen Schattenpreis des Humankapitals. Es ist der Grenznutzen des Humankapitals und zeigt den gegenwärtigen Gesamtwert, den eine zusätzliche Einheit Humankapital ($K_t$) für die gesamte verbleibende Zukunft des Individuums stiftet. Innerhalb der Hamilton-Funktion verknüpft er die beiden Summanden, von denen der erste Nutzen ausdrückt, die Klammer im zweiten jedoch nur die Entwicklung des Humankapitals. Durch $\mu_t$ wird der Wert es Humankapitals in &bdquo;Nutzeneinheiten&rdquo; umgerechnet und somit zum ersten Teil addierbar gemacht.
-
-
 
 Die Hamilton-Funktion besteht aus zwei Teilen. Der erste Teil enthält das bekannte statische Optimierungsproblem. Der zweite Teil beinhaltet die Berücksichtigung der Dynamik: Durch die Wahl von $E_t$ wird die Entwicklung von $K_t$ beeinflusst.
 
@@ -157,18 +281,240 @@ Je geduldiger der Agent ist (je kleiner die Diskontrate $\rho$), desto höher li
 
 Wenn man davon ausgeht, dass die Parameter $\theta_E$, $\delta$ und $\rho$ individuell unterschiedlich sein können, dann können diese Parameter Unterschiede im individuellen Lernerfolg, d.h. im Aufbau von Humankapital, erklären. Über die subjektiven Arbeitsbedingungen und die subjektive Mühe des Lernens ($\theta_E$), die Vergesslichkeit oder Kurzlebigkeit des Gelernten ($\delta$) oder die Geduld bzw. die langfristigkeit des Planungshorizontes ($\rho$) zu sprechen ist vermutlich einfacher als über so komplizierte Ideen wie Talent, Begabung oder Intelligenz.
 
-[hier kritisches K...]
+Die folgende Abbildung zeigt die Auswirkung unterschiedlicher Diskontraten $\rho$.
+
+
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: "Caption"
+
+library(tidyverse)
+
+# ==============================================================================
+# 1. Globale Modellparameter
+# ==============================================================================
+theta_E <- 1.0     # Parameter des Arbeitsleids
+delta   <- 0.05    # Abschreibungsrate des Humankapitals
+K_0     <- 2.0     # Startkapital zum Zeitpunkt t = 0
+T_max   <- 60      # Simulationshorizont
+dt      <- 0.5     # Schrittweite der Zeitreihe
+
+i_low   <- 0.02    # Niedriger Diskontsatz (hohe Geduld)
+i_high  <- 0.20    # Hoher Diskontsatz (hohe Ungeduld)
+
+# ==============================================================================
+# 2. Hilfsfunktion mit kumuliertem Nutzen-Integral W(t)
+# ==============================================================================
+sim_hamilton <- function(i_val, label) {
+  times <- seq(0, T_max, by = dt)
+  
+  E_star <- sqrt((i_val + 2 * delta) / (theta_E * (i_val + delta)))
+  K_star <- E_star / delta
+  
+  beta    <- theta_E + 1 / (E_star^2)
+  det_J   <- -delta * (i_val + delta) - 1 / (beta * K_star^2)
+  lambda  <- (i_val - sqrt(i_val^2 - 4 * det_J)) / 2
+  slope_E <- lambda + delta
+  
+  data.frame(time = times) %>% 
+    mutate(
+      K      = K_star + (K_0 - K_star) * exp(lambda * time),
+      E      = E_star + slope_E * (K - K_star),
+      Y      = K * E,
+      
+      # 1. Diskontierter Periodennutzen (Flussgröße)
+      U_flow = exp(-i_val * time) * (log(Y) - (theta_E / 2) * E^2),
+      
+      # 2. INTEGRAL / KUMULIERTE WOHLFAHRT W(t) via Trapezregel/cumsum (Bestandsgröße)
+      # Numerische Approximation: Integral_0^t exp(-i*s)*U(s) ds
+      U      = cumsum((U_flow + lag(U_flow, default = U_flow[1])) / 2 * dt),
+      
+      Typ    = label
+    )
+}
+
+# ==============================================================================
+# 3. Daten zusammenführen & Visualisieren
+# ==============================================================================
+df_hamilton <- bind_rows(
+  sim_hamilton(i_low,  "Geduldig (niedriger Diskontsatz: i = 0.02)"),
+  sim_hamilton(i_high, "Ungeduldig (hoher Diskontsatz: i = 0.20)")
+)
+
+df_long <- df_hamilton %>% 
+  pivot_longer(cols = c(K, E, Y, U), names_to = "Variable", values_to = "Wert") %>% 
+  mutate(Variable = factor(Variable, levels = c("K", "E", "Y", "U")))
+
+facet_labels <- c(
+  K = "Humankapital (K)",
+  E = "Eigene Anstrengung (E)",
+  Y = "Output (Y)",
+  U = "Kumulierte Wohlfahrt W(t) [Integral]"
+)
+
+ggplot(df_long, aes(x = time, y = Wert, color = Typ, linetype = Typ)) +
+  geom_line(linewidth = 1.2) +
+  facet_wrap(~ Variable, scales = "free_y", ncol = 2,
+             labeller = as_labeller(facet_labels)) +
+  scale_color_manual(values = c(
+    "Geduldig (niedriger Diskontsatz: i = 0.02)" = "#1b9e77",
+    "Ungeduldig (hoher Diskontsatz: i = 0.20)"  = "#e74c3c"
+  )) +
+  scale_linetype_manual(values = c("solid", "dashed")) +
+  labs(
+    title = "Dynamik des Hamilton-Agenten mit kumulierter Wohlfahrt",
+    subtitle = expression(paste("Das Nutzenintegral ", W(t) == int(exp(-i*s)*U(s)*ds, 0, t), " konvergiert gegen den Gesamtwert des Zielfunktionals")),
+    x = "Zeit (t)", 
+    y = "Niveau",
+    color = "Modell-Variante",
+    linetype = "Modell-Variante"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position = "bottom",
+    legend.direction = "vertical",                  plot.title = element_text(face = "bold", size = 15),
+    strip.text = element_text(face = "bold", size = 12),
+    panel.grid.minor = element_blank()
+  )
+
+```
+
+
+
 
 ## Das Mindestoutput-Niveau als paternalistische Maßnahme gegen zu geringe Leistung
 
 Wenn das Leistungsniveau unterhalb einer exogenen Erwartung bleibt (etwa den erwarteten Leistungen in einem Studiengang), kann ein Mindestoutputniveau $$Y_t \ge \bar{Y}$$ vorgebeben werden. Diese Maßnahme zwingt ein Individuum dazu sich anzustrengen, durch die Wahl von $E_t$ bei gegebenem $K_t$ das Mindestniveau zu erreichen. Das Ergebnis ist nicht mehr nutzenmaximierend, sodass man begründen müsste, warum ein Individuum sich diesem Zwang unterwerfen möchte.
 
+Diese Restriktion kann auf zweierlei Weise wirken. Wenn ein Individuum seinen Steady State in $E$ und $K$ noch nicht erreicht hat, dann kann die Vorgabe eines Mindestoutputs $\bar{Y}$ den Weg zum Steady State beschleunigen. Wenn der Output im Steady State kleiner ist als der Mindestoutput, $Y(K^*, E^*)< \bar{Y}$, dann kann die Leistung im Steady State erhöht werden, zumindest, solange ein Individuum den Mindestoutput erreichen muss. Dieser Fal soll hier betrachtet werden. Die Vorgabe eines Mindestoutputniveaus führt  auch zum Aufbau und Erhalt von Humankapital, zumindest für den Zeitraum, für den die Restriktion bindet. Fällt diese Restriktion weg, konvergiert der Output wieder gegen $Y(K^*, E^*)< \bar{Y}$.
+
+Unter der externen Vorgabe muss gelten $K\cdot E = \bar{Y}$. Im Steady State unter der externen Vorgabe gilt $\dot{K}=0$ also $\bar{E}^*=\delta \bar{K}^*$. Daher gilt $$\bar{K}^*=\sqrt{\frac{\bar{Y}}{\delta}}$$ und $$\bar{E}^* = \delta \cdot \sqrt{\frac{\bar{Y}}{\delta}} = \sqrt{\frac{\delta^2 \cdot \bar{Y}}{\delta}} = \sqrt{\delta \cdot \bar{Y}}$$
+
+Da $\bar{Y}$ zu jedem Zeitpunkt erreicht werden muss und es ausgehend von $Y^* < \bar{Y}$ keinen Anreiz gibt, das Mindestniveau zu übererfüllen, unterscheiden sich die Wege vom Muster her nicht zwischen dynamischen Optimierern und rein hedonistischen statischen Optimierern. Zu jedem Zeitpunkt muss die Mindestvorgabe erreicht werden, da das Humankapital dafür zu Beginn der Anpassung noch relativ gering ist, muss das Ausmaß der Anstrengung zunächst sehr hoch sein, mit dem Anwachsen von $K_t$ wird es dann immer geringer ($\bar{Y}$ wird nicht übererfüllt) und im Steady State entspricht es dann genau $\bar{E}^*$.
 
 
+```{r}
+#| message: false
+#| warning: false
+#| fig-cap: "Caption"
 
-Diese Restriktion kann auf zweierlei Weise wirken. Wenn ein Individuum seinen Steady State in $E$ und $K$ noch nicht erreicht hat, dann kann die Vorgabe eines Mindestoutputs $\bar{Y}$ den Weg zum Steady State beschleunigen. Wenn der Output im Steady State kleiner ist als der Mindestoutput, $Y(K^*, E^*)< \bar{Y}$, dann kann die Leistung im Steady State erhöht werden, zumindest, solange ein Individuum den Mindestoutput erreichen muss. Die Vorgabe eines Mindestoutputniveaus führt nicht nur zu kurzfristigen Anstrengungen, sondern tatsächlich auch zum Aufbau und Erhalt von Humankapital zumindest für den Zeitraum, für den die Restriktion bindet. Fällt diese Restriktion weg, konvergiert der Output wieder gegen $Y(K^*, E^*)< \bar{Y}$.
 
-Unter der externen Vorgabe muss gelten $K\cdot E = \bar{Y}$. Im Steady State unter der externen Vorgabe gilt $\dot{K}=0$ also $\bar{E}^*=\delta \bar{K}^*$. Daher gilt $$\bar{K}^*=\sqrt{\frac{\bar{Y}}{\delta}}$$ und $$E^* = \delta \cdot \sqrt{\frac{\bar{Y}}{\delta}} = \sqrt{\frac{\delta^2 \cdot \bar{Y}}{\delta}} = \sqrt{\delta \cdot \bar{Y}}$$
+library(tidyverse)
+
+# ==============================================================================
+# 1. Globale Modellparameter & Steady-State-Berechnung
+# ==============================================================================
+i_val   <- 0.05    # Diskontsatz
+theta_E <- 1.0     # Parameter des Arbeitsleids
+delta   <- 0.05    # Abschreibungsrate des Humankapitals
+T_max   <- 60      # Simulationshorizont
+dt      <- 0.5     # Schrittweite
+
+# Analytische Steady-State-Werte
+E_star <- sqrt((i_val + 2 * delta) / (theta_E * (i_val + delta)))
+K_star <- E_star / delta
+Y_star <- K_star * E_star
+
+# Startwerte für die beiden Szenarien
+K_0_low  <- 5.0    # Unterausstattung (K_0 < K*)
+K_0_high <- 20.0   # Unterausstattung, aber höherer Startwert
+
+# ==============================================================================
+# 2. Hilfsfunktion für die Simulation
+# ==============================================================================
+sim_path <- function(K_0_val, label) {
+  times <- seq(0, T_max, by = dt)
+  
+  # Jacobi-Matrix & Eigenwert für die Sattelpfad-Dynamik
+  beta    <- theta_E + 1 / (E_star^2)
+  det_J   <- -delta * (i_val + delta) - 1 / (beta * K_star^2)
+  lambda  <- (i_val - sqrt(i_val^2 - 4 * det_J)) / 2
+  slope_E <- lambda + delta
+  
+  data.frame(time = times) %>% 
+    mutate(
+      K      = K_star + (K_0_val - K_star) * exp(lambda * time),
+      E      = E_star + slope_E * (K - K_star),
+      Y      = K * E,
+      
+      # Wohlfahrts-Integral W(t)
+      U_flow = exp(-i_val * time) * (log(Y) - (theta_E / 2) * E^2),
+      U      = cumsum((U_flow + lag(U_flow, default = U_flow[1])) / 2 * dt),
+      
+      Szenario = label
+    )
+}
+
+# ==============================================================================
+# 3. Daten zusammenführen & Referenz-Dataframe für Steady States
+# ==============================================================================
+df_sim <- bind_rows(
+  sim_path(K_0_low,  "Niedriges Startkapital (K₀ = 5)"),
+  sim_path(K_0_high, "Hohes Startkapital (K₀ = 45)")
+)
+
+df_long <- df_sim %>% 
+  pivot_longer(cols = c(K, E, Y, U), names_to = "Variable", values_to = "Wert") %>% 
+  mutate(Variable = factor(Variable, levels = c("K", "E", "Y", "U")))
+
+# Dataframe für die gestrichelten Steady-State-Linien (E_star, K_star, Y_star)
+df_ss <- data.frame(
+  Variable   = factor(c("K", "E", "Y"), levels = c("K", "E", "Y", "U")),
+  yintercept = c(K_star, E_star, Y_star)
+)
+
+facet_labels <- c(
+  K = "Humankapital (K)",
+  E = "Eigene Anstrengung (E)",
+  Y = "Output (Y)",
+  U = "Kumulierte Wohlfahrt W(t)"
+)
+
+# ==============================================================================
+# 4. ggplot
+# ==============================================================================
+ggplot(df_long, aes(x = time, y = Wert, color = Szenario, linetype = Szenario)) +
+  # Gestrichelte Benchmark-Linien für Steady States in den Facets K, E, Y
+  geom_hline(
+    data = df_ss, 
+    aes(yintercept = yintercept), 
+    color = "gray40", 
+    linetype = "dashed", 
+    linewidth = 0.8
+  ) +
+  # Dynamische Pfade
+  geom_line(linewidth = 1.2) +
+  facet_wrap(
+    ~ Variable, 
+    scales = "free_y", 
+    ncol = 2,
+    labeller = as_labeller(facet_labels)
+  ) +
+  scale_color_manual(values = c(
+    "Niedriges Startkapital (K₀ = 5)" = "#2b5c8f",
+    "Hohes Startkapital (K₀ = 45)"   = "#d95f02"
+  )) +
+  scale_linetype_manual(values = c("solid", "dotdash")) +
+  labs(
+    title = "Sattelpfad-Dynamik für unterschiedliche Startniveaus",
+    subtitle = expression(paste("Gestrichelte graue Linien markieren die Steady-State-Niveaus ", bar(K)^"*", ", ", bar(E)^"*", " und ", bar(Y)^"*")),
+    x = "Zeit (t)", 
+    y = "Niveau",
+    color = "Ausgangsniveau:",
+    linetype = "Ausgangsniveau:"
+  ) +
+  theme_minimal(base_size = 13) +
+  theme(
+    legend.position = "bottom",
+    legend.box = "horizontal",
+    plot.title = element_text(face = "bold", size = 15),
+    strip.text = element_text(face = "bold", size = 12),
+    panel.grid.minor = element_blank()
+  )
+
+```
+
 
 ## Der Effekt von KI auf eigene Anstrengung und den Aufbau von Humankapital 
 
@@ -213,7 +559,7 @@ Der Schattenpreis des Wissens ($\mu_t$) entspricht in jedem Zeitpunkt der Differ
 
 Die Euler-Gleichung für die Bewegung des Schattenpreises bleibt strukturell identisch zum Basismodell, da der Grenznutzen des Kapitals ($\frac{\partial \mathcal{H}}{\partial K_t} = \frac{1}{K_t}$) von der Aufteilung zwischen $E_t$ und $A_t$ unberührt bleibt:
 
-$$\dot{\mu}_t = (i + \delta) \mu_t - \frac{1}{K_t}$$
+$$\dot{\mu}_t = (\rho + \delta) \mu_t - \frac{1}{K_t}$$
 
 ### Die sanfte KI-Falle bei myopischem Verhalten
 
